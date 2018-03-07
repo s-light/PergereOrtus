@@ -2,6 +2,9 @@
 
 # PergereOrtus
 
+for a pretty website rendering you can view this project at [s-light.github.io/PergereOrtus](https://s-light.github.io/PergereOrtus/)
+
+
 PergereOrtus - 'magical' device - similar to a compass  
 designed as prop for theater & storytelling & LARP
 
