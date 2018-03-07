@@ -1,16 +1,10 @@
 <!--lint disable list-item-indent-->
 
-# PergereOrtus
+# ortogere
+`ortogere` - the fantasy name / word means something like *verfolge den Ursprung* -> *chases the origin*
 
-for a pretty website rendering you can view this project at [s-light.github.io/PergereOrtus](https://s-light.github.io/PergereOrtus/)
+for a pretty website rendering you can view this project at [s-light.github.io/ortogere](https://s-light.github.io/ortogere/)
 
-
-PergereOrtus - 'magical' device - similar to a compass  
-designed as prop for theater & storytelling & LARP
-
-the fantasy name for this device is build up from the two Latin words
-- [Pergere](http://www.albertmartin.de/latein/?q=pergere) (eine Richtung verfolgen, weiterziehen == direction to follow)
-- [Ortus](http://www.albertmartin.de/latein/?q=ortus) (Ursprung, Entstehung == origin)
 
 ## Current State
 currently this project is in the early creation phase.
@@ -30,7 +24,7 @@ all Hardware / Design / Documentation files are licensed as CC-BY
     <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
 </a><br />
 <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
-    PergereOrtus
+    ortogere
 </span>
 by
 <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/s-light/LEDBoard_Layout_Sun" property="cc:attributionName" rel="cc:attributionURL">
