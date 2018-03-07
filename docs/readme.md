@@ -1,3 +1,4 @@
+<!--lint disable list-item-indent-->
 # Documentation for PergereOrtus
 
 PergereOrtus - 'magical' device - similar to a compass  
