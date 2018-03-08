@@ -92,7 +92,7 @@ eventually this could work?! [26:1 Sub-Micro Planetengetriebemotor 6Dx16L mm @ 6
 
 ### motordriver
 - [Brushless Motor Controller Shield for Arduino](https://hackaday.com/2014/10/08/brushless-motor-controller-shield-for-arduino/)
-    - [](https://github.com/Neuromancer2701/BLDC_ros_controller)
+    - [BLDC_ros_controller](https://github.com/Neuromancer2701/BLDC_ros_controller)
 - [OpenBLDC - BLDC shield for arduino and stand alone controller](https://hackaday.io/project/1490-openbldc)
 - [Brushless DC (BLDC) Motor Driver](https://www.tindie.com/products/manton/brushless-dc-bldc-motor-driver/)
 - [Spinning BLDC(Gimbal) motors at super slooooooow speeds with Arduino and L6234](http://www.berryjam.eu/2015/04/driving-bldc-gimbals-at-super-slow-speeds-with-arduino/)
@@ -109,7 +109,7 @@ eventually this could work?! [26:1 Sub-Micro Planetengetriebemotor 6Dx16L mm @ 6
     - [old forum](http://vedder.se/forums/index.php)
     - [new project website](https://vesc-project.com/)
         - [official VESC SIX](https://vesc-project.com/sites/default/files/Benjamin%20Posts/VESC_6.pdf)
-    - mini4  is VSEC6 compatible (by antonchromjak)
+    - mini4  is VSEC6 compatible (by Anton Chromjak *antonchromjak*)
         - [old forum](http://vedder.se/forums/viewtopic.php?f=9&t=1513&start=40)
         - [new forum](https://vesc-project.com/node/246)
         - [github](https://github.com/antonchromjak/MINI4)
@@ -124,6 +124,8 @@ eventually this could work?! [26:1 Sub-Micro Planetengetriebemotor 6Dx16L mm @ 6
                 >  and then use the encoder detect function in the FOC-Encoder tab.
                 >  The you must tune the position PID controller.
             - [Minimum speed](https://vesc-project.com/node/212)
+            - [my question](https://vesc-project.com/node/321)
+
 
 
 
