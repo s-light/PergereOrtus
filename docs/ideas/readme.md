@@ -38,6 +38,9 @@ this needs some sort of indexing - so the thing knows where the disc is currentl
 
 some illumination for this part should be also planned for..
 
+motor for here could be this [700:1 Sub-Micro Planetengetriebemotor 6Dx21L mm](https://www.exp-tech.de/motoren/dc-getriebemotoren/7038/700-1-sub-micro-planetengetriebemotor-6dx21l-mm) one.
+its 90RPM@6V
+
 ## communication
 the unit should have a W-LAN or 433MHz wireless communication link -
 so it can be controlled from remote locations to set new values for position or text/image of needle or wind rose
