@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 2970 2100"
+   version="1.2"
+   id="svg900"
+   sodipodi:docname="sketch_size_papertest_hexagon_160mm.svg"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+  <metadata
+     id="metadata904">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1015"
+     id="namedview902"
+     showgrid="false"
+     inkscape:zoom="1.1687991"
+     inkscape:cx="690.27131"
+     inkscape:cy="245.13219"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg900" />
+  <title
+     id="title2">FreeCAD SVG Export</title>
+  <desc
+     id="desc4">Drawing page: Page002 exported from FreeCAD document: Unnamed</desc>
+  <defs
+     id="defs6" />
+  <g
+     id="g2330">
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       id="path50"
+       d="m 2718.01,1300 86.61,50 -400.005,692.82 -86.602,-50 -173.205,-100 -259.808,-150 v 300 200 100 h -800 v -100 -200 -300 l -259.808,150 -173.205,100 -86.602,50 L 165.38,1350 251.99,1300 425.19,1200 685,1050 425.19,900 251.99,800 165.38,750 565.385,57.18 l 86.602,50 173.205,100 259.808,150 v -300 -200 -100 h 800 v 100 200 300 l 259.808,-150 173.205,-100 86.602,-50 400.005,692.82 -86.61,50 -173.2,100 -259.81,150 259.81,150 173.2,100" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       id="path66"
+       d="M 1885,1742.82 2285,1050 1885,357.18 h -800 800 -800 v -300 h 800 v 300 H 1085 L 685,1050 l 400,692.82 h 800 -800 800 v 300 h -800 v -300 h 800" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       id="path82"
+       d="m 2085,1050 c 0,331.371 -268.629,600 -600,600 -331.371,0 -600,-268.629 -600,-600 0,-331.371 268.629,-600 600,-600 331.371,0 600,268.629 600,600" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       id="path98"
+       d="M 2544.81,900 2285,1050 1885,357.18 2144.808,207.18 2544.81,900" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       id="path114"
+       d="M 825.192,207.18 1085,357.18 685,1050 425.19,900 825.192,207.18" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       id="path130"
+       d="m 1085,1742.82 -259.808,150 L 425.19,1200 685,1050 l 400,692.82" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       id="path146"
+       d="m 2285,1050 259.81,150 -400.002,692.82 L 1885,1742.82 2285,1050" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       id="path162"
+       d="m 2544.81,1200 173.2,100 -399.997,692.82 -173.205,-100 L 2544.81,1200" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       id="path178"
+       d="m 1885,2042.82 v 200 h -800 v -200 h 800" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       id="path194"
+       d="m 1085,57.18 v -200 h 800 v 200 h -800" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       id="path210"
+       d="m 2144.808,207.18 173.205,-100 L 2718.01,800 2544.81,900 2144.808,207.18" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       id="path226"
+       d="m 825.192,1892.82 -173.205,100 L 251.99,1300 l 173.2,-100 400.002,692.82" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       id="path242"
+       d="M 425.19,900 251.99,800 651.987,107.18 825.192,207.18 425.19,900" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       id="path258"
+       d="m 251.99,800 -86.61,-50 400.005,-692.82 86.602,50 L 251.99,800" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       id="path274"
+       d="m 2718.01,1300 86.61,50 -400.005,692.82 -86.602,-50 L 2718.01,1300" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       id="path290"
+       d="m 1085,-142.82 v -100 h 800 v 100 h -800" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       id="path306"
+       d="m 1885,2242.82 v 100 h -800 v -100 h 800" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       id="path322"
+       d="m 2318.013,107.18 86.602,-50 400.005,692.82 -86.61,50 -399.997,-692.82" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel"
+       inkscape:connector-curvature="0"
+       id="path338"
+       d="m 651.987,1992.82 -86.602,50 L 165.38,1350 l 86.61,-50 399.997,692.82" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path354"
+       d="m 2085,1050 c 0,331.371 -268.629,600 -600,600 -331.371,0 -600,-268.629 -600,-600 0,-331.371 268.629,-600 600,-600 331.371,0 600,268.629 600,600" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path362"
+       d="m 1085,357.18 v -600" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path370"
+       d="m 1085,-242.82 h 800" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path378"
+       d="m 1885,-242.82 v 600" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path386"
+       d="M 1885,357.18 H 1085" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path394"
+       d="M 1085,357.18 685,1050" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path402"
+       d="m 685,1050 400,692.82" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path410"
+       d="m 1085,1742.82 h 800" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path418"
+       d="M 1885,1742.82 2285,1050" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path426"
+       d="M 2285,1050 1885,357.18" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path434"
+       d="m 1085,57.18 h 800" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path442"
+       d="m 1085,-142.82 h 800" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path450"
+       d="M 685,1050 165.38,750" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path458"
+       d="M 165.38,750 565.385,57.18" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path466"
+       d="M 565.385,57.18 1085,357.18" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path474"
+       d="M 1085,357.18 685,1050" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path482"
+       d="m 685,1050 400,692.82" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path490"
+       d="m 1085,1742.82 h 800" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path498"
+       d="M 1885,1742.82 2285,1050" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path506"
+       d="M 2285,1050 1885,357.18" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path514"
+       d="M 1885,357.18 H 1085" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path522"
+       d="M 425.19,900 825.192,207.18" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path530"
+       d="M 251.99,800 651.987,107.18" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path538"
+       d="m 1085,1742.82 -519.615,300" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path546"
+       d="M 565.385,2042.82 165.38,1350" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path554"
+       d="M 165.38,1350 685,1050" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path562"
+       d="m 685,1050 400,692.82" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path570"
+       d="m 1085,1742.82 h 800" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path578"
+       d="M 1885,1742.82 2285,1050" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path586"
+       d="M 2285,1050 1885,357.18" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path594"
+       d="M 1885,357.18 H 1085" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path602"
+       d="M 1085,357.18 685,1050" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path610"
+       d="M 825.192,1892.82 425.19,1200" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path618"
+       d="M 651.987,1992.82 251.99,1300" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path626"
+       d="m 1885,1742.82 v 600" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path634"
+       d="M 1885,2342.82 H 1085" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path642"
+       d="m 1085,2342.82 v -600" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path650"
+       d="m 1085,1742.82 h 800" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path658"
+       d="M 1885,1742.82 2285,1050" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path666"
+       d="M 2285,1050 1885,357.18" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path674"
+       d="M 1885,357.18 H 1085" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path682"
+       d="M 1085,357.18 685,1050" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path690"
+       d="m 685,1050 400,692.82" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path698"
+       d="M 1885,2042.82 H 1085" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path706"
+       d="M 1885,2242.82 H 1085" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path714"
+       d="m 2285,1050 519.62,300" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path722"
+       d="m 2804.62,1350 -400.005,692.82" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path730"
+       d="M 2404.615,2042.82 1885,1742.82" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path738"
+       d="M 1885,1742.82 2285,1050" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path746"
+       d="M 2285,1050 1885,357.18" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path754"
+       d="M 1885,357.18 H 1085" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path762"
+       d="M 1085,357.18 685,1050" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path770"
+       d="m 685,1050 400,692.82" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path778"
+       d="m 1085,1742.82 h 800" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path786"
+       d="m 2544.81,1200 -400.002,692.82" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path794"
+       d="m 2718.01,1300 -399.997,692.82" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path802"
+       d="m 1885,357.18 519.615,-300" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path810"
+       d="M 2404.615,57.18 2804.62,750" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path818"
+       d="M 2804.62,750 2285,1050" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path826"
+       d="M 2285,1050 1885,357.18" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path834"
+       d="M 1885,357.18 H 1085" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path842"
+       d="M 1085,357.18 685,1050" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path850"
+       d="m 685,1050 400,692.82" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path858"
+       d="m 1085,1742.82 h 800" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path866"
+       d="M 1885,1742.82 2285,1050" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path874"
+       d="M 2144.808,207.18 2544.81,900" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path882"
+       d="M 2318.013,107.18 2718.01,800" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path890"
+       d="m 1485,1092 v -84 m 42,42 h -84" />
+  </g>
+</svg>
