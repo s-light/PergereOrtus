@@ -108,7 +108,7 @@ eventually this could work?! [26:1 Sub-Micro Planetengetriebemotor 6Dx16L mm @ 6
     - [VESC – Writing Custom Applications (2016-01-22)](http://vedder.se/2015/08/vesc-writing-custom-applications/)
     - [old forum](http://vedder.se/forums/index.php)
     - [new project website](https://vesc-project.com/)
-        - [official VESC SIX](https://vesc-project.com/sites/default/files/Benjamin%20Posts/VESC_6.pdf)
+        - [official VESC SIX schematics](https://vesc-project.com/sites/default/files/Benjamin%20Posts/VESC_6.pdf)
     - mini4  is VSEC6 compatible (by Anton Chromjak *antonchromjak*)
         - [old forum](http://vedder.se/forums/viewtopic.php?f=9&t=1513&start=40)
         - [new forum](https://vesc-project.com/node/246)
