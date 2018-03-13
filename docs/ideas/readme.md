@@ -63,4 +63,7 @@ be used to route the user to a fixed absolute position (this is in sync with the
 
 ## power
 in the bottom of the unit needs to be place for some LiPo / LiFe cells...
-most power hungry is the POV section.. so more details there..
+if the housing is made with an inner width of 180mm (the outer width of the paper model)
+then two 2s1p inline LiFePo4 packs with 26650 form-factor can fit in the bottom..
+
+most power hungry is the POV section.. more details there..
