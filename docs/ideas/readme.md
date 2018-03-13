@@ -25,11 +25,9 @@
 # ortogere ideas & concepts
 
 <div class="specialimage">
-    <img class="pic" alt="ortogere first sketch 3d model" src="sketch_size_papertest_3d_model.png">
-    <img class="pic old" alt="ortogere first sketch 3d model" src="sketch_size_papertest_3d_model_transparent.png">
+    <img class="pic" alt="ortogere first sketch 3d model" src="sketch_size_papertest_3d_model_transparent.png">
+    <img class="pic old" alt="ortogere first sketch 3d model" src="sketch_size_papertest_3d_model.png">
 </div>
-
-![ortogere first sketch 3d model](sketch_size_papertest_3d_model_transparent.png)
 
 ## touch(less) input
 buildin / hidden in the top outer edge is a copper surface that acts as electrode.
