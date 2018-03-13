@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 2970 2100"
+   version="1.2"
+   id="svg244"
+   sodipodi:docname="compass_needle_60mm_A4_CAM.svg"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+  <metadata
+     id="metadata248">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1015"
+     id="namedview246"
+     showgrid="false"
+     inkscape:zoom="1.6529315"
+     inkscape:cx="590.63111"
+     inkscape:cy="433.62517"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg244" />
+  <title
+     id="title2">FreeCAD SVG Export</title>
+  <desc
+     id="desc4">Drawing page: Page005 exported from FreeCAD document: sketch_size_papertest</desc>
+  <defs
+     id="defs6" />
+  <g
+     id="g1197">
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path50"
+       d="m 1552.2598,1149.3787 c 32.7622,-22.1737 52.4912,-59.0703 52.7382,-98.6302 0.246,-39.5599 -19.02,-76.6997 -51.5037,-99.2804 v 0 C 1548.6644,948.111 1545.5575,942.797 1545,936.942 L 1499.9325,463.578 C 1499.1995,455.88 1492.7336,450 1485,450 c -7.7335,0 -14.1995,5.88 -14.9325,13.578 L 1425,936.942 c -0.5575,5.855 -3.6644,11.169 -8.4943,14.5261 v 0 C 1384.24,973.8977 1365,1010.7039 1365,1050 c 0,39.2961 19.24,76.1023 51.5057,98.5319 v 0 c 4.8299,3.3571 7.9368,8.6711 8.4943,14.5261 l 45.0675,473.364 c 0.733,7.698 7.199,13.578 14.9325,13.578 7.7336,0 14.1995,-5.88 14.9325,-13.578 L 1545,1163.058 c 0,-5.482 2.7198,-10.607 7.2598,-13.6793" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path66"
+       d="m 1510,1050 c 0,13.8071 -11.1929,25 -25,25 -13.8071,0 -25,-11.1929 -25,-25 0,-13.8071 11.1929,-25 25,-25 13.8071,0 25,11.1929 25,25" />
+    <path
+       style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       id="path210"
+       d="m 1485,1092 v -84 m 42,42 h -84" />
+  </g>
+</svg>
