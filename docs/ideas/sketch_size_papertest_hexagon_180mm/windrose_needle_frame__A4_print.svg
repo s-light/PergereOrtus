@@ -42,12 +42,12 @@
      id="namedview278"
      showgrid="false"
      inkscape:zoom="1.6529315"
-     inkscape:cx="230.75231"
-     inkscape:cy="346.86081"
+     inkscape:cx="380.00275"
+     inkscape:cy="685.0783"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g3184"
+     inkscape:current-layer="layer1"
      inkscape:snap-bbox="true"
      inkscape:snap-bbox-midpoints="true"
      inkscape:snap-smooth-nodes="true"
@@ -203,17 +203,6 @@
     </linearGradient>
     <radialGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient1279"
-       id="radialGradient1308"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,4.9833957,0,-4182.5655)"
-       cx="1485.0002"
-       cy="1050"
-       fx="1485.0002"
-       fy="1050"
-       r="120.50016" />
-    <radialGradient
-       inkscape:collect="always"
        xlink:href="#linearGradient1367"
        id="radialGradient1369"
        cx="835.625"
@@ -245,13 +234,25 @@
        y1="1050"
        x2="2770.5"
        y2="1050" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1279"
+       id="radialGradient1308-1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,4.9833957,0,-4182.5655)"
+       cx="1485.0002"
+       cy="1050"
+       fx="1485.0002"
+       fy="1050"
+       r="120.50016" />
   </defs>
   <g
      inkscape:groupmode="layer"
      id="layer1"
      inkscape:label="windrose">
     <g
-       id="g3184">
+       id="g3184"
+       transform="translate(10.000009,-69.99998)">
       <circle
          r="650"
          cy="1400"
@@ -261,7 +262,8 @@
       <path
          id="path3875"
          style="fill:none;stroke:#000000;stroke-width:2.64583325px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="M 699.99999,1400 1159.6189,940.38101 M 699.99999,1400 803.55291,1150 1159.6189,940.38101 949.99999,1296.447 Z" />
+         d="M 699.99999,1400 1159.6189,940.38101 M 699.99999,1400 803.55291,1150 1159.6189,940.38101 949.99999,1296.447 Z"
+         inkscape:connector-curvature="0" />
       <use
          x="0"
          y="0"
@@ -294,14 +296,15 @@
          style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
       <path
          id="path3871"
-         style="fill:none;stroke:#000000;stroke-width:2.64583325px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.64583325px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="M 699.99999,1400 V 750 m 0,650 -161.65808,-280 161.65808,-370 161.6579,370 z"
          inkscape:tile-cx="699.99991"
          inkscape:tile-cy="1075"
          inkscape:tile-w="323.31598"
          inkscape:tile-h="650.00001"
          inkscape:tile-x0="538.34191"
-         inkscape:tile-y0="750.00001" />
+         inkscape:tile-y0="750.00001"
+         inkscape:connector-curvature="0" />
       <use
          x="0"
          y="0"
@@ -333,10 +336,10 @@
      id="layer2"
      inkscape:label="needle">
     <g
-       transform="rotate(-90,704.74889,1040.0378)"
+       transform="rotate(-90,701.54751,1041.6385)"
        id="g1197">
       <path
-         style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:url(#radialGradient1308);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
+         style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
          inkscape:connector-curvature="0"
          id="path50-3"
          d="m 1552.2598,1149.3787 c 32.7622,-22.1737 52.4912,-59.0703 52.7382,-98.6302 0.246,-39.5599 -19.02,-76.6997 -51.5037,-99.2804 v 0 C 1548.6644,948.111 1545.5575,942.797 1545,936.942 L 1499.9325,463.578 C 1499.1995,455.88 1492.7336,450 1485,450 c -7.7335,0 -14.1995,5.88 -14.9325,13.578 L 1425,936.942 c -0.5575,5.855 -3.6644,11.169 -8.4943,14.5261 v 0 C 1384.24,973.8977 1365,1010.7039 1365,1050 c 0,39.2961 19.24,76.1023 51.5057,98.5319 v 0 c 4.8299,3.3571 7.9368,8.6711 8.4943,14.5261 l 45.0675,473.364 c 0.733,7.698 7.199,13.578 14.9325,13.578 7.7336,0 14.1995,-5.88 14.9325,-13.578 L 1545,1163.058 c 0,-5.482 2.7198,-10.607 7.2598,-13.6793" />
@@ -349,6 +352,25 @@
          style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.56696445;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          inkscape:connector-curvature="0"
          id="path210"
+         d="m 1485.0002,1073.8132 v -47.625 m 23.8125,23.8125 h -47.625" />
+    </g>
+    <g
+       transform="rotate(-90,836.91407,1176.2071)"
+       id="g1197-3">
+      <path
+         style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:url(#radialGradient1308-1);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
+         inkscape:connector-curvature="0"
+         id="path50-3-2"
+         d="m 1552.2598,1149.3787 c 32.7622,-22.1737 52.4912,-59.0703 52.7382,-98.6302 0.246,-39.5599 -19.02,-76.6997 -51.5037,-99.2804 v 0 C 1548.6644,948.111 1545.5575,942.797 1545,936.942 L 1499.9325,463.578 C 1499.1995,455.88 1492.7336,450 1485,450 c -7.7335,0 -14.1995,5.88 -14.9325,13.578 L 1425,936.942 c -0.5575,5.855 -3.6644,11.169 -8.4943,14.5261 v 0 C 1384.24,973.8977 1365,1010.7039 1365,1050 c 0,39.2961 19.24,76.1023 51.5057,98.5319 v 0 c 4.8299,3.3571 7.9368,8.6711 8.4943,14.5261 l 45.0675,473.364 c 0.733,7.698 7.199,13.578 14.9325,13.578 7.7336,0 14.1995,-5.88 14.9325,-13.578 L 1545,1163.058 c 0,-5.482 2.7198,-10.607 7.2598,-13.6793" />
+      <path
+         style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:non-scaling-stroke;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:bevel;stroke-opacity:1"
+         inkscape:connector-curvature="0"
+         id="path66-6-0"
+         d="m 1510,1050 c 0,13.8071 -11.1929,25 -25,25 -13.8071,0 -25,-11.1929 -25,-25 0,-13.8071 11.1929,-25 25,-25 13.8071,0 25,11.1929 25,25" />
+      <path
+         style="font-style:normal;font-weight:400;font-size:medium;font-family:'Sans Serif';vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.56696445;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         inkscape:connector-curvature="0"
+         id="path210-6"
          d="m 1485.0002,1073.8132 v -47.625 m 23.8125,23.8125 h -47.625" />
     </g>
   </g>

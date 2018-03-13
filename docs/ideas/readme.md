@@ -8,11 +8,18 @@
     <img class="pic new" alt="ortogere first sketch 3d model" src="sketch_size_papertest_3d_model_transparent.png">
 </div>
 
+<div class="hoverswitch">
+    <img class="pic" alt="ortogere paper model white" src="photos/P1660763_small.jpg">
+    <img class="pic new" alt="ortogere paper model" src="photos/P1660765_small.jpg">
+</div>
+
+
+
 ## touch(less) input
 buildin / hidden in the top outer edge is a copper surface that acts as electrode.
 it is split in 4 parts and managed with an [FDC1004](https://github.com/s-light/TI_FDC1004_Breakout) or similar
 
-this allows for 'hand waving gestures'
+this allows for 'hand waving gestures' and approach detection (hopefully ;-) )
 
 ## top input rim
 ### self build encoder
