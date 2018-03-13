@@ -3,22 +3,32 @@
 
 @import "{{ site.theme }}";
 
-.specialimage {
-    display: block;
+
+.hoverswitch {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: stretch;
+
     position: relative;
-    z-index: 100;
 }
+
 .pic {
-    display: block;
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+}
+
+.hoverswitch .new {
+    opacity: 0;
+    transition: opacity 0.5s;
     position: absolute;
     top:0;
-    left:0;
 }
-.specialimage .old {
+
+.hoverswitch:hover .new {
     opacity: 1;
-    transition: opacity 0.5s;
-}
-.specialimage:hover .old {
-    opacity: 0;
     transition: opacity 0.5s;
 }

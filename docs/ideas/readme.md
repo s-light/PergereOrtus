@@ -3,9 +3,9 @@
 
 # ortogere ideas & concepts
 
-<div class="specialimage">
-    <img class="pic" alt="ortogere first sketch 3d model" src="sketch_size_papertest_3d_model_transparent.png">
-    <img class="pic old" alt="ortogere first sketch 3d model" src="sketch_size_papertest_3d_model.png">
+<div class="hoverswitch">
+    <img class="pic" alt="ortogere first sketch 3d model" src="sketch_size_papertest_3d_model.png">
+    <img class="pic new" alt="ortogere first sketch 3d model" src="sketch_size_papertest_3d_model_transparent.png">
 </div>
 
 ## touch(less) input
