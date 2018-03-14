@@ -71,6 +71,47 @@ TODO: source for small brushes?!
 - [exp-tech DC 130-Size, 6V, 11.5kRPM; 1,7€](https://www.exp-tech.de/motoren/dc-motoren/4858/dc-buerstenmotor-130-size-6v-11.5krpm-800ma-stall?c=1199)
 - [exp-tech DC M260, 1V, 6.6kRPM; 2,0€](https://www.exp-tech.de/motoren/dc-motoren/5204/hobby-motor-gear?c=1199)
 
+### use coils
+
+- [technology overview (TI)](https://www.wirelesspowerconsortium.com/technology/why-not-a-wire-the-case-for-wireless-power.html)
+- [more background info: Wireless Electricity Transmission](https://www.wirelesspowerconsortium.com/technology/how-it-works.html)
+
+- [POV Display With Wireless Power!](http://www.instructables.com/id/POV-Display-With-Wireless-Power/)
+- [Arduino Wireless Power POV Display](http://www.instructables.com/id/Arduino-Wireless-Power-POV-Display/)
+- [rotating air transformer](http://www.oocities.org/tjacodesign/propclock/propclock.html)
+- [PCB-Winding - Version 4 (August 2014)](http://electronixandmore.com/projects/propclock/index.html)
+- [3D POV Display with 10W wireless power](http://www.instructables.com/id/PropHelix-3D-POV-Display/)
+    - [wireless module](https://www.banggood.com/12V-Wireless-Charger-Module-5V-Power-Supply-Charging-Coil-Transmitter-Receiver-For-Phone-p-1122411.html?rmmds=myorder)
+
+#### Phone wireless charging technology
+- receiver
+    - [bq51013b	WPC 1.1 Compatible Fully Integrated Wireless Power Receiver IC (20VQFN)](http://www.ti.com/product/bq51013b)
+    - [bq51050b	Qi (WPC) Compliant Highly Integrated Secondary-Side Direct Lithium Ion Charger (20VQFN)](http://www.ti.com/product/bq51050b)
+- transmitter
+    - [bq500212a	(NRND) Qi Compliant 5V Wireless Power Transmitter Manager](www.ti.com/product/bq500212a)
+    - [5W WPC (Qi) Compliant Wireless Power Transmitter for 5V Applications Reference Design (bq500212A)](http://www.ti.com/tool/tida-00259)
+    - [Small 5W Wireless Power Transmitter Reference Design (bq500511 & bq50002)](http://www.ti.com/tool/tida-00623)
+
+- würth electronic
+    - [WE-WPCC Wireless Power Transfer Transmitter Spule](http://katalog.we-online.de/de/pbs/WE-WPCC-TRANSMITTER?sid=e05308da79)
+    - [high power designs industrial](http://www.we-online.de/web/de/electronic_components/produkte_pb/application_notes/anp032.php)
+    - [reference design / kits](http://www.we-online.de/web/de/electronic_components/produkte_pb/demoboards/wireless_power/referencedesigns/referencedesigns.php)
+
+
+- [Qi-Universalempfänger: Micro-USB “unten”](http://inbay.systems/de/qi-handyzubehoer/)
+- [Inbay® Universal Lüftungshalter mit induktiver Ladefunktion](http://inbay.systems/de/inbay-universal-lueftungshalter-2/)
+- [acv ist Spezialist für Wireless Charging](https://www.acvgmbh.de/produkte/induktive-lademoeglichkeiten/)
+
+- [modules uway-qi](http://www.uway-qi.com/e/Products/qi_modules/index.html)
+    - [Qi RX Receiver Module Model NO: UNIQT-0108 (15W)](http://www.uway-qi.com/e/Products/qi_modules/p32.html)
+    - [(SEMICO) Qi 5W Wireless Charging TX Module A11/5V (WPC 1.2.1 certified) (Round Type) Model NO: UNIQT-0004 (1W)](http://www.uway-qi.com/e/Products/qi_modules/p39.html)
+    - [Qi 15W Medium power wireless charging TX module Model NO: UNIQT-0014 (15W)](http://www.uway-qi.com/e/Products/qi_modules/p31.html)
+    - [Fast-Charge Qi 10W Wireless Charging TX Module Model NO: SAMQT-0011 (10W)](http://www.uway-qi.com/e/Products/qi_modules/p33.html)
+    - [(SEMICO) Qi 5W Wireless Charging TX Module A11/5V (WPC 1.2.0 certified) (Square Type) (5W)](http://www.uway-qi.com/e/Products/qi_modules/p40.html)
+
+- [Wireless Power Receiver - Futura Group Srl - 7100-FT1236M (9,9€)](https://store.open-electronics.org/FT1236M?search=ft123)
+- [Wireless Power Trasmitter FT1235M - Futura Group Srl- 7100-FT1235M (19,70€)](https://store.open-electronics.org/FT1235M)
+
 ## motor
 
 ### DC geared
