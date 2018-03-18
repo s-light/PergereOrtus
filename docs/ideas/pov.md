@@ -83,6 +83,13 @@ TODO: source for small brushes?!
 - [3D POV Display with 10W wireless power](http://www.instructables.com/id/PropHelix-3D-POV-Display/)
     - [wireless module](https://www.banggood.com/12V-Wireless-Charger-Module-5V-Power-Supply-Charging-Coil-Transmitter-Receiver-For-Phone-p-1122411.html?rmmds=myorder)
 
+- [Rotary Transformer (for Persistence of Vision displays)](https://www.youtube.com/watch?v=7rGtyMUr_Vc)
+
+GreatScott! (video)
+- [How Does Wireless Charging Work? || Crude Wireless Energy Transfer Circuit (video)](https://www.youtube.com/watch?v=ExU32UyGX6w)
+- [DIY Wireless Energy Transfer System (good starting point)](https://www.youtube.com/watch?v=3E5PUnYlaTM)
+    - [same as instructables write down](http://www.instructables.com/id/DIY-Wireless-Energy-Transfer-System/)
+
 #### Phone wireless charging technology
 - receiver
     - [bq51013b	WPC 1.1 Compatible Fully Integrated Wireless Power Receiver IC (20VQFN)](http://www.ti.com/product/bq51013b)
