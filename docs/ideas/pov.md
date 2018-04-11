@@ -47,6 +47,11 @@ so we have a 12-Pixel high circle-screen.
 - [LTN Servotechnik GmbH - schleifring](https://www.ltn-servotechnik.com/de/produkte/schleifringe/signaluebertragung/)
 - [element14 community: DIY Slip Rings: 5 Go-To Guides That Detail How To Make A Slip Ring](https://www.element14.com/community/groups/power-management/blog/2016/09/12/diy-slip-rings-5-go-to-guides-that-detail-how-to-make-a-slip-ring)
 
+## LEDs
+[APA-102-2020-P5 STRIP](http://neon-world.com/en/product_detail.php?cid=94&id=230)
+[MicroNova LED Strip, 198 LEDs/meter (60564)](https://solarbotics.com/product/60564/)
+[POV Poi with Teensy](https://forum.pjrc.com/threads/30020-Teensy-APA102-POV-Poi-Pixel-Poi-Build-Tutorial/page11)
+
 ## infrared data transmission
 idea here is to have a IR led directly pulsing the raw data out and an receiver converting it back to signal..
 so this could be transmitted over the rotation contact-less.
@@ -57,6 +62,25 @@ challenge here is the bit time - we need some very very fast photo detectors...
 - [Photo Detectors - Surface Mount Devices](https://www.vishay.com/photo-detectors/surface-mount-devices/)
 
 [Optical Sensors - Transmissive](https://www.vishay.com/optical-sensors/transmissive-sensors/)
+
+- [digikey: Vishay TEFD4300F High-Speed Photodiodes](https://www.digikey.com/en/product-highlight/v/vishay-semi-opto/tefd4300-and-tefd4300f-high-speed-pin-photodiodes)
+- [Why are most IR phototransistors slow?](https://electronics.stackexchange.com/questions/347665/why-are-most-ir-phototransistors-slow)
+- [example with explanation to drive a phototransistors (optoisolators)](https://electronics.stackexchange.com/a/136944/13800)
+- [Phototransistor Switching Time Analysis (app note)](http://www.cel.com/pdf/appnotes/an3009.pdf)
+
+- Analog Devices
+  - [LT1328 (4Mbps IrDA Infrared Receiver)](http://www.analog.com/en/products/interface-isolation/multiprotocol-transceivers/lt1328.html)
+  - [ir photodiode used in demo board: BPV22NF ](http://www.vishay.com/docs/81509/bpv22nf.pdf)
+
+- [Ronja project](http://ronja.twibright.com/irrx/material.php)
+  - [SFH 203 P ](https://www.digikey.com/product-detail/en/osram-opto-semiconductors-inc/SFH-203-P/475-2649-ND/1893875)
+
+- [OPA380	High Speed Precision Transimpedance Amplifier (auch als dual variante)](http://www.ti.com/product/opa380)
+- [OPT101 Monolithic Photodiode and Single-Supply Transimpedance Amplifier](http://www.ti.com/lit/ds/symlink/opt101.pdf)
+
+- [some ideas and research to optical transmission with leds](https://electronics.stackexchange.com/questions/24214/using-a-led-to-transmit-data)
+
+- [mikrocontroller.net basics](https://www.mikrocontroller.net/articles/Lichtsensor_/_Helligkeitssensor)
 
 ## power transmission
 power transmission should be possible with slip-rings.
@@ -171,9 +195,10 @@ eventually this could work?! [26:1 Sub-Micro Planetengetriebemotor 6Dx16L mm @ 6
                 >  If you have an encoder, in the Foc-general tab set sensor mode to ABI
                 >  and then use the encoder detect function in the FOC-Encoder tab.
                 >  The you must tune the position PID controller.
+
             - [Minimum speed](https://vesc-project.com/node/212)
             - [my question](https://vesc-project.com/node/321)
-
+- [odrive](https://discourse.odriverobotics.com/)
 
 
 
