@@ -9,27 +9,42 @@ but also can spin up to about 1800rpm (= 30rps) and have LEDs to create a classi
 on every half of the needle are 12 LEDs (APA102-2020 or Nichia NSSM124D with TLC5971 or something similar)
 so we have a 12-Pixel high circle-screen.
 
-## update-rate calculations
+## bitrate / update-rate calculations
 
-| name                                       | value   |
-| :----------------------------------------- | :------ |
-| pixel pitch                                | 3mm     |
-| needle diameter                            | 80mm    |
-| outer pixel circumference                  | 251mm   |
-| outer pixel circumference virtual count    | 84      |
-| pixel updates per revolution               | 84      |
-| updates per second = revolution per second | 30      |
-| revolution per minute (RPM)                | 1800    |
-| pixel updates per second  (pixel-rate)     | 2520    |
+### 130mm Needle, 3mm Pixel Pitch
 
-| calculation step   | APA102                | TLC5971           |
-| :----------------- | :-------------------- | :---------------- |
-| bytes per update   | 102 (4 + 24*4 + 2)    | 168 (28 * 6)      |
-| bits per update    | 816 (102*8)           | 1344              |
-| bits per second    | 2056320 (816 * 2520)  | 3386880           |
-| Kbit per second    | 2056                  | 3387              |
-| Mbit per second    | 2,0                   | 3,4               |
-| bit time           | 486 ns (= 0,48us)     | 295 ns (= 0,29us) |
+| name                                       | value   | formula             |
+| :----------------------------------------- | ------: | ------------------: |
+| updates_per_second = revolution_per_second | 30      |                     |
+| revolution per minute (RPM)                | 1800    | revolution_per_second * 60 |
+| pixel_pitch                                | 3mm     |                     |
+| needle_diameter                            | 130mm   |                     |
+| needle_active_radius                       | 60mm    | (needle_diameter - 10mm) / 2 |
+| pixel_count_one_side                       | 20      | needle_active_radius / pixel_pitch |
+| pixel_count_total                          | 40      | pixel_count_one_side * 2 |
+
+| name                                       | value   | formula             |
+| :----------------------------------------- | ------: | ------------------: |
+| pixel_circumference                        | 408mm   | π * needle_diameter |
+| pixel_circumference_virtual_count          | 136     | pixel_circumference / pixel_pitch |
+| pixel_updates_per_revolution               | 136     | = pixel_circumference_virtual_count |
+| pixel_updates_per_second                   | 4080    | revolution_per_second * pixel_updates_per_revolution |
+| pixel_updates_per_minute                   | 244800  | revolution_per_minute * pixel_updates_per_revolution |
+
+| calculation step   | APA102                | TLC5971             | formula               |
+| :----------------- | :-------------------- | :------------------ | --------------------: |
+| bytes_per_update   | 166 (4 + 40*4 + 2)    | 280 (28 * (40 / 4)) |                       |
+| bits_per_update    | 1328                  | 2240                | bytes_per_update * 8  |
+| bits_per_second    | 5418240               | 9139200             | bits_per_update * pixel_updates_per_second |
+| kbit_per_second    | 5418                  | 9139                |                       |
+| Mbit_per_second    | 5,41                  | 9,14                |                       |
+| bit_time_max       | 184ns (= 0,184us)     | 109 ns (= 0,109us)  | `1s / (5,41*10^6) ==` |
+
+
+1 second == 1.000 ms == 1.000.000 us == 1.000.000.000 ns  
+10 Bit pro second == 1s/10 per Bit == 100ms per Bit
+10kBit pro second == 1s/10k per Bit == 100us per Bit
+10MBit pro second == 1/10.000.000s per Bit == 0,0000001s == 100 ns  
 
 
 
@@ -69,8 +84,8 @@ challenge here is the bit time - we need some very very fast photo detectors...
 - [Phototransistor Switching Time Analysis (app note)](http://www.cel.com/pdf/appnotes/an3009.pdf)
 
 - Analog Devices
-  - [LT1328 (4Mbps IrDA Infrared Receiver)](http://www.analog.com/en/products/interface-isolation/multiprotocol-transceivers/lt1328.html)
-  - [ir photodiode used in demo board: BPV22NF ](http://www.vishay.com/docs/81509/bpv22nf.pdf)
+    - [LT1328 (4Mbps IrDA Infrared Receiver)](http://www.analog.com/en/products/interface-isolation/multiprotocol-transceivers/lt1328.html)
+    - [ir photodiode used in demo board: BPV22NF ](http://www.vishay.com/docs/81509/bpv22nf.pdf)
 
 - [Ronja project](http://ronja.twibright.com/irrx/material.php)
   - [SFH 203 P ](https://www.digikey.com/product-detail/en/osram-opto-semiconductors-inc/SFH-203-P/475-2649-ND/1893875)
@@ -79,6 +94,8 @@ challenge here is the bit time - we need some very very fast photo detectors...
 - [OPT101 Monolithic Photodiode and Single-Supply Transimpedance Amplifier](http://www.ti.com/lit/ds/symlink/opt101.pdf)
 
 - [some ideas and research to optical transmission with leds](https://electronics.stackexchange.com/questions/24214/using-a-led-to-transmit-data)
+    - [photodiode OPF430 by Optek Inc](https://www.digikey.com/product-detail/en/tt-electronics-optek-technology/OPF430/365-1839-ND/1637898)
+    - [TI OPA657 1.6GHz, Low Noise, FET-Input Operational Amplifier](http://www.ti.com/product/OPA657)
 
 - [mikrocontroller.net basics](https://www.mikrocontroller.net/articles/Lichtsensor_/_Helligkeitssensor)
 
