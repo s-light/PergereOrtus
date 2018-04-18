@@ -6,8 +6,10 @@ the idea is that the compass needle can rotate slow in both directions to *set* 
 
 but also can spin up to about 1800rpm (= 30rps) and have LEDs to create a classic POV display.
 
-on every half of the needle are 12 LEDs (APA102-2020 or Nichia NSSM124D with TLC5971 or something similar)
-so we have a 12-Pixel high circle-screen.
+on every half of the needle are 12..20 LEDs (APA102-2020 or Nichia NSSM124D with TLC5971 or something similar)
+so we have a 12..20-Pixel high circle-screen.
+
+![pov concept overview](pov_concept_overview.svg)
 
 ## bitrate / update-rate calculations
 
@@ -83,8 +85,6 @@ APA102-2020
 idea here is to have a IR led directly pulsing the raw data out and an receiver converting it back to signal..
 so this could be transmitted over the rotation contact-less.
 challenge here is the bit time - we need some very very fast photo detectors...
-
-![pov concept overview](pov_concept_overview.svg)
 
 ### information collection (research)
 - [Photo Detectors - Phototransistor Output](https://www.vishay.com/photo-detectors/phototrans-out/)
