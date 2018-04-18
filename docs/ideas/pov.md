@@ -61,17 +61,22 @@ so we have a 12-Pixel high circle-screen.
 - [SRS022-12 - slip-ring 12x2A <3000rpm](http://slipring.com.cn/product_detaile.php?id=116)
 - [LTN Servotechnik GmbH - schleifring](https://www.ltn-servotechnik.com/de/produkte/schleifringe/signaluebertragung/)
 - [element14 community: DIY Slip Rings: 5 Go-To Guides That Detail How To Make A Slip Ring](https://www.element14.com/community/groups/power-management/blog/2016/09/12/diy-slip-rings-5-go-to-guides-that-detail-how-to-make-a-slip-ring)
+- [POV Poi with Teensy (APA102)](https://forum.pjrc.com/threads/30020-Teensy-APA102-POV-Poi-Pixel-Poi-Build-Tutorial/page11)
 
 ## LEDs
-[APA-102-2020-P5 STRIP](http://neon-world.com/en/product_detail.php?cid=94&id=230)
-[MicroNova LED Strip, 198 LEDs/meter (60564)](https://solarbotics.com/product/60564/)
-[POV Poi with Teensy](https://forum.pjrc.com/threads/30020-Teensy-APA102-POV-Poi-Pixel-Poi-Build-Tutorial/page11)
+APA102-2020
+- []()
+
+- [APA-102-2020-P5 STRIP](http://neon-world.com/en/product_detail.php?cid=94&id=230)
+- [MicroNova LED Strip, 198 LEDs/meter (60564)](https://solarbotics.com/product/60564/)
+
 
 ## infrared data transmission
 idea here is to have a IR led directly pulsing the raw data out and an receiver converting it back to signal..
 so this could be transmitted over the rotation contact-less.
 challenge here is the bit time - we need some very very fast photo detectors...
 
+### information collection (research)
 - [Photo Detectors - Phototransistor Output](https://www.vishay.com/photo-detectors/phototrans-out/)
 - [Photo Detectors - Photodiode Output](https://www.vishay.com/photo-detectors/photodie-out/)
 - [Photo Detectors - Surface Mount Devices](https://www.vishay.com/photo-detectors/surface-mount-devices/)
@@ -85,12 +90,12 @@ challenge here is the bit time - we need some very very fast photo detectors...
 
 - Analog Devices
     - [LT1328 (4Mbps IrDA Infrared Receiver)](http://www.analog.com/en/products/interface-isolation/multiprotocol-transceivers/lt1328.html)
-    - [ir photodiode used in demo board: BPV22NF ](http://www.vishay.com/docs/81509/bpv22nf.pdf)
+    - [ir photodiode used in demo board: BPV22NF](http://www.vishay.com/docs/81509/bpv22nf.pdf)
 
 - [Ronja project](http://ronja.twibright.com/irrx/material.php)
-  - [SFH 203 P ](https://www.digikey.com/product-detail/en/osram-opto-semiconductors-inc/SFH-203-P/475-2649-ND/1893875)
+  - [SFH 203 P](https://www.digikey.com/product-detail/en/osram-opto-semiconductors-inc/SFH-203-P/475-2649-ND/1893875)
 
-- [OPA380	High Speed Precision Transimpedance Amplifier (auch als dual variante)](http://www.ti.com/product/opa380)
+- [OPA380	High Speed Precision Transimpedance Amplifier (also as dual variant)](http://www.ti.com/product/opa380)
 - [OPT101 Monolithic Photodiode and Single-Supply Transimpedance Amplifier](http://www.ti.com/lit/ds/symlink/opt101.pdf)
 
 - [some ideas and research to optical transmission with leds](https://electronics.stackexchange.com/questions/24214/using-a-led-to-transmit-data)
@@ -98,6 +103,15 @@ challenge here is the bit time - we need some very very fast photo detectors...
     - [TI OPA657 1.6GHz, Low Noise, FET-Input Operational Amplifier](http://www.ti.com/product/OPA657)
 
 - [mikrocontroller.net basics](https://www.mikrocontroller.net/articles/Lichtsensor_/_Helligkeitssensor)
+
+[source for rise/fall times for photodiodes](https://www.vishay.com/docs/49071/_sg2166.pdf)
+
+| part                                                         | type       | wavelength | housing    | capacitance  | rise/fall time  |
+| :----------------------------------------------------------- | :--------: | :--------- | :--------- | -----------: | --------------: |
+| [VEMT2020X01](http://www.vishay.com/docs/81595/vemt2000.pdf) | photodiode | 860nm      | SMD GW     |  25pF        | 2ns             |
+| [VSMY1850X01](http://www.vishay.com/docs/83317/vsmy1850.pdf) | led        | 850nm      | SMD 0805   | 125pF        | 10ns            |
+| [VSMF4720](http://www.vishay.com/docs/81923/vsmf4720.pdf)    | led        | 870nm      | SMD PLCC-2 | 125pF        | 15ns            |
+| [TEMT7100X01](http://www.vishay.com/docs/81770/temt7100.pdf) | photodiode | 870nm      | SMD 0805   |  25pF        | 2ns             |
 
 ## power transmission
 power transmission should be possible with slip-rings.
@@ -222,7 +236,6 @@ eventually this could work?! [26:1 Sub-Micro Planetengetriebemotor 6Dx16L mm @ 6
 
 
 ### ToDo:
-- find usable / working BLDC open and free code that can control BLDC motors
-in slow and fast and slow in both directions
+- find usable / working BLDC open and free code that can control BLDC motors in position control and slow and fast and slow in both directions
 - find driver & controller uC for this (preferred arduino compatible)
 - find suitable small motor
