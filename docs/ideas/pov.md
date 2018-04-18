@@ -76,6 +76,8 @@ idea here is to have a IR led directly pulsing the raw data out and an receiver 
 so this could be transmitted over the rotation contact-less.
 challenge here is the bit time - we need some very very fast photo detectors...
 
+![pov concept overview](pov_concept_overview.svg)
+
 ### information collection (research)
 - [Photo Detectors - Phototransistor Output](https://www.vishay.com/photo-detectors/phototrans-out/)
 - [Photo Detectors - Photodiode Output](https://www.vishay.com/photo-detectors/photodie-out/)
