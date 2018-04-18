@@ -13,6 +13,8 @@ so we have a 12-Pixel high circle-screen.
 
 ### 130mm Needle, 3mm Pixel Pitch
 
+#### basics
+
 | name                                       | value   | formula             |
 | :----------------------------------------- | ------: | ------------------: |
 | updates_per_second = revolution_per_second | 30      |                     |
@@ -23,6 +25,8 @@ so we have a 12-Pixel high circle-screen.
 | pixel_count_one_side                       | 20      | needle_active_radius / pixel_pitch |
 | pixel_count_total                          | 40      | pixel_count_one_side * 2 |
 
+#### pixel things
+
 | name                                       | value   | formula             |
 | :----------------------------------------- | ------: | ------------------: |
 | pixel_circumference                        | 408mm   | π * needle_diameter |
@@ -30,6 +34,8 @@ so we have a 12-Pixel high circle-screen.
 | pixel_updates_per_revolution               | 136     | = pixel_circumference_virtual_count |
 | pixel_updates_per_second                   | 4080    | revolution_per_second * pixel_updates_per_revolution |
 | pixel_updates_per_minute                   | 244800  | revolution_per_minute * pixel_updates_per_revolution |
+
+#### bitrate
 
 | calculation step   | APA102                | TLC5971             | formula               |
 | :----------------- | :-------------------- | :------------------ | --------------------: |
@@ -40,6 +46,8 @@ so we have a 12-Pixel high circle-screen.
 | Mbit_per_second    | 5,41                  | 9,14                |                       |
 | bit_time_max       | 184ns (= 0,184us)     | 109 ns (= 0,109us)  | `1s / (5,41*10^6) ==` |
 
+
+#### reminders/ helper
 
 1 second == 1.000 ms == 1.000.000 us == 1.000.000.000 ns  
 10 Bit pro second == 1s/10 per Bit == 100ms per Bit
