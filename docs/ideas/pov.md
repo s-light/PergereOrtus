@@ -51,3 +51,6 @@ APA102-2020
 
 ## motor
 [look at pov_motor.md](pov_motor.md)
+
+## 3D
+- [more research & brainstorming at POV_3D/](POV_3D/readme.md)
