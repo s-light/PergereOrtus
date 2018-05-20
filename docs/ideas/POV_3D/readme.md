@@ -45,3 +45,6 @@ different ways:
     - polarization
         - [filter circular](http://www.perspektrum.de/zubehoer/polfilterfolie-circular-zirkular.htm)
         - [glasses](http://www.perspektrum.de/3d-brillen/3d-brille-polfilter-zirkular.htm)
+
+## blender for generating tests
+- [Multi-View for Stereo 3D](https://docs.blender.org/manual/en/dev/render/workflows/multiview/usage.html)
