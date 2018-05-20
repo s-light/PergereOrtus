@@ -1,6 +1,11 @@
 # project specific
 temp_no_git_sync
 
+# Blender Backup
+*.blend1
+*.blend2
+*.blend3
+
 # KiCAD ignore list:
 _autosave-*
 *.kicad_pcb-bak
