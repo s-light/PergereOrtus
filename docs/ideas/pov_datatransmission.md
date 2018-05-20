@@ -89,6 +89,8 @@ led driver for fiber optics
     this link has some really good basic information about how to drive LEDs with high speed...
     (it contains three similar circuits.)
 
+### High-Speed Receiver
+[Anschluß Phototransistor für high-speed?](https://www.mikrocontroller.net/topic/198315#2101045)
 
 
 ## Parts
@@ -119,7 +121,11 @@ led driver for fiber optics
 ### High-Speed LED driver
 
 
-### Transimpedance Amplifier (TIA)
+### High-Speed Receiver
+
+#### simple Phototransistor
+
+#### Transimpedance Amplifier (TIA)
 
 
 
