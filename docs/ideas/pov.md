@@ -54,3 +54,9 @@ APA102-2020
 
 ## 3D
 - [more research & brainstorming at POV_3D/](POV_3D/readme.md)
+
+---
+
+## Test Setup
+![Test Setup design front view](POV_testsetup_frontview.png)
+![Test Setup design top view](POV_testsetup_topview.png)
