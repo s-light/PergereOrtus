@@ -8,7 +8,7 @@ for a pretty website rendering you can view this project at [s-light.github.io/o
 
 ## Current State
 currently this project is in the early creation phase.
-you can have a look in the [ideas sub directory](ideas/readme.md).
+you can have a look in the [docs/ideas sub directory](docs/ideas/readme.md).
 
 
 
