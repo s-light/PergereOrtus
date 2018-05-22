@@ -1,8 +1,50 @@
 <ul>
-{% for page_entry in include.page_list %}
+{% assign page_list=include.page_list%}
+
+
+
+
+{% for page_entry in page_list %}
+    {% if page_entry.title %}
+        {{ page_entry.url | inspect }}<br>
+    {% endif %}
+{% endfor %}
+
+
+{% comment %}
+We have something like this:
+
+"/ideas/"
+"/ideas/POV_3D/"
+"/ideas/pov.html"
+"/ideas/pov_datatransmission.html"
+"/ideas/pov_motor.html"
+"/ideas/pov_powertransmission.html"
+"/meta.html"
+nil
+
+{% endcomment %}
+
+
+
+
+{{ assign test_var = page_list | where_exp:"url", "url == 2014" }}
+{{ test_var | inspect }}
+
+
+{% assign page_depth = page.url | split: '/' | size %}
+{% assign page_parent = page.url | split: '/' | last %}
+
+{% for page_entry in page_list %}
     {% if page_entry.title %}
     <li {% if page.url == page_entry.url %}class="current"{% endif %}>
         <a href="{{ page_entry.url }}">{{ page_entry.title }}</a>
+
+        {% comment %}
+        {% if item.subitems and navurl contains item.url %}
+            {% include nav_list.html page_list=page_list %}
+        {% endif %}
+        {% endcomment %}
     </li>
     {% endif %}
 {% endfor %}
