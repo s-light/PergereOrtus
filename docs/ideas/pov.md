@@ -1,6 +1,6 @@
+# POV
 <!--lint disable list-item-indent-->
 <!--lint disable list-item-bullet-indent-->
-# POV
 
 the idea is that the compass needle can rotate slow in both directions to *set* / *point* a direction of choice.
 

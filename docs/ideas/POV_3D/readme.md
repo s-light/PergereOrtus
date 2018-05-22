@@ -1,7 +1,7 @@
+# POV 3D
 <!--lint disable list-item-indent-->
 <!--lint disable list-item-bullet-indent-->
 
-# POV 3D
 
 the idea is to check and think about if it is possible to use the POV display
 as a 3D-capable display.

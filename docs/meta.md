@@ -1,4 +1,5 @@
-# Meta Information regarding this project documentation
+# Meta
+Meta Information regarding this project documentation
 
 ## how to start the local test server
 `bundle exec jekyll serve`

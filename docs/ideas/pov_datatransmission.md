@@ -1,6 +1,7 @@
+# POV infrared data transmission
 <!--lint disable list-item-indent-->
 <!--lint disable list-item-bullet-indent-->
-# POV infrared data transmission
+
 idea here is to have a IR led directly pulsing the raw data out and an receiver converting it back to signal..
 so this could be transmitted over the rotation contact-less.
 challenge here is the bit time - we need some very very fast photo detectors...

@@ -1,6 +1,6 @@
+# POV motor
 <!--lint disable list-item-indent-->
 <!--lint disable list-item-bullet-indent-->
-# POV motor
 
 ## DC geared
 eventually this could work?! [26:1 Sub-Micro Planetengetriebemotor 6Dx16L mm @ 6V: 2500 rpm](https://www.exp-tech.de/motoren/dc-getriebemotoren/7078/26-1-sub-micro-planetengetriebemotor-6dx16l-mm?c=1198)

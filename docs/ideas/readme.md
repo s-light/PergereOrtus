@@ -1,7 +1,8 @@
+# ideas & concepts
+
 <!--lint disable list-item-indent-->
 <!--lint disable list-item-bullet-indent-->
 
-# ortogere ideas & concepts
 
 <div class="hoverswitch">
     <img class="pic" alt="ortogere first sketch 3d model" src="sketch_size_papertest_3d_model.png">

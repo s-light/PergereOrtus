@@ -1,6 +1,6 @@
+# POV power transmission
 <!--lint disable list-item-indent-->
 <!--lint disable list-item-bullet-indent-->
-# POV power transmission
 power transmission should be possible with slip-rings.
 as Jürgen pointed out in chat - if you get the diameter of the slide-ring smaller you get lower surface speed -
 so less wear...
