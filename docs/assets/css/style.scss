@@ -17,6 +17,10 @@
 // 	background: transparent url(../images/sidebar-bg.jpg) 0 0 no-repeat;
 // }
 
+nav li.current {
+    font-weight: bold;
+    list-style-type: circle;
+}
 
 // specials
 

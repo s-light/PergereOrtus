@@ -1,0 +1,9 @@
+<ul>
+{% for page_entry in include.page_list %}
+    {% if page_entry.title %}
+    <li {% if page.url == page_entry.url %}class="current"{% endif %}>
+        <a href="{{ page_entry.url }}">{{ page_entry.title }}</a>
+    </li>
+    {% endif %}
+{% endfor %}
+</ul>
