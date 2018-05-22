@@ -13,8 +13,14 @@ TODO: source for small brushes?!
 - [exp-tech DC 130-Size, 6V, 11.5kRPM; 1,7€](https://www.exp-tech.de/motoren/dc-motoren/4858/dc-buerstenmotor-130-size-6v-11.5krpm-800ma-stall?c=1199)
 - [exp-tech DC M260, 1V, 6.6kRPM; 2,0€](https://www.exp-tech.de/motoren/dc-motoren/5204/hobby-motor-gear?c=1199)
 
-## links
-- [Royer Converter](https://www.mikrocontroller.net/articles/Royer_Converter)
+# Contents
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+
+## use slip-rings
 - [slip-rings with ball-bearings](http://web.archive.org/web/20101005013331/http://maybevideodoes.de/howto/slipring.html)
     - [images](http://web.archive.org/web/20101010045648/http://www.maybevideodoes.de:80/howto/newSlipring/index.html)
 - [slip-ring car alternator (to big)](https://www.lima-shop.de/en/product_info.php/info/p297_Slip-ring-univ--d-14-90mm-for-Valeo-Alternator.html)
@@ -28,17 +34,15 @@ TODO: source for small brushes?!
 
 
 ## use coils
-
+- [Royer Converter](https://www.mikrocontroller.net/articles/Royer_Converter)
 - [technology overview (TI)](https://www.wirelesspowerconsortium.com/technology/why-not-a-wire-the-case-for-wireless-power.html)
 - [more background info: Wireless Electricity Transmission](https://www.wirelesspowerconsortium.com/technology/how-it-works.html)
-
 - [POV Display With Wireless Power!](http://www.instructables.com/id/POV-Display-With-Wireless-Power/)
 - [Arduino Wireless Power POV Display](http://www.instructables.com/id/Arduino-Wireless-Power-POV-Display/)
 - [rotating air transformer](http://www.oocities.org/tjacodesign/propclock/propclock.html)
 - [PCB-Winding - Version 4 (August 2014)](http://electronixandmore.com/projects/propclock/index.html)
 - [3D POV Display with 10W wireless power](http://www.instructables.com/id/PropHelix-3D-POV-Display/)
     - [wireless module](https://www.banggood.com/12V-Wireless-Charger-Module-5V-Power-Supply-Charging-Coil-Transmitter-Receiver-For-Phone-p-1122411.html?rmmds=myorder)
-
 - [Rotary Transformer (for Persistence of Vision displays)](https://www.youtube.com/watch?v=7rGtyMUr_Vc)
 
 GreatScott! (video)
