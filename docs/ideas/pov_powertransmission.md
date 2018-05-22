@@ -8,17 +8,13 @@ so less wear...
 this is in contrast to the data ir transmission - as i need to get these wires or fibers through the shaft..
 but i think i will find a good compromise..
 
-TODO: source for small brushes?!
-- use some small motors?!
-- [exp-tech DC 130-Size, 6V, 11.5kRPM; 1,7€](https://www.exp-tech.de/motoren/dc-motoren/4858/dc-buerstenmotor-130-size-6v-11.5krpm-800ma-stall?c=1199)
-- [exp-tech DC M260, 1V, 6.6kRPM; 2,0€](https://www.exp-tech.de/motoren/dc-motoren/5204/hobby-motor-gear?c=1199)
-
+---
 # Contents
 {:.no_toc}
 
 * Will be replaced with the ToC, excluding the "Contents" header
 {:toc}
-
+---
 
 ## use slip-rings
 - [slip-rings with ball-bearings](http://web.archive.org/web/20101005013331/http://maybevideodoes.de/howto/slipring.html)
@@ -83,3 +79,7 @@ GreatScott! (video)
 
 ### ToDo:
 - research parts and schematics
+- source for small brushes?!
+- use some small motors?!
+- [exp-tech DC 130-Size, 6V, 11.5kRPM; 1,7€](https://www.exp-tech.de/motoren/dc-motoren/4858/dc-buerstenmotor-130-size-6v-11.5krpm-800ma-stall?c=1199)
+- [exp-tech DC M260, 1V, 6.6kRPM; 2,0€](https://www.exp-tech.de/motoren/dc-motoren/5204/hobby-motor-gear?c=1199)

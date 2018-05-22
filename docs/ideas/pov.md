@@ -11,6 +11,14 @@ so we have a 12..20-Pixel high circle-screen.
 
 ![pov concept overview](pov_concept_overview.svg)
 
+---
+# Contents
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+---
+
 ## basic calculations
 
 ### 130mm Needle, 3mm Pixel Pitch
@@ -58,5 +66,5 @@ APA102-2020
 ---
 
 ## Test Setup
-![Test Setup design front view](POV_testsetup_frontview.png)
-![Test Setup design top view](POV_testsetup_topview.png)
+![Test Setup design front view](POV_testsetup__frontview.png)
+![Test Setup design top view](POV_testsetup__topview.png)

@@ -7,6 +7,13 @@ challenge here is the bit time - we need some very very fast photo detectors...
 
 ![pov concept overview](pov_concept_overview.svg)
 
+---
+# Contents
+{:.no_toc}
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+---
 
 ## ToDo:
 - find / decide which parts to test

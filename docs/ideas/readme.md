@@ -13,7 +13,13 @@
     <img class="pic new" alt="ortogere paper model" src="photos/P1660765_small.jpg">
 </div>
 
+---
+# Contents
+{:.no_toc}
 
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+---
 
 ## touch(less) input
 buildin / hidden in the top outer edge is a copper surface that acts as electrode.
