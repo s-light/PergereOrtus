@@ -43,7 +43,7 @@ classical encoder gray-code pattern thing...
 the idea is that the compass needle can rotate slow in both directions to *set* / *point* a direction of choice.
 
 but also can spin up to about 1800rpm (= 30rps) and have LEDs on-top to create a classic POV display.
-more details on this aspect can be found in [pov.md](pov.md)
+more details on this aspect can be found in [POV](POV/readme.md)
 
 ## wind rose
 the printed graphics under the compass needle could also be turned individually -  
