@@ -1,5 +1,5 @@
-<!--lint disable list-item-indent-->
 # Documentation for ortogere
+<!--lint disable list-item-indent-->
 
 ortogere - 'magical' device - similar to a compass  
 designed as prop for theater & storytelling & LARP
