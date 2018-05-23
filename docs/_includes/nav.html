@@ -1,5 +1,14 @@
 <nav>
     {% assign pages_sorted = site.pages | sort: 'url' %}
+    <h3>navigation</h3>
+    {% comment %}
+    this should also work: ???
     ### navigation
-    {% include nav_list.html page_list=pages_sorted %}
+    {% endcomment %}
+
+    {%
+        include nav_list.html
+        page_list=pages_sorted
+        start_depth=2
+    %}
 </nav>

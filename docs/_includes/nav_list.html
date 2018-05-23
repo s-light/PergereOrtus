@@ -1,51 +1,88 @@
-<ul>
+{% comment %}
+    this uses ideas from:
+    https://stackoverflow.com/questions/25452429/excluding-page-from-jekyll-navigation-bar
+    https://stackoverflow.com/questions/6366188/jekyll-select-current-page-url-and-change-its-class
+{% endcomment %}
+
+
 {% assign page_list=include.page_list%}
+{% assign start_depth=include.start_depth%}
 
 
-
-
-{% for page_entry in page_list %}
-    {% if page_entry.title %}
-        {{ page_entry.url | inspect }}<br>
-    {% endif %}
-{% endfor %}
 
 
 {% comment %}
 We have something like this:
+    "/ideas/"
+    "/ideas/POV/"
+    "/ideas/POV/POV_3D/"
+    "/ideas/POV/pov_datatransmission.html"
+    "/ideas/POV/pov_motor.html"
+    "/ideas/POV/pov_powertransmission.html"
+    "/meta.html"
+---
 
-"/ideas/"
-"/ideas/POV_3D/"
-"/ideas/pov.html"
-"/ideas/pov_datatransmission.html"
-"/ideas/pov_motor.html"
-"/ideas/pov_powertransmission.html"
-"/meta.html"
-nil
-
+first we create a array of arrays:
 {% endcomment %}
 
-
-
-
-{{ assign test_var = page_list | where_exp:"url", "url == 2014" }}
-{{ test_var | inspect }}
-
-
-{% assign page_depth = page.url | split: '/' | size %}
-{% assign page_parent = page.url | split: '/' | last %}
-
+<ul>
 {% for page_entry in page_list %}
     {% if page_entry.title %}
-    <li {% if page.url == page_entry.url %}class="current"{% endif %}>
-        <a href="{{ page_entry.url }}">{{ page_entry.title }}</a>
+
+        {% assign this_url_parts = page_entry.url | split: "/" %}
+        {% assign this_depth = this_url_parts | size %}
+        {% assign this_depth_urlpart = this_url_parts[2] %}
+
+        <br>
+        page_entry.url: {{ page_entry.url | inspect }}<br>
+        this_url_parts: {{ this_url_parts | inspect }}<br>
+        this_depth: {{ this_depth | inspect }}<br>
+        this_depth_urlpart: {{ this_depth_urlpart | inspect }}<br>
+        start_depth: {{ start_depth | inspect }}<br>
 
         {% comment %}
-        {% if item.subitems and navurl contains item.url %}
-            {% include nav_list.html page_list=page_list %}
-        {% endif %}
+        now we have to check if we create an entry for this:
         {% endcomment %}
-    </li>
+        <!-- {% if page_entry.url contains '.html' %}
+            {% assign this_depth = this_depth -1 %}
+        {% endif %}
+        {% assign create_entry = true %} -->
+
+
+
+        {% if this_depth == start_depth %}
+            <li
+                {% if page.url == page_entry.url %}class="current"{% endif %}
+            >
+                <a href="{{ page_entry.url }}">{{ page_entry.title }}</a>
+            </li>
+        {% elsif this_depth > start_depth %}
+            <li class="sub">
+                ****
+                {% comment %}
+                    math: + 1
+                {% endcomment %}
+                {% case this_depth %}
+                  {% when 2 %}
+                    {% assign next_depth = 3 %}
+                  {% when 3 %}
+                    {% assign next_depth = 4 %}
+                  {% when 4 %}
+                    {% assign next_depth = 5 %}
+                  {% when 5 %}
+                    {% assign next_depth = 6 %}
+                {% endcase %}
+
+                next_depth: {{ next_depth | inspect }}<br>
+                {%
+                    include nav_list.html
+                    page_list=page_list
+                    start_depth=next_depth
+                %}
+
+            </li>
+        {% endif %}
+
     {% endif %}
 {% endfor %}
 </ul>
