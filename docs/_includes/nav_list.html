@@ -2,12 +2,21 @@
     this uses ideas from:
     https://stackoverflow.com/questions/25452429/excluding-page-from-jekyll-navigation-bar
     https://stackoverflow.com/questions/6366188/jekyll-select-current-page-url-and-change-its-class
+
+
+
+    THIS DOES NOT WORK!!!!!
+
+    The variables are not restored after an reentry.
+    (recursive include...)
+
+
 {% endcomment %}
 
 
 {% assign page_list=include.page_list%}
 {% assign start_depth=include.start_depth%}
-
+{% assign old_urlpart = nil %}
 
 
 
@@ -31,22 +40,54 @@ first we create a array of arrays:
 
         {% assign this_url_parts = page_entry.url | split: "/" %}
         {% assign this_depth = this_url_parts | size %}
-        {% assign this_depth_urlpart = this_url_parts[2] %}
+
+
+        {% comment %}
+            math: - 1
+        {% endcomment %}
+        {% case this_depth %}
+          {% when 2 %}
+            {% assign temp = 1 %}
+          {% when 3 %}
+            {% assign temp = 2 %}
+          {% when 4 %}
+            {% assign temp = 3 %}
+          {% when 5 %}
+            {% assign temp = 4 %}
+        {% endcase %}
+        {% assign this_depth_urlpart = this_url_parts[temp] %}
 
         <br>
-        page_entry.url: {{ page_entry.url | inspect }}<br>
-        this_url_parts: {{ this_url_parts | inspect }}<br>
+        url: {{ this_url_parts | inspect }}<br>
+        depth: s/t/t
+        {{ start_depth | inspect }} /
+        {{ this_depth | inspect }} /
+        {{ this_depth_urlpart | inspect }}<br>
+
+        {% comment %}
         this_depth: {{ this_depth | inspect }}<br>
         this_depth_urlpart: {{ this_depth_urlpart | inspect }}<br>
         start_depth: {{ start_depth | inspect }}<br>
-
-        {% comment %}
+        page_entry.url: {{ page_entry.url | inspect }}<br>
         now we have to check if we create an entry for this:
         {% endcomment %}
-        <!-- {% if page_entry.url contains '.html' %}
-            {% assign this_depth = this_depth -1 %}
+
+        {% if page_entry.url contains '.html' %}
+            {% comment %}
+                math: - 1
+            {% endcomment %}
+            {% case this_depth %}
+              {% when 2 %}
+                {% assign this_depth = 1 %}
+              {% when 3 %}
+                {% assign this_depth = 2 %}
+              {% when 4 %}
+                {% assign this_depth = 3 %}
+              {% when 5 %}
+                {% assign this_depth = 4 %}
+            {% endcase %}
         {% endif %}
-        {% assign create_entry = true %} -->
+        {% assign create_entry = true %}
 
 
 
@@ -56,8 +97,10 @@ first we create a array of arrays:
             >
                 <a href="{{ page_entry.url }}">{{ page_entry.title }}</a>
             </li>
-        {% elsif this_depth > start_depth %}
+        {% elsif this_depth > start_depth and old_urlpart != this_depth_urlpart %}
+            {% assign old_urlpart = this_depth_urlpart %}
             <li class="sub">
+                <a href="{{ page_entry.url }}">{{ page_entry.title }}</a><br>
                 ****
                 {% comment %}
                     math: + 1
