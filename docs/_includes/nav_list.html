@@ -3,127 +3,326 @@
     https://stackoverflow.com/questions/25452429/excluding-page-from-jekyll-navigation-bar
     https://stackoverflow.com/questions/6366188/jekyll-select-current-page-url-and-change-its-class
 
-
-
-    THIS DOES NOT WORK!!!!!
-
-    The variables are not restored after an reentry.
-    (recursive include...)
-
-
+    basic documentation:
+    https://github.com/Shopify/liquid/wiki
+    http://shopify.github.io/liquid/tags/iteration/
+    https://help.shopify.com/themes/liquid/objects/for-loops
+    https://jekyllrb.com/docs/variables/
+    https://jekyllrb.com/docs/templates/
 {% endcomment %}
+
+
+
+{% assign debug_out = true %}
+
 
 
 {% assign page_list=include.page_list%}
-{% assign start_depth=include.start_depth%}
-{% assign old_urlpart = nil %}
+{% assign start_level=include.start_level%}
+{% assign page_list_start_index=include.page_list_start_index%}
+{% assign old_urlpart = '/' %}
 
 
+<!-- <div style="background-color:rgba(0,255,255,0.5);">
+    start_level {{ start_level | inspect }} <br>
+    page_list_start_index {{ page_list_start_index | inspect }} <br>
+    old_urlpart : {{ old_urlpart | inspect }}
+</div> -->
 
-{% comment %}
-We have something like this:
-    "/ideas/"
-    "/ideas/POV/"
-    "/ideas/POV/POV_3D/"
-    "/ideas/POV/pov_datatransmission.html"
-    "/ideas/POV/pov_motor.html"
-    "/ideas/POV/pov_powertransmission.html"
-    "/meta.html"
----
-
-first we create a array of arrays:
-{% endcomment %}
-
+{% assign list_index_current = page_list_start_index %}
 <ul>
-{% for page_entry in page_list %}
+{% for page_entry in page_list offset:page_list_start_index %}
+    {% comment %}
+        increment list_index_current manually.
+        forloop.index does not tell the real index but just counts...
+    {% endcomment %}
+    {% assign temp = nil %}
+    {% case list_index_current %}
+      {% when 0 %}
+        {% assign temp = 1 %}
+      {% when 1 %}
+        {% assign temp = 2 %}
+      {% when 2 %}
+        {% assign temp = 3 %}
+      {% when 3 %}
+        {% assign temp = 4 %}
+      {% when 4 %}
+        {% assign temp = 5 %}
+      {% when 5 %}
+        {% assign temp = 6 %}
+      {% when 6 %}
+        {% assign temp = 7 %}
+      {% when 7 %}
+        {% assign temp = 8 %}
+      {% when 8 %}
+        {% assign temp = 9 %}
+      {% when 9 %}
+        {% assign temp = 10 %}
+      {% when 10 %}
+        {% assign temp = 11 %}
+      {% when 11 %}
+        {% assign temp = 12 %}
+      {% when 12 %}
+        {% assign temp = 13 %}
+      {% when 13 %}
+        {% assign temp = 14 %}
+      {% when 14 %}
+        {% assign temp = 15 %}
+      {% when 15 %}
+        {% assign temp = 16 %}
+      {% when 16 %}
+        {% assign temp = 17 %}
+      {% when 17 %}
+        {% assign temp = 18 %}
+      {% when 18 %}
+        {% assign temp = 19 %}
+      {% when 19 %}
+        {% assign temp = 20 %}
+    {% endcase %}
+    {% assign list_index_current = temp %}
+
     {% if page_entry.title %}
 
         {% assign this_url_parts = page_entry.url | split: "/" %}
-        {% assign this_depth = this_url_parts | size %}
-
-
+        {% assign this_level = this_url_parts | size %}
         {% comment %}
+            this_level is equal to the index!!
+            so we need
             math: - 1
         {% endcomment %}
-        {% case this_depth %}
-          {% when 2 %}
-            {% assign temp = 1 %}
-          {% when 3 %}
-            {% assign temp = 2 %}
-          {% when 4 %}
-            {% assign temp = 3 %}
-          {% when 5 %}
-            {% assign temp = 4 %}
-        {% endcase %}
-        {% assign this_depth_urlpart = this_url_parts[temp] %}
+        {% if this_url_parts.first == "" %}
+            {% case this_level %}
+              {% when 1 %}
+                {% assign this_level = 0 %}
+              {% when 2 %}
+                {% assign this_level = 1 %}
+              {% when 3 %}
+                {% assign this_level = 2 %}
+              {% when 4 %}
+                {% assign this_level = 3 %}
+              {% when 5 %}
+                {% assign this_level = 4 %}
+            {% endcase %}
+        {% endif %}
 
-        <br>
-        url: {{ this_url_parts | inspect }}<br>
-        depth: s/t/t
-        {{ start_depth | inspect }} /
-        {{ this_depth | inspect }} /
-        {{ this_depth_urlpart | inspect }}<br>
+        {% assign this_level_urlpart = this_url_parts[this_level] %}
 
-        {% comment %}
-        this_depth: {{ this_depth | inspect }}<br>
-        this_depth_urlpart: {{ this_depth_urlpart | inspect }}<br>
-        start_depth: {{ start_depth | inspect }}<br>
-        page_entry.url: {{ page_entry.url | inspect }}<br>
-        now we have to check if we create an entry for this:
-        {% endcomment %}
 
         {% if page_entry.url contains '.html' %}
             {% comment %}
                 math: - 1
             {% endcomment %}
-            {% case this_depth %}
+            {% case this_level %}
+              {% when 1 %}
+                {% assign this_level = 0 %}
               {% when 2 %}
-                {% assign this_depth = 1 %}
+                {% assign this_level = 1 %}
               {% when 3 %}
-                {% assign this_depth = 2 %}
+                {% assign this_level = 2 %}
               {% when 4 %}
-                {% assign this_depth = 3 %}
+                {% assign this_level = 3 %}
               {% when 5 %}
-                {% assign this_depth = 4 %}
+                {% assign this_level = 4 %}
             {% endcase %}
         {% endif %}
-        {% assign create_entry = true %}
 
 
 
-        {% if this_depth == start_depth %}
+
+        <!-- <div>
+            <br>
+            url {{ this_url_parts | inspect }}<br>
+            this_level {{ this_level | inspect }} /
+            u {{ this_level_urlpart | inspect }}<br>
+            {% comment %}
+            page_entry.url: {{ page_entry.url | inspect }}<br>
+            {% endcomment %}
+        </div> -->
+
+
+
+
+        {% comment %}
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        search for next entry
+        {% endcomment %}
+
+        {% assign next_url_parts = nil %}
+        {% assign next_level = nil %}
+        {% assign list_index_next = list_index_current %}
+
+        <!-- <div style="background-color:rgba(0,255,0,0.5);">
+            list_index_next {{ list_index_next | inspect }} <br>
+        </div> -->
+
+        {% for page_entry_next in page_list offset:list_index_next %}
+            {% if page_entry_next.title %}
+
+                {% assign next_url_parts = page_entry_next.url | split: "/" %}
+                {% assign next_level = next_url_parts | size %}
+                {% if next_url_parts.first == "" %}
+                    {% comment %}
+                        next_level is equal to the index!!
+                        so we need
+                        math: - 1
+                    {% endcomment %}
+                    {% assign temp = nil %}
+                    {% case next_level %}
+                      {% when 1 %}
+                        {% assign temp = 0 %}
+                      {% when 2 %}
+                        {% assign temp = 1 %}
+                      {% when 3 %}
+                        {% assign temp = 2 %}
+                      {% when 4 %}
+                        {% assign temp = 3 %}
+                      {% when 5 %}
+                        {% assign temp = 4 %}
+                    {% endcase %}
+                    {% assign next_level = temp %}
+                {% endif %}
+
+                {% assign next_level_urlpart = next_url_parts[next_level] %}
+
+                {% if page_entry_next.url contains '.html' %}
+                    {% comment %}
+                        math: - 1
+                    {% endcomment %}
+                    {% assign temp = nil %}
+                    {% case next_level %}
+                      {% when 1 %}
+                        {% assign temp = 0 %}
+                      {% when 2 %}
+                        {% assign temp = 1 %}
+                      {% when 3 %}
+                        {% assign temp = 2 %}
+                      {% when 4 %}
+                        {% assign temp = 3 %}
+                      {% when 5 %}
+                        {% assign temp = 4 %}
+                    {% endcase %}
+                    {% assign next_level = temp %}
+                {% endif %}
+
+                {% break %}
+            {% endif %}
+        {% endfor %}
+
+        {% assign next_level_urlpart = next_url_parts[this_level] %}
+        <!-- <div style="background-color:rgba(255,200,0,0.2);">
+            url {{ next_url_parts | inspect }}<br>
+            next_level {{ next_level | inspect }} /
+            u {{ next_level_urlpart | inspect }}
+        </div> -->
+
+        {% comment %}
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        {% endcomment %}
+
+
+
+        {% comment %}
+        ******************************************
+
+        We have something like this:
+            /
+            /blubber.html
+            /ideas/
+            /ideas/test1.html
+            /ideas/test2.html
+            /meta.html
+            /usage/
+            /usage/utest1.html
+
+        target is this:
+            /
+            /blubber.html
+            /ideas/
+                /ideas/test1.html
+                /ideas/test2.html
+            /meta.html
+            /usage/
+                /usage/utest1.html
+
+
+        what options are there ?
+
+
+        if (
+        (this_level == start_level)
+        )
+        then
+            generate normal item
+
+        if (
+            (this_level > start_level)
+            and
+            (page_entry_next starts with same part)
+        )
+        then
+            generate sub menu
+
+        if (
+            (next_level > start_level)
+        )
+            break loop (go back to calling space)
+
+
+
+
+
+        ******************************************
+        {% endcomment %}
+
+
+        {% if this_level == start_level %}
             <li
                 {% if page.url == page_entry.url %}class="current"{% endif %}
             >
                 <a href="{{ page_entry.url }}">{{ page_entry.title }}</a>
             </li>
-        {% elsif this_depth > start_depth and old_urlpart != this_depth_urlpart %}
-            {% assign old_urlpart = this_depth_urlpart %}
+        {% elsif
+            this_level > start_level
+            and
+            this_level_urlpart == next_level_urlpart
+        %}
+            {% assign old_urlpart = this_level_urlpart %}
             <li class="sub">
                 <a href="{{ page_entry.url }}">{{ page_entry.title }}</a><br>
-                ****
-                {% comment %}
-                    math: + 1
-                {% endcomment %}
-                {% case this_depth %}
-                  {% when 2 %}
-                    {% assign next_depth = 3 %}
-                  {% when 3 %}
-                    {% assign next_depth = 4 %}
-                  {% when 4 %}
-                    {% assign next_depth = 5 %}
-                  {% when 5 %}
-                    {% assign next_depth = 6 %}
-                {% endcase %}
+                {% assign next_sub_level = this_level %}
 
-                next_depth: {{ next_depth | inspect }}<br>
+                <!-- next_sub_level: {{ next_sub_level | inspect }}<br> -->
+                {% assign stack__old_urlpart = stack__old_urlpart | push: this_level_urlpart %}
+                {% assign stack__next_level_urlpart = stack__next_level_urlpart | push: next_level_urlpart %}
+                {% assign stack__this_level = stack__this_level | push: this_level %}
+                {% assign stack__start_level = stack__start_level | push: start_level %}
+                {% assign stack__list_index_current = stack__list_index_current | push: list_index_current %}
+                {% assign stack__page_list_start_index = stack__page_list_start_index | push: page_list_start_index %}
                 {%
                     include nav_list.html
                     page_list=page_list
-                    start_depth=next_depth
+                    start_level=next_sub_level
+                    page_list_start_index=list_index_next
                 %}
+                {% comment %}
+                {% endcomment %}
+
+                {% assign old_urlpart = stack__old_urlpart.last %}
+                {% assign stack__old_urlpart = stack__old_urlpart | pop %}
+                {% assign next_level_urlpart = stack__next_level_urlpart.last %}
+                {% assign stack__next_level_urlpart = stack__next_level_urlpart | pop %}
+                {% assign this_level = stack__this_level.last %}
+                {% assign stack__this_level = stack__this_level | pop %}
+                {% assign start_level = stack__start_level.last %}
+                {% assign stack__start_level = stack__start_level | pop %}
+                {% assign list_index_current = stack__list_index_current.last %}
+                {% assign stack__list_index_current = stack__list_index_current | pop %}
+                {% assign page_list_start_index = stack__page_list_start_index.last %}
+                {% assign stack__page_list_start_index = stack__page_list_start_index | pop %}
 
             </li>
+        {% elsif this_level < start_level %}
+            {% break %}
         {% endif %}
 
     {% endif %}

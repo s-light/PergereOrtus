@@ -32,6 +32,12 @@ nav li.current {
     list-style-type: circle;
 }
 
+
+li.sub ul {
+	margin-bottom: 0;
+}
+
+
 // specials
 
 .hoverswitch {
