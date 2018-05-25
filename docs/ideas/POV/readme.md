@@ -11,6 +11,8 @@ so we have a 12..20-Pixel high circle-screen.
 
 ![pov concept overview](pov_concept_overview.svg)
 
+some first simple tests are documented at [POV_simpletest](../../POV_simpletest)
+
 ---
 # Contents
 {:.no_toc}
@@ -62,9 +64,3 @@ APA102-2020
 
 ## 3D
 - [more research & brainstorming at POV_3D/](POV_3D/readme.md)
-
----
-
-## Test Setup
-![Test Setup design front view](POV_testsetup__frontview.png)
-![Test Setup design top view](POV_testsetup__topview.png)

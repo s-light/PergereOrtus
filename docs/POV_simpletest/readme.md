@@ -26,11 +26,11 @@ simple test to get a first *feeling* about something POV related ;-)
 ### SW_motordriver_wTacho
 based on [Leonardo_wLCD_protobase](https://github.com/s-light/Leonardo_wLCD_protobase)
 
-added IRLZ34N N-Channel Logic Level Power Mosfet and HP-Shotky Diode for driving the Motor.
+added IRLZ34N N-Channel Logic Level Power Mosfet and fast Diode for driving the Motor.
 
 will add some sort of Feedback to measure actual speed.
 
 ### SW_simple_pov_TLC5971
 TODO  :-)
 
-shoud be able to generate some very simple test-patterns for POV.
+should be able to generate some very simple test-patterns for POV.
