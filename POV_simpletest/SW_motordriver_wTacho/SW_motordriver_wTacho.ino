@@ -1,12 +1,13 @@
 /******************************************************************************
 
-    Leonardo_wLCD_protobase.ino
+    SW_motordriver_wTacho.ino
         basis for multiple quick test things
         debugout on usbserial interface: 115200baud
 
     hardware:
         Board:
             Arduino compatible (with serial port)
+            Arduino MICRO
             LED on pin 13
         Connections:
             D4 --> push button to GND
@@ -15,18 +16,20 @@
             D7 --> push button to GND
             D8 / A8 --> poti 5V-GND
             D9 --> LED green
-            D9 --> LED blue
-            D9 --> LED white
+            D10 --> LED blue
+            D11 --> LED white
 
             SCK --> Clock input of ?
             MOSI --> Data input of ?
 
-            I2C SDA --> Data for ?
-            I2C SCL --> Clock for ?
+            D2 I2C SDA --> Data for ?
+            D3 I2C SCL --> Clock for ?
 
-            RX --> Serial receive for ?
-            TX --> Serial transmit for ?
+            D0 RX --> ?
+            D1 TX --> ?
+            D12 --> ?
 
+            D3 --> PWM out
 
     libraries used:
         ~ slight_DebugMenu
@@ -47,6 +50,11 @@
         ~ FastLED
             MIT, FastLED-Team
             https://github.com/FastLED/FastLED
+        ~ DMXSerial
+			Copyright (c) 2005-2012 by Matthias Hertel,
+			http://www.mathertel.de
+        ~ Servo
+            Arduino Built in Servo Library
 
     written by stefan krueger (s-light),
         github@s-light.eu, http://s-light.eu, https://github.com/s-light/
@@ -95,6 +103,7 @@
 
 #include <LiquidCrystal.h>
 
+// #include <Servo.h>
 
 #include <slight_DebugMenu.h>
 #include <slight_FaderLin.h>
@@ -105,7 +114,9 @@
 // #include <Adafruit_NeoPixel.h>
 // #include <Adafruit_DotStar.h>
 
-#include "FastLED.h"
+// #include "FastLED.h"
+
+// #include <DMXSerial.h>
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Info
@@ -119,8 +130,8 @@ void sketchinfo_print(Print &out) {
     out.println(F("|                      ( _ )                     |"));
     out.println(F("|                       \" \"                      |"));
     out.println(F("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
-    out.println(F("| Leonardo_wLCD_protobase.ino"));
-    out.println(F("|   basis for multiple quick test things"));
+    out.println(F("| SW_motordriver_wTacho.ino"));
+    out.println(F("|   branch: 'DMXServo' - receive DMX and control one Servo"));
     out.println(F("|"));
     out.println(F("| This Sketch has a debug-menu:"));
     out.println(F("| send '?'+Return for help"));
@@ -179,100 +190,138 @@ slight_DebugMenu myDebugMenu(Serial, Serial, 15);
 
 LiquidCrystal lcd(A5, A4, A3, A2, A1, A0);
 
+uint32_t lcd_update_timestamp_last = 0;
+const uint16_t lcd_update_interval = 500; //ms
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // FaderLin
 
-// const uint8_t myFaderRGB__channel_count = colors_per_led;
-// slight_FaderLin myFaderRGB(
-//     0, // byte cbID_New
-//     myFaderRGB__channel_count, // byte cbChannelCount_New
-//     myFaderRGB_callback_OutputChanged, // tCbfuncValuesChanged cbfuncValuesChanged_New
-//     myCallback_onEvent // tCbfuncStateChanged cbfuncStateChanged_New
-// );
+const uint8_t myFaderSpeed__channel_count = 1;
+slight_FaderLin myFaderSpeed(
+    0, // byte cbID_New
+    myFaderSpeed__channel_count, // byte cbChannelCount_New
+    myFaderSpeed_callback_OutputChanged, // tCbfuncValuesChanged cbfuncValuesChanged_New
+    myFaderSpeed_onEvent // tCbfuncStateChanged cbfuncStateChanged_New
+);
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// analog in
+
+const uint8_t analog_pin = 8;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // button
 
-slight_ButtonInput button(
-    0,  // byte cbID_New
-    4,  // byte cbPin_New,
-    button_getInput,  // tCbfuncGetInput cbfuncGetInput_New,
-    button_onEvent,  // tcbfOnEvent cbfCallbackOnEvent_New,
-      30,  // const uint16_t cwDuration_Debounce_New = 30,
-     500,  // const uint16_t cwDuration_HoldingDown_New = 1000,
-      50,  // const uint16_t cwDuration_ClickSingle_New =   50,
-     500,  // const uint16_t cwDuration_ClickLong_New =   3000,
-     500   // const uint16_t cwDuration_ClickDouble_New = 1000
-);
+// enum button_names {
+//     button
+// };
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// Pixel LED Strip
+const uint16_t button_duration_Debounce      =   10;
+const uint16_t button_duration_HoldingDown   = 1000;
+const uint16_t button_duration_ClickSingle   =   40;
+const uint16_t button_duration_ClickLong     = 1000;
+const uint16_t button_duration_ClickDouble   =  200;
 
-// Wohnzimmer: 4m 60Pixel/m + 1m 144Pixel/m = 384 Pixel
-// Wohnzimmer: 1,5m 60Pixel/m = 90 Pixel
-// const uint16_t myStrip_PixelCount = 5; // 60mA/Pixel
-
-// Attetion:
-//   the slight_FaderLin lib can only handle up to 255channels -
-//   so max 80 Pixel!!
-// but the next problem is the available memory! 50 are working.
-// const uint16_t myStrip_PixelCount = 120;
-// const uint16_t myStrip_PixelCount = 384;
-
-const uint16_t myStrip_PixelCount = 144;
+const uint8_t button_1 = 0;
+const uint8_t button_2 = 1;
+const uint8_t button_3 = 2;
+const uint8_t button_4 = 3;
 
 
-// Parameter 1 = number of pixels in strip
-// Parameter 2 = Arduino pin number (most are valid)
-// Parameter 3 = pixel type flags, add together as needed:
-//   NEO_KHZ800  800 KHz bitstream (most NeoPixel products w/WS2812 LEDs)
-//   NEO_KHZ400  400 KHz (classic 'v1' (not v2) FLORA pixels, WS2811 drivers)
-//   NEO_GRB     Pixels are wired for GRB bitstream (most NeoPixel products)
-//   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
-// IMPORTANT: To reduce NeoPixel burnout risk, add 1000 uF capacitor across
-// pixel power leads, add 300 - 500 Ohm resistor on first pixel's data input
-// and minimize distance between Arduino and first pixel.  Avoid connecting
-// on a live circuit...if you must, connect GND first.
-
-// const uint8_t pinNeoPixelData		= 5;
-// Adafruit_NeoPixel myStrip = Adafruit_NeoPixel(myStrip_PixelCount, pinNeoPixelData, NEO_GRB + NEO_KHZ800);
-
-
-// use HW SPI
-// Adafruit_DotStar myStrip = Adafruit_DotStar(myStrip_PixelCount);
-// Adafruit_DotStar myStrip = Adafruit_DotStar(myStrip_PixelCount, DOTSTAR_RGB);
-
-// CRGB leds[myStrip_PixelCount];
-CRGBArray<myStrip_PixelCount> leds;
-
-bool strip_off = true;
-
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// sequencer
-
-enum sequencer_modes {
-    sequencer_OFF,
-    sequencer_CHANNELCHECK,
-    sequencer_HORIZONTAL,
-    sequencer_SPIRAL,
+const uint8_t buttons_COUNT = 4;
+slight_ButtonInput buttons[buttons_COUNT] = {
+    slight_ButtonInput(
+        button_1,
+        4,
+        button_getInput,
+        button_onEvent,
+        button_duration_Debounce,
+        button_duration_HoldingDown,
+        button_duration_ClickSingle,
+        button_duration_ClickLong,
+        button_duration_ClickDouble
+    ),
+    slight_ButtonInput(
+        button_2,
+        5,
+        button_getInput,
+        button_onEvent,
+        button_duration_Debounce,
+        button_duration_HoldingDown,
+        button_duration_ClickSingle,
+        button_duration_ClickLong,
+        button_duration_ClickDouble
+    ),
+    slight_ButtonInput(
+        button_3,
+        6,
+        button_getInput,
+        button_onEvent,
+        button_duration_Debounce,
+        button_duration_HoldingDown,
+        button_duration_ClickSingle,
+        button_duration_ClickLong,
+        button_duration_ClickDouble
+    ),
+    slight_ButtonInput(
+        button_4,
+        7,
+        button_getInput,
+        button_onEvent,
+        button_duration_Debounce,
+        button_duration_HoldingDown,
+        button_duration_ClickSingle,
+        button_duration_ClickLong,
+        button_duration_ClickDouble
+    )
 };
 
-uint8_t sequencer_mode = sequencer_OFF;
-
-uint32_t sequencer_timestamp_last = millis();
-uint32_t sequencer_interval = 1000; // ms
-
-//
-uint16_t value_low = 1;
-uint16_t value_high = 65000;
 
 
+
+
+
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Motor
+
+// enum class motorstate_t : uint8_t {      // c++ typesafe; arduino > 1.6.
+enum motorstate_t {  // c
+    STATE_notvalid,
+    // STATE_error,
+    STATE_coast,
+    STATE_run,
+    STATE_fadeup,
+    STATE_fadedown,
+};
+motorstate_t motor_state = STATE_coast;
+
+const uint8_t motor_pin = 3;
+
+const uint16_t motor_fade_duration = 2000;
+// uint8_t motor_speed = 0;
+
+const uint8_t motor_min_value = 50;
+const uint8_t motor_max_value = 250;
+
+uint8_t motor_target_value = motor_min_value;
+uint8_t motor_current_value = 0;
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // other things..
+
+
+
+
+
+
+
+
+
+
+
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // functions
@@ -448,9 +497,9 @@ void setup_LCD(Print &out) {
         out.println(F("\t print welcome text"));
         // set cursor (first char, first line)
         lcd.setCursor(0, 0);
-        lcd.print("hello world :-)");
-        lcd.setCursor(0, 1);
         lcd.print("32U4wLCD_proto");
+        lcd.setCursor(0, 1);
+        lcd.print("MotorDri. wTacho");
 
         // delay(500);
         // lcd.clear();
@@ -458,122 +507,202 @@ void setup_LCD(Print &out) {
     out.println(F("\t finished."));
 }
 
+
+// Display Layout:
+//     0000000000111111
+//     0123456789012345
+//  0  status: running
+//  1  t: 255    c: 255
+
+void print_Status(LiquidCrystal &lcd) {
+    lcd.setCursor(0, 0);
+    lcd.print("status: ");
+    switch (motor_state) {
+        case STATE_notvalid: {
+            lcd.print("--------");
+        } break;
+        case STATE_coast: {
+            lcd.print("coast   ");
+        } break;
+        case STATE_run: {
+            lcd.print("running ");
+        } break;
+        case STATE_fadeup: {
+            lcd.print("fadeup  ");
+        } break;
+        case STATE_fadedown: {
+            lcd.print("fadedown");
+        } break;
+    }
+}
+
+void print_TargetValue(LiquidCrystal &lcd) {
+    lcd.setCursor(3, 1);
+    slight_DebugMenu::print_uint8_align_right(lcd, motor_target_value);
+}
+
+void print_CurrentValue(LiquidCrystal &lcd) {
+    lcd.setCursor(13, 1);
+    slight_DebugMenu::print_uint8_align_right(lcd, motor_current_value);
+}
+
+void update_LCD(LiquidCrystal &lcd) {
+    lcd.clear();
+    print_Status(lcd);
+    lcd.setCursor(0, 1);
+    lcd.print("t:");
+    print_TargetValue(lcd);
+
+    lcd.setCursor(10, 1);
+    lcd.print("c:");
+    print_CurrentValue(lcd);
+}
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // FaderLin
 
-// void setup_myFaderRGB(Print &out) {
-//     out.println(F("setup myFaderRGB:"));
-//
-//     out.println(F("\t myFaderRGB.begin();"));
-//     myFaderRGB.begin();
-//
-//     out.println(F("\t myFaderRGB welcome fade"));
-//     // myFaderRGB.startFadeTo( 1000, memList_A[memList_A__Full]);
-//     myFaderRGB_fadeTo(1000, 60000, 60000, 0);
-//     // run fading
-//     // while ( myFaderRGB.getLastEvent() == slight_FaderLin::event_fading_Finished) {
-//     //     myFaderRGB.update();
-//     // }
-//     while ( myFaderRGB.update() == slight_FaderLin::state_Fading) {
-//         // nothing to do.
-//     }
-//     myFaderRGB.update();
-//     // myFaderRGB.startFadeTo( 1000, memList_A[memList_A__Off]);
-//     myFaderRGB_fadeTo(1000, 0, 0, 1);
-//     // run fading
-//     // while ( myFaderRGB.getLastEvent() != slight_FaderLin::event_fading_Finished) {
-//     //     myFaderRGB.update();
-//     // }
-//     while ( myFaderRGB.update() == slight_FaderLin::state_Fading) {
-//         // nothing to do.
-//     }
-//     myFaderRGB.update();
-//
-//     out.println(F("\t finished."));
-// }
-//
-// void myFaderRGB_callback_OutputChanged(uint8_t id, uint16_t *values, uint8_t count) {
-//
-//     // if (bDebugOut_myFaderRGB_Output_Enable) {
-//     //     Serial.print(F("OutputValue: "));
-//     //     printArray_uint16(Serial, wValues, bCount);
-//     //     Serial.println();
-//     // }
-//
-//     // for (size_t channel_index = 0; channel_index < count; channel_index++) {
-//     //     tlc.setChannel(channel_index, values[channel_index]);
-//     // }
-//
-//     if (output_enabled) {
-//         tlc.setRGB(values[0], values[1], values[2]);
-//         tlc.write();
-//     }
-//
-// }
-//
-// void myFaderRGB_fadeTo(uint16_t duration, uint16_t r, uint16_t g, uint16_t b) {
-//     uint16_t values[myFaderRGB__channel_count];
-//     // init array with 0
-//     values[0] = r;
-//     values[1] = g;
-//     values[2] = b;
-//     myFaderRGB.startFadeTo(duration, values);
-// }
-//
-// void myCallback_onEvent(slight_FaderLin *pInstance, byte event) {
-//
-//
-//     // Serial.print(F("Instance ID:"));
-//     // Serial.println((*pInstance).getID());
-//     //
-//     // Serial.print(F("Event: "));
-//     // (*pInstance).printEvent(Serial, event);
-//     // Serial.println();
-//
-//
-//     // react on events:
-//     switch (event) {
-//         case slight_FaderLin::event_StateChanged : {
-//             // Serial.print(F("slight_FaderLin "));
-//             // Serial.print((*pInstance).getID());
-//             // Serial.println(F(" : "));
-//             // Serial.print(F("\t state: "));
-//             // (*pInstance).printState(Serial);
-//             // Serial.println();
-//
-//             // switch (state) {
-//             //     case slight_FaderLin::state_Standby : {
-//             //             //
-//             //         } break;
-//             //     case slight_FaderLin::state_Fading : {
-//             //             //
-//             //         } break;
-//             //     case slight_FaderLin::state_Finished : {
-//             //             //
-//             //         } break;
-//             // } //end switch
-//
-//
-//         } break;
-//
-//         case slight_FaderLin::event_fading_Finished : {
-//             // Serial.print(F("\t fading Finished."));
-//         } break;
-//     } //end switch
-//
-// }
+void setup_myFaderSpeed(Print &out) {
+    out.println(F("setup myFaderSpeed:"));
+
+    out.println(F("\t myFaderSpeed.begin();"));
+    myFaderSpeed.begin();
+
+    // out.println(F("\t myFaderSpeed welcome fade"));
+    // // myFaderSpeed.startFadeTo( 1000, memList_A[memList_A__Full]);
+    // myFaderSpeed_fadeTo(1000, 60000, 60000, 0);
+    // // run fading
+    // // while ( myFaderSpeed.getLastEvent() == slight_FaderLin::event_fading_Finished) {
+    // //     myFaderSpeed.update();
+    // // }
+    // while ( myFaderSpeed.update() == slight_FaderLin::state_Fading) {
+    //     // nothing to do.
+    // }
+    // myFaderSpeed.update();
+    // // myFaderSpeed.startFadeTo( 1000, memList_A[memList_A__Off]);
+    // myFaderSpeed_fadeTo(1000, 0, 0, 1);
+    // // run fading
+    // // while ( myFaderSpeed.getLastEvent() != slight_FaderLin::event_fading_Finished) {
+    // //     myFaderSpeed.update();
+    // // }
+    // while ( myFaderSpeed.update() == slight_FaderLin::state_Fading) {
+    //     // nothing to do.
+    // }
+    myFaderSpeed.update();
+
+    out.println(F("\t finished."));
+}
+
+void myFaderSpeed_callback_OutputChanged(uint8_t id, uint16_t *values, uint8_t count) {
+
+    // if (bDebugOut_myFaderSpeed_Output_Enable) {
+    //     Serial.print(F("OutputValue: "));
+    //     printArray_uint16(Serial, wValues, bCount);
+    //     Serial.println();
+    // }
+
+    // for (size_t channel_index = 0; channel_index < count; channel_index++) {
+    //     tlc.setChannel(channel_index, values[channel_index]);
+    // }
+
+    motor_set_output(values[0]);
+
+}
+
+void myFaderSpeed_fadeTo(uint16_t duration, uint8_t v) {
+    uint16_t values[myFaderSpeed__channel_count];
+    // init array with 0
+    values[0] = v;
+    Serial.print(F("start fade to "));
+    Serial.print(v);
+    Serial.print(F(" in "));
+    Serial.print(duration);
+    Serial.print(F(" ms."));
+    myFaderSpeed.startFadeTo(duration, values);
+}
+
+void myFaderSpeed_onEvent(slight_FaderLin *pInstance, byte event) {
+
+
+    Serial.print(F("Instance ID:"));
+    Serial.println((*pInstance).getID());
+
+    Serial.print(F("Event: "));
+    (*pInstance).printEvent(Serial, event);
+    Serial.println();
+
+
+    // react on events:
+    switch (event) {
+        case slight_FaderLin::event_StateChanged : {
+            // Serial.print(F("slight_FaderLin "));
+            // Serial.print((*pInstance).getID());
+            // Serial.println(F(" : "));
+            // Serial.print(F("\t state: "));
+            // (*pInstance).printState(Serial);
+            // Serial.println();
+
+            // switch (state) {
+            //     case slight_FaderLin::state_Standby : {
+            //             //
+            //         } break;
+            //     case slight_FaderLin::state_Fading : {
+            //             //
+            //         } break;
+            //     case slight_FaderLin::state_Finished : {
+            //             //
+            //         } break;
+            // } //end switch
+
+        } break;
+
+        case slight_FaderLin::event_fading_Finished : {
+            // Serial.print(F("\t fading Finished."));
+            switch (motor_state) {
+                case STATE_notvalid: {
+                    // nothing to do.
+                } break;
+                case STATE_coast: {
+                    // nothing to do.
+                } break;
+                case STATE_run: {
+                    // nothing to do.s
+                } break;
+                case STATE_fadeup: {
+                    motor_state = STATE_run;
+                } break;
+                case STATE_fadedown: {
+                    motor_state = STATE_coast;
+                    motor_set_output(0);
+                } break;
+            }
+            print_Status(lcd);
+        } break;
+    } //end switch
+
+}
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // button
 
-void setup_Buttons(Print &out) {
+void buttons_init(Print &out) {
     out.println(F("setup button:")); {
-        out.println(F("\t set button pin"));
-        pinMode(button.getPin(), INPUT_PULLUP);
-        out.println(F("\t button begin"));
-        button.begin();
+        // out.println(F("\t set button pin"));
+        // pinMode(button.getPin(), INPUT_PULLUP);
+        // out.println(F("\t button begin"));
+        // button.begin();
+        for (size_t index = 0; index < buttons_COUNT; index++) {
+            pinMode(buttons[index].getPin(), INPUT_PULLUP);
+            buttons[index].begin();
+        }
     }
     out.println(F("\t finished."));
+}
+
+
+void buttons_update() {
+    for (size_t index = 0; index < buttons_COUNT; index++) {
+        buttons[index].update();
+    }
 }
 
 boolean button_getInput(uint8_t id, uint8_t pin) {
@@ -592,7 +721,7 @@ void button_onEvent(slight_ButtonInput *pInstance, byte bEvent) {
     // // (*pInstance).printEvent(Serial, bEvent);
     // Serial.println();
 
-    // uint8_t button_id = (*pInstance).getID();
+    uint8_t button_id = (*pInstance).getID();
 
     // show event additional infos:
     switch (bEvent) {
@@ -606,84 +735,101 @@ void button_onEvent(slight_ButtonInput *pInstance, byte bEvent) {
         } break;
         case slight_ButtonInput::event_HoldingDown : {
             uint32_t duration = (*pInstance).getDurationActive();
-            Serial.println(F("duration active: "));
-            Serial.println(duration);
+            // Serial.println(F("duration active: "));
+            // Serial.println(duration);
+
+            uint8_t count = 1;
+
             if (duration <= 5000) {
-                // myFaderRGB_fadeTo(1000, 65000, 65000, 65000);
+                count = 5;
             }
             else if (duration <= 10000) {
-                // myFaderRGB_fadeTo(1000, 0, 65000, 65000);
+                count = 10;
             }
-            else {
-                // myFaderRGB_fadeTo(1000, 0, 0, 65000);
+            else if (duration <= 15000) {
+                count = 20;
+            }
+
+            if (button_id == button_1) {
+                motor_set_value(motor_target_value - count);
+                print_TargetValue(lcd);
+            }
+            if (button_id == button_2) {
+                motor_set_value(motor_target_value + count);
+                print_TargetValue(lcd);
+            }
+            if (button_id == button_3) {
+                // nothing to do.
+            }
+            if (button_id == button_4) {
+                // nothing to do.
+                // myFaderSpeed_fadeTo(0, 0);
             }
 
         } break;
         case slight_ButtonInput::event_Up : {
             Serial.println(F("up"));
-            // myFaderRGB_fadeTo(500, 0, 0, 1);
+            // myFaderSpeed_fadeTo(500, 0, 0, 1);
         } break;
         case slight_ButtonInput::event_Click : {
             Serial.println(F("click"));
-            // if (sequencer_mode == sequencer_OFF) {
-            //     sequencer_mode = sequencer_CHANNELCHECK;
-            //     sequencer_interval = 500;
-            //     Serial.print(F("\t sequencer_mode: CHANNELCHECK\n"));
-            // }
-            // else {
-            //     sequencer_off();
-            //     sequencer_mode = sequencer_OFF;
-            //     Serial.print(F("\t sequencer_mode: OFF\n"));
-            // }
 
+            if (button_id == button_1) {
+                Serial.print("motor_target_value: ");
+                Serial.print(motor_target_value);
+                Serial.print(" -> ");
+                motor_set_value(motor_target_value - 1);
+                Serial.print(motor_target_value);
+                Serial.println();
+                print_TargetValue(lcd);
+            }
+            if (button_id == button_2) {
+                Serial.print("motor_target_value: ");
+                Serial.print(motor_target_value);
+                Serial.print(" -> ");
+                motor_set_value(motor_target_value + 1);
+                Serial.print(motor_target_value);
+                Serial.println();
+                print_TargetValue(lcd);
+            }
 
-            strip_off = !strip_off;
-            if (strip_off) {
-                Serial.println(F("switch on"));
-                // leds.fill_solid(CRGB::White);
-                // leds.fadeToBlackBy(40);
-                // switch all leds on - one after the other
-                for(int whiteLed = 0; whiteLed < myStrip_PixelCount; whiteLed = whiteLed + 1) {
-                    leds[whiteLed] = CRGB::White;
-                    FastLED.show();
-                    delay(10);
+            if (button_id == button_3) {
+                // fast stop.
+                motor_state = STATE_fadedown;
+                myFaderSpeed_fadeTo(0, 0);
+                print_Status(lcd);
+            }
+            if (button_id == button_4) {
+                switch (motor_state) {
+                    case STATE_notvalid: {
+                        // nothing to do.
+                    } break;
+                    case STATE_fadedown:
+                    case STATE_coast: {
+                        motor_state = STATE_fadeup;
+                        myFaderSpeed_fadeTo(
+                            motor_fade_duration,
+                            motor_target_value);
+                    } break;
+                    case STATE_fadeup:
+                    case STATE_run: {
+                        motor_state = STATE_fadedown;
+                        myFaderSpeed_fadeTo(
+                            motor_fade_duration,
+                            motor_min_value);
+                    } break;
                 }
+                print_Status(lcd);
             }
-            else {
-                Serial.println(F("switch off"));
-                // leds.fadeToBlackBy(40);
-                leds.fill_solid(CRGB::Black);
-            }
-            FastLED.show();
 
         } break;
         case slight_ButtonInput::event_ClickLong : {
             Serial.println(F("click long"));
-            // Move a single white led
-            for(int whiteLed = 0; whiteLed < myStrip_PixelCount; whiteLed = whiteLed + 1) {
-                // Turn our current led on to white, then show the leds
-                leds[whiteLed] = CRGB::White;
-
-                // Show the leds (only one of which is set to white, from above)
-                FastLED.show();
-
-                // Wait a little bit
-                delay(10);
-
-                // Turn our current led back to black for the next loop around
-                leds[whiteLed] = CRGB::Black;
-            }
         } break;
         case slight_ButtonInput::event_ClickDouble : {
             // Serial.println(F("click double"));
-            // sequencer_mode = sequencer_HORIZONTAL;
-            // sequencer_interval = 1000;
-            // Serial.print(F("\t sequencer_mode: HORIZONTAL\n"));
         } break;
         case slight_ButtonInput::event_ClickTriple : {
-            // sequencer_mode = sequencer_SPIRAL;
-            // sequencer_interval = 100;
-            // Serial.print(F("\t sequencer_mode: SPIRAL\n"));
             // Serial.println(F("click triple"));
         } break;
         // case slight_ButtonInput::event_ClickMulti : {
@@ -696,242 +842,54 @@ void button_onEvent(slight_ButtonInput *pInstance, byte bEvent) {
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// LED Strip
+// Motor
 
-void setup_LEDStrip(Print &out) {
-    out.println(F("setup LEDStrip:"));
+void setup_Motor(Print &out) {
+    out.println(F("setup Motor:"));
 
-    out.println(F("\t init lib"));
-    // myStrip.begin();
-    FastLED.addLeds<APA102, RGB>(leds, myStrip_PixelCount);
-    // out.println(F("\t start with leds off"));
-    // myStrip.show();
+    pinMode(motor_pin, OUTPUT);
+
+    analogWrite(motor_pin, 0);
+
     out.println(F("\t finished."));
 }
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// LEDBoard
+void motor_set_value(uint8_t value) {
+    motor_target_value = constrain(
+        value,
+        motor_min_value,
+        motor_max_value
+    );
+    // if (value < motor_min_value) {
+    //     motor_target_value = motor_min_value;
+    // } else {
+    //     if (value > motor_max_value) {
+    //         motor_target_value = motor_max_value;
+    //     } else {
+    //         motor_target_value = value;
+    //     }
+    // }
+}
 
-// void setup_Boards(Print &out) {
-//     out.println(F("setup LEDBoards:"));
+void motor_set_output(uint8_t value) {
+    if (motor_state == STATE_coast) {
+        motor_current_value = 0;
+    } else {
+        motor_current_value = value;
+    }
+    analogWrite(motor_pin, motor_current_value);
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Tacho
+
+// void setup_Tacho(Print &out) {
+//     out.println(F("setup Tacho:"));
 //
-//     out.println(F("\t init tlc lib"));
-//     tlc.beginFast();
-//     out.println(F("\t start with leds off"));
-//     tlc.setRGB();
-//     tlc.write();
-//     out.println(F("\t set leds to 1, 1, 1"));
-//     tlc.setRGB(1, 1, 1);
-//     tlc.write();
+//     pinMode(tacho_pin, INPUT);
 //
 //     out.println(F("\t finished."));
 // }
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// Sequencer
-
-// uint8_t sequencer_current_step = 0;
-// uint8_t sequencer_direction_forward = true;
-//
-// void sequencer_off() {
-//     Serial.println("sequencer_off");
-//     uint16_t values[colorchannels_per_board];
-//     // init array with 0
-//     memset(values, 0, colorchannels_per_board);
-//
-//     for (size_t ch = 0; ch < colorchannels_per_board; ch++) {
-//         values[ch] = value_low;
-//     }
-//
-//     // reset sequencer
-//     sequencer_current_step = 0;
-//
-//     // now map values to tlc chips and write theme to output
-//     map_to_allBoards(values);
-// }
-//
-// void calculate_step__channelcheck(uint16_t values[]) {
-//     // Serial.print("calculate_step__channelcheck: ");
-//
-//     for (size_t ch = 0; ch < colorchannels_per_board; ch++) {
-//         values[ch] = value_low;
-//         if (ch == sequencer_current_step) {
-//             values[ch] = value_high;
-//         }
-//     }
-//
-//     // prepare next step
-//     Serial.print("sequencer_current_step: ");
-//     Serial.println(sequencer_current_step);
-//     sequencer_current_step = sequencer_current_step + 1;
-//     if (sequencer_current_step >= colorchannels_per_board) {
-//         sequencer_current_step = 0;
-//     }
-// }
-//
-// void calculate_step__horizontal(uint16_t values[]) {
-//     // Serial.println("calculate_step__horizontal: ");
-//
-//     for (size_t column = 0; column < leds_per_column; column++) {
-//         for (size_t row = 0; row < leds_per_row; row++) {
-//
-//             uint8_t pixel = channel_position_map[column][row];
-//             uint8_t ch = pixel * 3;
-//
-//             // set pixel to low
-//             values[ch + 0] = value_low;
-//             values[ch + 1] = value_low;
-//             values[ch + 2] = value_low;
-//
-//
-//             if (column == sequencer_current_step) {
-//                 // set pixel to high
-//                 values[ch + 0] = value_low;
-//                 values[ch + 1] = value_high;
-//                 values[ch + 2] = value_high;
-//             }
-//
-//
-//         }
-//     }
-//
-//     // prepare next step
-//     // Serial.print("sequencer_current_step: ");
-//     // Serial.println(sequencer_current_step);
-//     sequencer_current_step = sequencer_current_step + 1;
-//     if (sequencer_current_step >= leds_per_column) {
-//         sequencer_current_step = 0;
-//     }
-//
-// }
-//
-// void calculate_step__spiral(uint16_t values[]) {
-//     // Serial.println("calculate_step__spiral: ");
-//
-//     const uint8_t spiral_order[leds_per_column][leds_per_row] {
-//         { 0,  1,  2,  3},
-//         {11, 12, 13,  4},
-//         {10, 15, 14,  5},
-//         { 9,  8,  7,  6},
-//     };
-//
-//     for (size_t column = 0; column < leds_per_column; column++) {
-//         for (size_t row = 0; row < leds_per_row; row++) {
-//
-//             uint8_t pixel = channel_position_map[column][row];
-//             uint8_t ch = pixel * 3;
-//
-//             // set pixel to low
-//             values[ch + 0] = value_low;
-//             values[ch + 1] = value_low;
-//             values[ch + 2] = value_low;
-//
-//
-//             if (spiral_order[column][row] == sequencer_current_step) {
-//                 // set pixel to high
-//                 values[ch + 0] = 20000;
-//                 values[ch + 1] = value_low;
-//                 values[ch + 2] = 65535;
-//             }
-//
-//
-//         }
-//     }
-//
-//     // prepare next step
-//     // Serial.print("sequencer_current_step: ");
-//     // Serial.println(sequencer_current_step);
-//     if (sequencer_direction_forward) {
-//         // forward
-//         if (sequencer_current_step >= (leds_per_column * leds_per_row)-1 ) {
-//             sequencer_current_step = sequencer_current_step - 1;
-//             sequencer_direction_forward = false;
-//             // Serial.println("direction switch to backwards");
-//         }
-//         else {
-//             sequencer_current_step = sequencer_current_step + 1;
-//         }
-//     }
-//     else {
-//         // backwards
-//         if (sequencer_current_step == 0 ) {
-//             sequencer_current_step = sequencer_current_step + 1;
-//             sequencer_direction_forward = true;
-//             // Serial.println("direction switch to forward");
-//         }
-//         else {
-//             sequencer_current_step = sequencer_current_step - 1;
-//         }
-//     }
-//     // Serial.print("next step: ");
-//     // Serial.println(sequencer_current_step);
-//
-// }
-//
-// void calculate_step() {
-//     Serial.print("calculate_step: ");
-//     uint16_t values[colorchannels_per_board];
-//     // init array with 0
-//     memset(values, 0, colorchannels_per_board);
-//
-//     // deside what sequencer we want to run
-//
-//     switch (sequencer_mode) {
-//         case sequencer_OFF: {
-//             1;
-//         } break;
-//         case sequencer_CHANNELCHECK: {
-//             calculate_step__channelcheck(values);
-//         } break;
-//         case sequencer_HORIZONTAL: {
-//             calculate_step__horizontal(values);
-//         } break;
-//         case sequencer_SPIRAL: {
-//             calculate_step__spiral(values);
-//         } break;
-//     }
-//
-//     // debug out print array:
-//     // Serial.print("values: ");
-//     // slight_DebugMenu::print_uint16_array(
-//     //     Serial,
-//     //     values,
-//     //     colorchannels_per_board
-//     // );
-//     // Serial.println();
-//
-//     // now map values to tlc chips and write theme to output
-//     map_to_allBoards(values);
-// }
-//
-// void map_to_allBoards(uint16_t values[]) {
-//     if (output_enabled) {
-//         // set all channels (mapping)
-//         for (
-//             size_t channel_index = 0;
-//             channel_index < colorchannels_per_board;
-//             channel_index++
-//         ) {
-//             // uint8_t mapped_channel = mapping_single_board[i];
-//             // Serial.print("mapping: ");
-//             // Serial.print(i);
-//             // Serial.print("-->");
-//             // Serial.print(mapped_channel);
-//             // Serial.println();
-//             for (size_t board_index = 0; board_index < boards_count; board_index++) {
-//                 tlc.setChannel(
-//                     channel_index + (tlc_channels_per_board * board_index),
-//                     values[channel_index]
-//                 );
-//             }
-//         }
-//         // write data to chips
-//         tlc.write();
-//     }
-// }
-//
-
-
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // other things..
@@ -995,26 +953,21 @@ void setup() {
     out.print(F("# Free RAM = "));
     out.println(freeRam());
 
-    setup_Buttons(out);
+    buttons_init(out);
 
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // setup LEDBoard
+    // setup DMX
 
-        setup_LEDStrip(out);
-
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // setup LEDBoard
-
-        // setup_Boards(out);
+        setup_Motor(out);
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // setup Fader
 
-    // out.print(F("# Free RAM = "));
-    // out.println(freeRam());
+    out.print(F("# Free RAM = "));
+    out.println(freeRam());
 
-    // setup_myFaderRGB(out);
+    setup_myFaderSpeed(out);
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // setup XXX1
@@ -1036,6 +989,11 @@ void setup() {
         myDebugMenu.begin();
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // update_LCD
+        delay(1000);
+        update_LCD(lcd);
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // go
 
         out.println(F("Loop:"));
@@ -1053,21 +1011,40 @@ void loop() {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // update sub parts
 
-        // myFaderRGB.update();
-        button.update();
+        myFaderSpeed.update();
+        // button.update();
+        buttons_update();
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // timed things
 
-        if (sequencer_mode != sequencer_OFF) {
-            if(
-                (millis() - sequencer_timestamp_last) > sequencer_interval
-            ) {
-                sequencer_timestamp_last =  millis();
-                // calculate_step();
-            }
+        // if (sequencer_mode != sequencer_OFF) {
+        //     if(
+        //         (millis() - sequencer_timestamp_last) > sequencer_interval
+        //     ) {
+        //         sequencer_timestamp_last =  millis();
+        //         // calculate_step();
+        //     }
+        // }
+
+
+        if(
+            (millis() - lcd_update_timestamp_last) > lcd_update_interval
+        ) {
+            lcd_update_timestamp_last =  millis();
+            print_CurrentValue(lcd);
+            // update_LCD(lcd);
         }
 
+
+        // if(
+        //     (millis() - dmx_timestamp_last) > dmx_interval
+        // ) {
+        //     dmx_timestamp_last =  millis();
+        //     handle_DMX();
+        // }
+
+    // handle_DMX();
 
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
