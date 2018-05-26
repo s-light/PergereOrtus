@@ -46,6 +46,17 @@ GreatScott! (video)
 - [DIY Wireless Energy Transfer System (good starting point)](https://www.youtube.com/watch?v=3E5PUnYlaTM)
     - [same as instructables write down](http://www.instructables.com/id/DIY-Wireless-Energy-Transfer-System/)
 
+- [WE REDexpert Workbench](https://www.we-online.com/redexpert/#/module/15/selecteditems/760308100110,760308100143/productdata/=760308101302/kf/asc/size/+or+%C3%98_50+5353/applicationbar/WPCCMatcher/on/wp/760308100110/options/true)
+- [WE 760308100141](http://katalog.we-online.com/de/pbs/WE-WPCC-TRANSMITTER/760308100141) [(PDF)](http://katalog.we-online.com/pbs/datasheet/760308101141.pdf)
+- [WE 760308100143](http://katalog.we-online.com/de/pbs/WE-WPCC-TRANSMITTER/760308100143) [(PDF)](http://katalog.we-online.com/pbs/datasheet/760308100143.pdf)
+- [WE 760308100110](http://katalog.we-online.com/de/pbs/WE-WPCC-TRANSMITTER/760308100110) [mouser 11,60€](https://www.mouser.de/ProductDetail/Wurth-Electronics/760308100110?qs=%2fha2pyFadui4G5%2f1MFX1HUUrVCJModGZAm4rKxr1lSo0EM1Ygx79Gw==) [(PDF)](http://katalog.we-online.com/pbs/datasheet/760308100110.pdf)
+
+self-made with Ferrite cores
+- [Ferrite Pot Cores for Inductors and Power Supplies](http://www.cwsbytemark.com/index.php?main_page=index&cPath=206_231)
+- [TDK pmpp cores halves](https://de.tdk.eu/tdk-de/193526/produkte/produktkatalog/ferrites/epcos-ferrite-und-zubehoer/pmppcoreshalves)
+- [TDK Core P 36 x 22](https://de.tdk.eu/inf/80/db/fer/p_36_22.pdf)
+- [Ferroxcube P 22 x13](https://www.ferroxcube.com/upload/media/product/file/Pr_ds/P22_13.pdf)
+
 ### Phone wireless charging technology
 - receiver
     - [bq51013b	WPC 1.1 Compatible Fully Integrated Wireless Power Receiver IC (20VQFN)](http://www.ti.com/product/bq51013b)

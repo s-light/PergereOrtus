@@ -63,7 +63,9 @@ challenge here is the bit time - we need some very very fast photo detectors...
 - [Why are most IR phototransistors slow?](https://electronics.stackexchange.com/questions/347665/why-are-most-ir-phototransistors-slow)
 - [example with explanation to drive a phototransistors (optoisolators)](https://electronics.stackexchange.com/a/136944/13800)
 - [Phototransistor Switching Time Analysis (app note)](http://www.cel.com/pdf/appnotes/an3009.pdf)
+
 - [Anschluß Phototransistor für high-speed? (with schematics)](https://www.mikrocontroller.net/topic/198315#2101045)
+- [mikrocontroller.net light-sensor basics](https://www.mikrocontroller.net/articles/Lichtsensor_/_Helligkeitssensor)
 
 - [Ronja project](http://ronja.twibright.com/irrx/material.php)
     - [SFH 203 P](https://www.digikey.com/product-detail/en/osram-opto-semiconductors-inc/SFH-203-P/475-2649-ND/1893875)
@@ -72,7 +74,6 @@ challenge here is the bit time - we need some very very fast photo detectors...
     - [photodiode OPF430 by Optek Inc](https://www.digikey.com/product-detail/en/tt-electronics-optek-technology/OPF430/365-1839-ND/1637898)
     - [TI OPA657 1.6GHz, Low Noise, FET-Input Operational Amplifier](http://www.ti.com/product/OPA657)
 
-- [mikrocontroller.net light-sensor basics](https://www.mikrocontroller.net/articles/Lichtsensor_/_Helligkeitssensor)
 
 - [Driving LED in a Nanosecond Regime by a Fast Operational Amplifier](https://arxiv.org/pdf/1011.1954.pdf)
 
