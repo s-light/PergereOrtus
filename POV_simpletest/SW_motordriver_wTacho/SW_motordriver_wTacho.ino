@@ -305,7 +305,7 @@ const uint16_t motor_fade_duration = 2000;
 const uint8_t motor_min_value = 20;
 const uint8_t motor_max_value = 50;
 
-uint8_t motor_target_value = 30;
+uint8_t motor_target_value = 20;
 uint8_t motor_current_value = 0;
 
 
@@ -740,7 +740,7 @@ void button_onEvent(slight_ButtonInput *pInstance, byte bEvent) {
 
             uint8_t count = 1;
 
-            if (duration <= 5000) {
+            if (duration <= 2000) {
                 count = 5;
             }
             else if (duration <= 10000) {
@@ -828,7 +828,7 @@ void button_onEvent(slight_ButtonInput *pInstance, byte bEvent) {
                     case STATE_run: {
                         motor_state = STATE_fadedown;
                         myFaderSpeed_fadeTo(
-                            motor_fade_duration,
+                            50,
                             motor_min_value);
                     } break;
                 }
