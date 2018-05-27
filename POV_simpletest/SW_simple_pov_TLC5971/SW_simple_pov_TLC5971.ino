@@ -294,23 +294,25 @@ void handleMenu_Main(slight_DebugMenu *pInstance) {
             out.println(F("__________"));
             out.println(F("Tests:"));
 
-            out.println(F("nothing to do."));
+            // out.println(F("nothing to do."));
+            //
+            // // uint16_t wTest = 65535;
+            // uint16_t wTest = atoi(&command[1]);
+            // out.print(F("wTest: "));
+            // out.print(wTest);
+            // out.println();
+            //
+            // out.print(F("1: "));
+            // out.print((byte)wTest);
+            // out.println();
+            //
+            // out.print(F("2: "));
+            // out.print((byte)(wTest>>8));
+            // out.println();
+            //
+            // out.println();
 
-            // uint16_t wTest = 65535;
-            uint16_t wTest = atoi(&command[1]);
-            out.print(F("wTest: "));
-            out.print(wTest);
-            out.println();
-
-            out.print(F("1: "));
-            out.print((byte)wTest);
-            out.println();
-
-            out.print(F("2: "));
-            out.print((byte)(wTest>>8));
-            out.println();
-
-            out.println();
+            speedtest_TLC5971(out);
 
             out.println(F("__________"));
         } break;
@@ -501,46 +503,46 @@ void set_line(uint16_t r, uint16_t g, uint16_t b) {
     tlc.write();
 }
 
-// void show_memory() {
-//     // Serial.println("calculate_step__spiral: ");
-//
-//     const uint8_t spiral_order[leds_per_column][leds_per_row] {
-//         { 0, 0, 0, 0},
-//         { 0, 0, 0, 0},
-//         { 0, 0, 0, 0},
-//         { 0, 0, 0, 0},
-//     };
-//
-//     for (size_t column = 0; column < leds_per_column; column++) {
-//         for (size_t row = 0; row < leds_per_row; row++) {
-//
-//             uint8_t pixel = channel_position_map[column][row];
-//             uint8_t ch = pixel * 3;
-//
-//             // set pixel to low
-//             // values[ch + 0] = value_low;
-//             // values[ch + 1] = value_low;
-//             // values[ch + 2] = value_low;
-//
-//             if (spiral_order[column][row] == (uint8_t)sequencer_current_step) {
-//                 // set pixel to high
-//                 tlc.setChannel(ch + 0, 0);
-//                 tlc.setChannel(ch + 1, 0);
-//                 tlc.setChannel(ch + 2, value_high);
-//             }
-//             else {
-//                 // set pixel to low
-//                 tlc.setChannel(ch + 0, 0);
-//                 tlc.setChannel(ch + 1, value_low);
-//                 tlc.setChannel(ch + 2, 0);
-//             }
-//
-//
-//         }
-//     }
-// }
-//
-//
+void show_memory() {
+    // Serial.println("calculate_step__spiral: ");
+
+    const uint8_t spiral_order[leds_per_column][leds_per_row] {
+        { 0, 0, 0, 0},
+        { 0, 0, 0, 0},
+        { 0, 0, 0, 0},
+        { 0, 0, 0, 0},
+    };
+
+    for (size_t column = 0; column < leds_per_column; column++) {
+        for (size_t row = 0; row < leds_per_row; row++) {
+
+            uint8_t pixel = channel_position_map[column][row];
+            uint8_t ch = pixel * 3;
+
+            // set pixel to low
+            // values[ch + 0] = value_low;
+            // values[ch + 1] = value_low;
+            // values[ch + 2] = value_low;
+
+            if (spiral_order[column][row] == (uint8_t)sequencer_current_step) {
+                // set pixel to high
+                tlc.setChannel(ch + 0, 0);
+                tlc.setChannel(ch + 1, 0);
+                tlc.setChannel(ch + 2, value_high);
+            }
+            else {
+                // set pixel to low
+                tlc.setChannel(ch + 0, 0);
+                tlc.setChannel(ch + 1, value_low);
+                tlc.setChannel(ch + 2, 0);
+            }
+
+
+        }
+    }
+}
+
+
 void map_to_allBoards() {
     if (output_enabled) {
         // set all channels (mapping)
@@ -565,6 +567,70 @@ void map_to_allBoards() {
     }
 }
 
+void speedtest_TLC5971(Print &out) {
+    uint32_t loop_count = 1;
+    uint32_t start = millis();
+    uint32_t end = millis();
+    uint32_t duration = end - start;
+
+    out.println(F("Speedtest for set_Line"));
+    loop_count = 10;
+    start = millis();
+        set_line(0, 65535, 0);
+        set_line(0, 0, 0);
+        set_line(0, 65535, 0);
+        set_line(0, 0, 0);
+        set_line(0, 65535, 0);
+        set_line(0, 0, 0);
+        set_line(0, 65535, 0);
+        set_line(0, 0, 0);
+        set_line(0, 65535, 0);
+        set_line(0, 0, 0);
+    end = millis();
+    duration = end - start;
+    out.println(F("\tresults: "));
+    out.print(duration);
+    out.print(F("\tms for "));
+    out.print(loop_count);
+    out.print(F("calls."));
+    out.println();
+    out.print(F("\t--> "));
+    out.print(float(duration)/(loop_count));
+    out.print(F("ms per calls."));
+    out.println();
+
+
+    out.println(F("Speedtest for setRGB(0,0,0)"));
+    loop_count = 1;
+    start = micros();
+        tlc.setRGB(0, 0, 0);
+    end = micros();
+    duration = end - start;
+    out.println(F("\tresults: "));
+    out.print(duration);
+    out.print(F("us per call."));
+    out.println();
+
+    out.println(F("Speedtest for tlc.write"));
+    loop_count = 1;
+    start = micros();
+        tlc.write();
+    end = micros();
+    duration = end - start;
+    out.println(F("\tresults: "));
+    out.print(duration);
+    out.print(F("us per call."));
+    out.println();
+
+
+
+
+
+
+    out.println(F("---- finished."));
+    // reset to blue
+    set_line(0, 0, 65535);
+}
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
