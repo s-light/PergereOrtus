@@ -149,7 +149,16 @@ slight_DebugMenu myDebugMenu(Serial, Serial, 15);
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Position detector
+
+const uint8_t pos_pin = A0;
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // LEDBoard
+
+const uint16_t board_interval = 50;
+uint32_t board_timestamp_last = 0;
+
 
 const uint8_t boards_count = 2;
 
@@ -164,13 +173,26 @@ const uint8_t colorchannels_per_board = (
 
 const uint8_t leds_per_row = 4;
 const uint8_t leds_per_column = 4;
+const uint8_t row_count = leds_per_column;
+const uint8_t column_count = leds_per_row;
 const uint8_t leds_per_board = leds_per_row*leds_per_column;
+const uint8_t leds_total = leds_per_board*boards_count;
 
-const uint8_t channel_position_map[leds_per_column][leds_per_row] = {
+// const uint8_t channel_position_map[leds_per_column][leds_per_row] = {
+//     { 0,  1,  4,  5},
+//     { 2,  3,  6,  7},
+//     { 8,  9, 12, 13},
+//     {10, 11, 14, 15},
+// };
+const uint8_t channel_position_map[row_count*2][column_count] = {
     { 0,  1,  4,  5},
     { 2,  3,  6,  7},
     { 8,  9, 12, 13},
     {10, 11, 14, 15},
+    {16, 17, 20, 21},
+    {18, 19, 22, 23},
+    {24, 25, 28, 29},
+    {26, 27, 30, 31},
 };
 
 // tlc info
@@ -490,18 +512,54 @@ void setup_Boards(Print &out) {
 
 void set_line(uint16_t r, uint16_t g, uint16_t b) {
     // all black
-    tlc.setRGB(0, 0, 0);
+    // tlc.setRGB(0, 0, 0);
     // define pattern
-    const uint8_t pixel_count = 8;
-    const uint8_t pattern_map[pixel_count] {
-        4, 6, 12, 14, 20, 22, 28, 30
+    // const uint8_t pattern_map[pixel_count] {
+    //     4, 6, 12, 14, 20, 22, 28, 30
+    // };
+    const uint8_t pattern_map[row_count*2][column_count] {
+        {0, 0, 1, 0},
+        {0, 0, 1, 0},
+        {0, 0, 1, 0},
+        {0, 0, 1, 0},
+        {0, 0, 1, 0},
+        {0, 0, 1, 0},
+        {0, 0, 1, 0},
+        {0, 0, 1, 0},
     };
     // set pattern
-    for (size_t index = 0; index < pixel_count; index++) {
-        tlc.setRGB(pattern_map[index], r, g, b);
+    for (size_t row = 0; row < row_count*2; row++) {
+        for (size_t column = 0; column < column_count; column++) {
+            uint8_t pixel = channel_position_map[row][column];
+            if (pattern_map[row][column] == 1) {
+                tlc.setRGB(pixel, r, g, b);
+            } else {
+                tlc.setRGB(pixel, 0, 0, 0);
+            }
+        }
     }
     tlc.write();
 }
+
+
+void update_Boards() {
+    // if(
+    //     (millis() - board_timestamp_last) > board_interval
+    // ) {
+    if(
+        analogRead(pos_pin) > 230
+    ) {
+        board_timestamp_last =  millis();
+        set_line(0, 65535, 0);
+        set_line(0, 0, 0);
+        set_line(0, 0, 65535);
+        set_line(0, 0, 0);
+        set_line(65535, 65535, 0);
+        set_line(0, 0, 0);
+    }
+}
+
+
 
 void show_memory() {
     // Serial.println("calculate_step__spiral: ");
@@ -524,18 +582,18 @@ void show_memory() {
             // values[ch + 1] = value_low;
             // values[ch + 2] = value_low;
 
-            if (spiral_order[column][row] == (uint8_t)sequencer_current_step) {
-                // set pixel to high
-                tlc.setChannel(ch + 0, 0);
-                tlc.setChannel(ch + 1, 0);
-                tlc.setChannel(ch + 2, value_high);
-            }
-            else {
-                // set pixel to low
-                tlc.setChannel(ch + 0, 0);
-                tlc.setChannel(ch + 1, value_low);
-                tlc.setChannel(ch + 2, 0);
-            }
+            // if (spiral_order[column][row] == (uint8_t)sequencer_current_step) {
+            //     // set pixel to high
+            //     tlc.setChannel(ch + 0, 0);
+            //     tlc.setChannel(ch + 1, 0);
+            //     tlc.setChannel(ch + 2, value_high);
+            // }
+            // else {
+            //     // set pixel to low
+            //     tlc.setChannel(ch + 0, 0);
+            //     tlc.setChannel(ch + 1, value_low);
+            //     tlc.setChannel(ch + 2, 0);
+            // }
 
 
         }
@@ -569,13 +627,13 @@ void map_to_allBoards() {
 
 void speedtest_TLC5971(Print &out) {
     uint32_t loop_count = 1;
-    uint32_t start = millis();
-    uint32_t end = millis();
+    uint32_t start = micros();
+    uint32_t end = micros();
     uint32_t duration = end - start;
 
     out.println(F("Speedtest for set_Line"));
     loop_count = 10;
-    start = millis();
+    start = micros();
         set_line(0, 65535, 0);
         set_line(0, 0, 0);
         set_line(0, 65535, 0);
@@ -586,19 +644,36 @@ void speedtest_TLC5971(Print &out) {
         set_line(0, 0, 0);
         set_line(0, 65535, 0);
         set_line(0, 0, 0);
-    end = millis();
+    end = micros();
     duration = end - start;
     out.println(F("\tresults: "));
+    out.print(F("\t"));
     out.print(duration);
-    out.print(F("\tms for "));
+    out.print(F("us for "));
     out.print(loop_count);
     out.print(F("calls."));
     out.println();
     out.print(F("\t--> "));
     out.print(float(duration)/(loop_count));
+    out.print(F("us per calls."));
+    out.println();
+    out.print(F("\t--> "));
+    out.print((float(duration)/(loop_count))/1000);
     out.print(F("ms per calls."));
     out.println();
 
+
+    out.println(F("Speedtest for set_Line(0,xxx,0)"));
+    loop_count = 1;
+    start = micros();
+        set_line(0, 65535, 0);
+    end = micros();
+    duration = end - start;
+    out.println(F("\tresults: "));
+    out.print(F("\t"));
+    out.print(duration);
+    out.print(F("us per call."));
+    out.println();
 
     out.println(F("Speedtest for setRGB(0,0,0)"));
     loop_count = 1;
@@ -607,6 +682,7 @@ void speedtest_TLC5971(Print &out) {
     end = micros();
     duration = end - start;
     out.println(F("\tresults: "));
+    out.print(F("\t"));
     out.print(duration);
     out.print(F("us per call."));
     out.println();
@@ -618,11 +694,10 @@ void speedtest_TLC5971(Print &out) {
     end = micros();
     duration = end - start;
     out.println(F("\tresults: "));
+    out.print(F("\t"));
     out.print(duration);
     out.print(F("us per call."));
     out.println();
-
-
 
 
 
@@ -966,7 +1041,7 @@ void loop() {
         myFaderRGB.update();
         button.update();
 
-        // lowbat_check();
+        update_Boards();
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // timed things
@@ -996,9 +1071,15 @@ void loop() {
                 Serial.print(F("ms;"));
                 Serial.print(F("  free RAM = "));
                 Serial.print(freeRam());
-                // Serial.print(F("; bat votlage: "));
-                // Serial.print(bat_voltage/100.0);
-                // Serial.print(F("V"));
+                Serial.print(F("; pos voltage: "));
+                // 1024 = 5V
+                // analogRead = x
+                // x = 5.0*analogRead/1024
+                uint16_t raw = analogRead(pos_pin);
+                Serial.print(5.0 *  raw / 1024);
+                Serial.print(F("V (="));
+                Serial.print(raw);
+                Serial.print(F(")"));
                 Serial.println();
             }
 
