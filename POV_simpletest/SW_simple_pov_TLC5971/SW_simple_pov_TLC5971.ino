@@ -195,6 +195,38 @@ const uint8_t channel_position_map[row_count*2][column_count] = {
     {26, 27, 30, 31},
 };
 
+const uint8_t pixel_line_count = 8;
+const uint8_t pixel_line_list[pixel_line_count] = {
+     4,
+     6,
+    12,
+    14,
+    20,
+    22,
+    28,
+    30,
+};
+
+const uint8_t pattern_count = 8;
+const uint8_t pattern_map[pixel_line_count][pattern_count] = {
+    { 0,0,0,1,1,0,0,0},
+    { 0,0,1,0,0,1,0,0},
+    { 0,1,0,0,0,0,1,0},
+    { 1,0,0,0,0,0,0,1},
+    { 0,0,0,0,0,0,0,0},
+    { 0,0,0,0,0,0,0,0},
+    { 0,0,0,0,0,0,0,0},
+    { 0,0,0,0,0,0,0,0},
+    // { 0,0,0,1,1,0,0,0},
+    // { 0,0,1,0,0,1,0,0},
+    // { 0,1,0,0,0,0,1,0},
+    // { 1,0,0,0,0,0,0,1},
+    // { 1,0,0,0,0,0,0,1},
+    // { 0,1,0,0,0,0,1,0},
+    // { 0,0,1,0,0,1,0,0},
+    // { 0,0,0,1,1,0,0,0},
+};
+
 // tlc info
 const uint8_t tlc_channels = colors_per_led * leds_per_chip;
 const uint8_t tlc_channels_per_board = tlc_channels * chips_per_board;
@@ -498,19 +530,19 @@ void setup_Boards(Print &out) {
     out.println(F("\t start with leds off"));
     tlc.setRGB();
     tlc.write();
-    out.println(F("\t set leds to 0, 0, 1"));
-    tlc.setRGB(0, 0, 1);
-    tlc.write();
-    delay(2000);
+    // out.println(F("\t set leds to 0, 0, 1"));
+    // tlc.setRGB(0, 0, 1);
+    // tlc.write();
+    // delay(2000);
 
     out.println(F("\t set two blue lines"));
 
-    set_line(0, 0, 65535);
+    set_line(0, 0, 1);
 
     out.println(F("\t finished."));
 }
 
-void set_line(uint16_t r, uint16_t g, uint16_t b) {
+void set_line_old(uint16_t r, uint16_t g, uint16_t b) {
     // all black
     // tlc.setRGB(0, 0, 0);
     // define pattern
@@ -541,21 +573,55 @@ void set_line(uint16_t r, uint16_t g, uint16_t b) {
     tlc.write();
 }
 
+void set_line(uint16_t r, uint16_t g, uint16_t b) {
+    // set pattern
+    for (size_t index = 0; index < pixel_line_count; index++) {
+        tlc.setRGB(pixel_line_list[index], r, g, b);
+    }
+    tlc.write();
+}
+
+void set_line_pattern(uint8_t pattern_id, uint16_t r, uint16_t g, uint16_t b) {
+    // set pattern
+    for (size_t index = 0; index < pixel_line_count; index++) {
+        // switch (pattern_map[index][pattern_id]) {
+        //     case 1 : {
+        //         tlc.setRGB(pixel_line_list[index], r, g, b);
+        //     } break;
+        //     default: {
+        //         tlc.setRGB(pixel_line_list[index], 0, 0, 0);
+        //     };
+        // } //end switch
+        if (pattern_map[index][pattern_id] == 1) {
+            tlc.setRGB(pixel_line_list[index], r, g, b);
+        } else {
+            tlc.setRGB(pixel_line_list[index], 0, 0, 0);
+        }
+    }
+    tlc.write();
+}
+
 
 void update_Boards() {
     // if(
     //     (millis() - board_timestamp_last) > board_interval
     // ) {
     if(
-        analogRead(pos_pin) > 230
+        analogRead(pos_pin) > 210
     ) {
         board_timestamp_last =  millis();
-        set_line(0, 65535, 0);
-        set_line(0, 0, 0);
-        set_line(0, 0, 65535);
-        set_line(0, 0, 0);
-        set_line(65535, 65535, 0);
-        set_line(0, 0, 0);
+        // set_line(0, 65535, 0);
+        // set_line(0, 0, 10000);
+        // set_line(0, 65535, 0);
+        // set_line(0, 0, 10000);
+        // set_line(0, 65535, 0);
+        // set_line(0, 0, 10000);
+        // set_line(0, 65535, 0);
+        // set_line(65535, 65535, 0);
+        for (size_t pattern_index = 0; pattern_index < pattern_count; pattern_index++) {
+            set_line_pattern(pattern_index, 30000, 0, 65535);
+        }
+        set_line( 0, 0, 0);
     }
 }
 
