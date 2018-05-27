@@ -302,10 +302,10 @@ const uint8_t motor_pin = 3;
 const uint16_t motor_fade_duration = 2000;
 // uint8_t motor_speed = 0;
 
-const uint8_t motor_min_value = 50;
-const uint8_t motor_max_value = 250;
+const uint8_t motor_min_value = 20;
+const uint8_t motor_max_value = 50;
 
-uint8_t motor_target_value = motor_min_value;
+uint8_t motor_target_value = 30;
 uint8_t motor_current_value = 0;
 
 
@@ -794,9 +794,22 @@ void button_onEvent(slight_ButtonInput *pInstance, byte bEvent) {
             }
 
             if (button_id == button_3) {
-                // fast stop.
-                motor_state = STATE_fadedown;
-                myFaderSpeed_fadeTo(0, 0);
+                switch (motor_state) {
+                    case STATE_notvalid: {
+                        // nothing to do.
+                    } break;
+                    case STATE_fadedown:
+                    case STATE_coast: {
+                        // nothing to do.
+                    } break;
+                    case STATE_fadeup:
+                    case STATE_run: {
+                        motor_state = STATE_fadeup;
+                        myFaderSpeed_fadeTo(
+                            motor_fade_duration,
+                            motor_target_value);
+                    } break;
+                }
                 print_Status(lcd);
             }
             if (button_id == button_4) {
