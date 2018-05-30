@@ -151,7 +151,8 @@ slight_DebugMenu myDebugMenu(Serial, Serial, 15);
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Position detector
 
-const uint8_t pos_pin = A0;
+const uint8_t pos1_pin = A4;
+const uint8_t pos2_pin = A5;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // LEDBoard
@@ -178,6 +179,11 @@ const uint8_t column_count = leds_per_row;
 const uint8_t leds_per_board = leds_per_row*leds_per_column;
 const uint8_t leds_total = leds_per_board*boards_count;
 
+
+const uint8_t BOARD0 = 0;
+const uint8_t BOARD1 = 1;
+
+
 // const uint8_t channel_position_map[leds_per_column][leds_per_row] = {
 //     { 0,  1,  4,  5},
 //     { 2,  3,  6,  7},
@@ -197,26 +203,58 @@ const uint8_t channel_position_map[row_count*2][column_count] = {
 
 const uint8_t pixel_line_count = 8;
 const uint8_t pixel_line_list[pixel_line_count] = {
-     4,
-     6,
+     8,
+    24,
+     9,
+    25,
     12,
-    14,
-    20,
-    22,
     28,
-    30,
+    13,
+    29,
 };
 
-const uint8_t pattern_count = 8;
+const uint8_t pattern_count = 20;
 const uint8_t pattern_map[pixel_line_count][pattern_count] = {
-    { 0,0,0,1,1,0,0,0},
-    { 0,0,1,0,0,1,0,0},
-    { 0,1,0,0,0,0,1,0},
-    { 1,0,0,0,0,0,0,1},
-    { 0,0,0,0,0,0,0,0},
-    { 0,0,0,0,0,0,0,0},
-    { 0,0,0,0,0,0,0,0},
-    { 0,0,0,0,0,0,0,0},
+    // 0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1
+    // 0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9
+    //
+    // +
+    // {  0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    // {  0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    // {  0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    // {  1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0},
+    // {  1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0},
+    // {  0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    // {  0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    // {  0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    // ZickZack
+    // {  0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1},
+    // {  0,0,1,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,0,1},
+    // {  0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,1,0,1},
+    // {  1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,1},
+    // {  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    // {  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    // {  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    // {  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    // :-)
+    {  0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0},
+    {  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {  0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
+    {  0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
+    {  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {  1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0},
+    {  1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0},
+    // pattern
+    // {  1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0},
+    // {  1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,1,0,0},
+    // {  1,1,0,0,0,0,0,1,1,1,0,0,0,0,0,1,0,1,0,0},
+    // {  1,0,1,0,0,0,1,0,1,0,1,0,0,0,1,0,0,1,0,0},
+    // {  1,0,0,1,0,1,0,0,1,0,0,1,0,1,0,0,0,1,0,0},
+    // {  1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0},
+    // {  1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0},
+    // {  1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0},
+    // hort test
     // { 0,0,0,1,1,0,0,0},
     // { 0,0,1,0,0,1,0,0},
     // { 0,1,0,0,0,0,1,0},
@@ -537,7 +575,12 @@ void setup_Boards(Print &out) {
 
     out.println(F("\t set two blue lines"));
 
-    set_line(0, 0, 1);
+    set_line(BOARD0, 0, 0, 1);
+    set_line(BOARD1, 0, 0, 1);
+
+    out.println(F("\t switch infoled off"));
+    debugOut_LiveSign_LED_Enabled = 0;
+    digitalWrite(infoled_pin, LOW);
 
     out.println(F("\t finished."));
 }
@@ -573,29 +616,40 @@ void set_line_old(uint16_t r, uint16_t g, uint16_t b) {
     tlc.write();
 }
 
-void set_line(uint16_t r, uint16_t g, uint16_t b) {
-    // set pattern
-    for (size_t index = 0; index < pixel_line_count; index++) {
-        tlc.setRGB(pixel_line_list[index], r, g, b);
+void set_line(uint8_t board_index, uint16_t r, uint16_t g, uint16_t b) {
+    // for board_index 0: 0,2,4,6
+    // for board_index 1: 1,3,5,7
+    for (
+        size_t line_index = board_index;
+        line_index < pixel_line_count;
+        line_index = line_index + 2
+    ) {
+        tlc.setRGB(pixel_line_list[line_index], r, g, b);
     }
     tlc.write();
 }
 
-void set_line_pattern(uint8_t pattern_id, uint16_t r, uint16_t g, uint16_t b) {
+void set_line_pattern(uint8_t board_index, uint8_t pattern_id, uint16_t r, uint16_t g, uint16_t b) {
     // set pattern
-    for (size_t index = 0; index < pixel_line_count; index++) {
-        // switch (pattern_map[index][pattern_id]) {
+    // for board_index 0: 0,2,4,6
+    // for board_index 1: 1,3,5,7
+    for (
+        size_t line_index = board_index;
+        line_index < pixel_line_count;
+        line_index = line_index + 2
+    ) {
+        // switch (pattern_map[line_index][pattern_id]) {
         //     case 1 : {
-        //         tlc.setRGB(pixel_line_list[index], r, g, b);
+        //         tlc.setRGB(pixel_line_list[line_index], r, g, b);
         //     } break;
         //     default: {
-        //         tlc.setRGB(pixel_line_list[index], 0, 0, 0);
+        //         tlc.setRGB(pixel_line_list[line_index], 0, 0, 0);
         //     };
         // } //end switch
-        if (pattern_map[index][pattern_id] == 1) {
-            tlc.setRGB(pixel_line_list[index], r, g, b);
+        if (pattern_map[line_index][pattern_id] == 1) {
+            tlc.setRGB(pixel_line_list[line_index], r, g, b);
         } else {
-            tlc.setRGB(pixel_line_list[index], 0, 0, 0);
+            tlc.setRGB(pixel_line_list[line_index], 0, 0, 0);
         }
     }
     tlc.write();
@@ -603,11 +657,8 @@ void set_line_pattern(uint8_t pattern_id, uint16_t r, uint16_t g, uint16_t b) {
 
 
 void update_Boards() {
-    // if(
-    //     (millis() - board_timestamp_last) > board_interval
-    // ) {
     if(
-        analogRead(pos_pin) > 210
+        analogRead(pos1_pin) > 210
     ) {
         board_timestamp_last =  millis();
         // set_line(0, 65535, 0);
@@ -619,53 +670,20 @@ void update_Boards() {
         // set_line(0, 65535, 0);
         // set_line(65535, 65535, 0);
         for (size_t pattern_index = 0; pattern_index < pattern_count; pattern_index++) {
-            set_line_pattern(pattern_index, 30000, 0, 65535);
+            set_line_pattern(BOARD0, pattern_index, 30000, 0, 65535);
         }
-        set_line( 0, 0, 0);
+        set_line(BOARD0,  0, 0, 0);
+    }
+    if(
+        analogRead(pos2_pin) > 210
+    ) {
+        // board_timestamp_last =  millis();
+        for (size_t pattern_index = 0; pattern_index < pattern_count; pattern_index++) {
+            set_line_pattern(BOARD1, pattern_index, 30000, 0, 65535);
+        }
+        set_line(BOARD1,  0, 0, 0);
     }
 }
-
-
-
-void show_memory() {
-    // Serial.println("calculate_step__spiral: ");
-
-    const uint8_t spiral_order[leds_per_column][leds_per_row] {
-        { 0, 0, 0, 0},
-        { 0, 0, 0, 0},
-        { 0, 0, 0, 0},
-        { 0, 0, 0, 0},
-    };
-
-    for (size_t column = 0; column < leds_per_column; column++) {
-        for (size_t row = 0; row < leds_per_row; row++) {
-
-            uint8_t pixel = channel_position_map[column][row];
-            uint8_t ch = pixel * 3;
-
-            // set pixel to low
-            // values[ch + 0] = value_low;
-            // values[ch + 1] = value_low;
-            // values[ch + 2] = value_low;
-
-            // if (spiral_order[column][row] == (uint8_t)sequencer_current_step) {
-            //     // set pixel to high
-            //     tlc.setChannel(ch + 0, 0);
-            //     tlc.setChannel(ch + 1, 0);
-            //     tlc.setChannel(ch + 2, value_high);
-            // }
-            // else {
-            //     // set pixel to low
-            //     tlc.setChannel(ch + 0, 0);
-            //     tlc.setChannel(ch + 1, value_low);
-            //     tlc.setChannel(ch + 2, 0);
-            // }
-
-
-        }
-    }
-}
-
 
 void map_to_allBoards() {
     if (output_enabled) {
@@ -700,16 +718,16 @@ void speedtest_TLC5971(Print &out) {
     out.println(F("Speedtest for set_Line"));
     loop_count = 10;
     start = micros();
-        set_line(0, 65535, 0);
-        set_line(0, 0, 0);
-        set_line(0, 65535, 0);
-        set_line(0, 0, 0);
-        set_line(0, 65535, 0);
-        set_line(0, 0, 0);
-        set_line(0, 65535, 0);
-        set_line(0, 0, 0);
-        set_line(0, 65535, 0);
-        set_line(0, 0, 0);
+        set_line(BOARD0, 0, 65535, 0);
+        set_line(BOARD0, 0, 0, 0);
+        set_line(BOARD0, 0, 65535, 0);
+        set_line(BOARD0, 0, 0, 0);
+        set_line(BOARD0, 0, 65535, 0);
+        set_line(BOARD0, 0, 0, 0);
+        set_line(BOARD0, 0, 65535, 0);
+        set_line(BOARD0, 0, 0, 0);
+        set_line(BOARD0, 0, 65535, 0);
+        set_line(BOARD0, 0, 0, 0);
     end = micros();
     duration = end - start;
     out.println(F("\tresults: "));
@@ -732,7 +750,7 @@ void speedtest_TLC5971(Print &out) {
     out.println(F("Speedtest for set_Line(0,xxx,0)"));
     loop_count = 1;
     start = micros();
-        set_line(0, 65535, 0);
+        set_line(BOARD0, 0, 65535, 0);
     end = micros();
     duration = end - start;
     out.println(F("\tresults: "));
@@ -770,7 +788,7 @@ void speedtest_TLC5971(Print &out) {
 
     out.println(F("---- finished."));
     // reset to blue
-    set_line(0, 0, 65535);
+    set_line(BOARD0, 0, 0, 65535);
 }
 
 
@@ -1068,6 +1086,17 @@ void setup() {
     out.println(F("\t finished."));
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // setup position sensors
+
+    out.println(F("setup position sensor:")); {
+        out.println(F("\t set pos1_pin"));
+        pinMode(pos1_pin, INPUT);
+        out.println(F("\t set pos2_pin"));
+        pinMode(pos2_pin, INPUT);
+    }
+    out.println(F("\t finished."));
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // setup XXX1
 
         // out.print(F("# Free RAM = "));
@@ -1137,14 +1166,22 @@ void loop() {
                 Serial.print(F("ms;"));
                 Serial.print(F("  free RAM = "));
                 Serial.print(freeRam());
-                Serial.print(F("; pos voltage: "));
+                // Serial.println();
+                Serial.print(F("; pos1 voltage: "));
                 // 1024 = 5V
                 // analogRead = x
                 // x = 5.0*analogRead/1024
-                uint16_t raw = analogRead(pos_pin);
-                Serial.print(5.0 *  raw / 1024);
+                uint16_t raw1 = analogRead(pos1_pin);
+                Serial.print(5.0 *  raw1 / 1024);
                 Serial.print(F("V (="));
-                Serial.print(raw);
+                Serial.print(raw1);
+                Serial.print(F(")"));
+                // Serial.println();
+                Serial.print(F("; pos2 voltage: "));
+                uint16_t raw2 = analogRead(pos2_pin);
+                Serial.print(5.0 *  raw2 / 1024);
+                Serial.print(F("V (="));
+                Serial.print(raw2);
                 Serial.print(F(")"));
                 Serial.println();
             }
