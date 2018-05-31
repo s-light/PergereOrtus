@@ -4,8 +4,14 @@
 
 simple test to get a first *feeling* about something POV related ;-)
 
-![Test Setup design front view](POV_testsetup__frontview.png)
-![Test Setup design top view](POV_testsetup__topview.png)
+<div class="hoverswitch">
+    <img class="pic" alt="Test Setup design front view" src="POV_testsetup__topview.png">
+    <img class="pic new" alt="Test Setup design top view" src="POV_testsetup__frontview.png">
+</div>
+
+![Test Setup in real](POV_testsetup__real.jpg)
+
+[--> video](https://vimeo.com/272761300)
 
 ---
 # Contents
@@ -38,3 +44,7 @@ will add some sort of Feedback to measure actual speed.
 ### SW_simple_pov_TLC5971
 based on [LEDBoard_4x4_16bit_HWTest](https://github.com/s-light/LEDBoard_4x4_16bit_HWTest).
 implements basics to generate some very simple test-patterns for POV.
+
+## TODO
+- add RPM counter to Motor Controller
+- try some more test patterns
