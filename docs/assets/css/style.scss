@@ -7,13 +7,102 @@
 
 // base layout modifications
 
-.inner {
-	width: 1100px;
+// create a 1 column multi row flex design
+body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+}
+
+body > header {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+}
+
+body > section {
+    order: 0;
+    flex: 1 1 auto;
+    align-self: auto;
+
+	padding-top: 30px;
+	border-top: solid 1px #fff;
+}
+
+// insied of the header
+// create a 2 column flex design
+
+body > header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: stretch;
+    align-items: stretch;
+}
+
+body > header > section {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+    // background-color: rgba(255, 255, 0, 0.5);
+}
+
+// overwrite
+header h2 {
+	width: auto;
+}
+
+header a.button {
+    position: relative;
+	display: block;
+    // margin-left: 2em;
+}
+
+
+// insied of the main section
+// create a 2 column flex design
+
+body > section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+
+body > section > section {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+}
+
+body > section > aside {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+
+    position: sticky;
+    top: 1em;
+    min-width: 12em;
+}
+
+// overwrite
+#main-content {
+	float: none;
+	width: auto;
+	margin-right: 2em;
 }
 
 aside#sidebar {
-    width: 350px;
+    width: auto;
 }
+
+
 
 // navigation
 
@@ -38,7 +127,69 @@ li.sub ul {
 }
 
 
-// specials
+// table
+td, th {
+	padding: 0.1em 0.5em;
+}
+
+// input type="number" with units
+
+input[type="number"] {
+	width: 5em;
+}
+
+// currency
+.unit.euro::after {
+    content: "€";
+    margin-left: -40px;
+}
+
+// seconds
+.unit.seconds::after {
+    content: "s";
+    margin-left: -40px;
+}
+.unit.milliseconds::after {
+    content: "ms";
+    margin-left: -40px;
+}
+.unit.microseconds::after {
+    content: "us";
+    margin-left: -40px;
+}
+.unit.nanoseconds::after {
+    content: "ns";
+    margin-left: -40px;
+}
+.unit.picoseconds::after {
+    content: "ps";
+    margin-left: -40px;
+}
+
+// meter
+.unit.meter::after {
+    content: "m";
+    margin-left: -40px;
+}
+.unit.millimeter::after {
+    content: "mm";
+    margin-left: -40px;
+}
+.unit.micrometer::after {
+    content: "um";
+    margin-left: -40px;
+}
+.unit.nanometer::after {
+    content: "nm";
+    margin-left: -40px;
+}
+.unit.picometer::after {
+    content: "pm";
+    margin-left: -40px;
+}
+
+
+// special images
 
 .hoverswitch {
     display: flex;
