@@ -30,14 +30,14 @@ function findNearestInTree(start_element, selector) {
         // console.log('element', element);
         // check siblings
         if (!result) {
-            console.log('checkSiblings');
+            // console.log('checkSiblings');
             result = checkSiblings(target, element, selector);
         }
 
         // console.log('element', element);
         // check children
         if (!result) {
-            console.log('checkChildren');
+            // console.log('checkChildren');
             result = checkChildren(target, element, selector);
         }
 
@@ -48,7 +48,7 @@ function findNearestInTree(start_element, selector) {
         // console.log('element', element);
         // check parent
         if (!result) {
-            console.log('checkParent');
+            // console.log('checkParent');
             result = checkParent(target, element, selector);
         }
 
@@ -141,16 +141,15 @@ function findNearestInTree(start_element, selector) {
             // check if we have a valid parent
             // (if not we have reached the root of the tree)
             if (parentEl) {
-                console.group('ping: recusive');
-                console.log('new values: \n',
-                '  target', target, '\n',
-                '  new element', parentEl
-                // '  element', element, '\n',
-                // '  parentEl', parentEl
-            );
-            // TODO
-            result = findNearestRecusive(target, parentEl, selector);
-            console.groupEnd();
+                // console.group('ping: recusive');
+                // console.log('new values: \n',
+                //     '  target', target, '\n',
+                //     '  new element', parentEl
+                //     // '  element', element, '\n',
+                //     // '  parentEl', parentEl
+                // );
+                result = findNearestRecusive(target, parentEl, selector);
+                // console.groupEnd();
             }
         }
         return result;
@@ -170,14 +169,14 @@ function findNearestInTree(start_element, selector) {
     let result = null;
     if (start_element) {
         let element_list = document.querySelectorAll(selector);
-        console.log('element_list', element_list);
+        // console.log('element_list', element_list);
         if (element_list.length > 0) {
             if (element_list.length == 1) {
                 // easy - there is only one match.
                 // so we can use it directly..
                 result = element_list[0];
             } else {
-                console.log('start_element', start_element);
+                // console.log('start_element', start_element);
                 result = findNearestRecusive(
                     start_element, start_element, selector);
                 // cleanup();
