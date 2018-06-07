@@ -3,75 +3,59 @@
 <!--lint disable list-item-bullet-indent-->
 <!--lint disable code-block-style-->
 
-find nearest
 <script src="{{ '/assets/js/test_findNearest.js?v=' | append: site.github.build_revision | relative_url }}" charset="utf-8"></script>
 
-<!-- test case for siblings -->
-### world
+<style media="screen">
+    .find-me {
+        border-radius: 0.5em;
+        background-color: rgba(0, 255, 255, 0.03);
+        transition-property: background-color;
+        transition-duration: 1s;
+    }
+    .highlight {
+        background-color: rgba(255, 255, 0, 0.7);
+        transition-property: background-color;
+        transition-duration: 0.5s;
+    }
 
-ein text...
+    .section {
+        border-radius: 0.5em;
+    }
+    .section:hover {
+        background-color: rgba(0, 0, 255, 0.2);
+    }
+</style>
 
-| relative near  | Header Two     |
-| :------------- | :------------- |
-| same level     | Item Two       |
+## test siblings
+<div class="find-me"> :-) </div>
 
+<button type="button" name="test_siblings" id="test_siblings">try me :-)</button>
 
-<!-- test case for parent traversal -->
+<div class="find-me"> :-) </div>
+
+## test children
 <section>
-    <section id="test-children" >
-        <h6>test-children</h6>
+    <button type="button" name="test_children" id="test_children">try me :-)</button>
+    <section>
+        <div class="find-me"> :-) </div>
         <section>
-            <table>
-                <tbody>
-                    <tr>
-                        <td style="text-align: left">one sub level more</td>
-                        <td style="text-align: left">Item Two</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="find-me"> :-) </div>
         </section>
-
-        <p> - </p>
-
-        <table>
-            <tbody>
-                <tr>
-                    <td style="text-align: left">one sub level more</td>
-                    <td style="text-align: left">Item Two</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="find-me"> :-) </div>
     </section>
+    <div class="find-me"> :-) </div>
 </section>
 
+## test parents
 <section>
-    <table>
-        <tbody>
-            <tr>
-                <td style="text-align: left">one sub level</td>
-                <td style="text-align: left">Item Two</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="find-me"> :-) </div>
 </section>
-
-<!-- test case for parent traversal -->
 <section>
     <section>
-        <h5 id="test-parent">test-parent</h5>
+        <button type="button" name="test_parents" id="test_parents">try me :-)</button>
     </section>
 </section>
-
-<section>
-    <table>
-        <tbody>
-            <tr>
-                <td style="text-align: left">one sub level</td>
-                <td style="text-align: left">Item Two</td>
-            </tr>
-        </tbody>
-    </table>
-</section>
+<div class="find-me"> :-) </div>
 
 ## more bla bla
 bla bla bla
