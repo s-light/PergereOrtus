@@ -1,6 +1,8 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Helper functions to find nearest element
 
+// TODO
+// add variant that searches with visual positions
 
 
 // inspired by
