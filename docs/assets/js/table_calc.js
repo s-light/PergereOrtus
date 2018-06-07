@@ -67,22 +67,37 @@ function findNearest(start_element, selector) {
     // internal helper functions
 
     let attribute_name = 'findNearest';
+    // let exclude_selector = ':not([' + attribute_name + '=visited])';
+    let exclude_selector = ':not([' + attribute_name + '])';
 
     // function findNearestRecusive(element_list, selector) {
-    function findNearestRecusive(element, selector) {
+    function findNearestRecusive(target, element, selector) {
         let result = null;
         // let element = element_list[0];
 
+        // console.log('element', element);
         // check siblings
         if (!result) {
             console.log('checkSiblings');
-            result = checkSiblings(element, selector);
+            result = checkSiblings(target, element, selector);
         }
 
+        // console.log('element', element);
         // check children
         if (!result) {
             console.log('checkChildren');
-            result = checkChildren(element, selector);
+            result = checkChildren(target, element, selector);
+        }
+
+        // console.log('element', element);
+        // mark the current element as visited
+        // element.setAttribute(attribute_name, 'visited');
+
+        // console.log('element', element);
+        // check parent
+        if (!result) {
+            console.log('checkParent');
+            result = checkParent(target, element, selector);
         }
 
 
@@ -99,7 +114,7 @@ function findNearest(start_element, selector) {
         return result;
     }
 
-    function checkSiblings(element, selector) {
+    function checkSiblings(target, element, selector) {
         //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // check siblings
         // first check if we have any siblings that are relevant
@@ -111,12 +126,12 @@ function findNearest(start_element, selector) {
             let matching_siblings =
                 parentEl.querySelectorAll(parentPath + ' > ' + selector);
             let nearest_sibling_distance = 999999;
-            let element_index = findNodeIndex(element);
+            let target_index = findNodeIndex(target);
             if (matching_siblings.length > 0) {
                 // (element.parentElement.childElementCount > 1)
                 for (let child of matching_siblings) {
                     let child_index = findNodeIndex(child);
-                    let child_distance = child_index - element_index;
+                    let child_distance = child_index - target_index;
                     //  0 1 2 3 *4 5 6
                     // 2 - 4 = -2
                     // 5 - 4 = 1
@@ -142,28 +157,51 @@ function findNearest(start_element, selector) {
     }
 
 
-    function checkChildren(element, selector) {
+    function checkChildren(target, element, selector) {
         //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // check children
         let nearest_child = null;
         if (element) {
+            // we use a shortcut and hope that the first found is the nearest..
+            nearest_child = element.querySelector(selector);
+
+            // TODO
+            // change this behavior:
+            // check for the nearest element i
             let children = element.children;
             // console.log('children', children);
             // first check if we have any children that are relevant
-            // let matching_children = element.querySelectorAll(selector);
+            let matching_children = element.querySelectorAll(selector);
             // console.log('matching_children', matching_children);
+            if (matching_children > 0 && children.length > 0) {
+                // calculate distance to target_element
+                // compare distances and use nearest.
+            }
 
-            // we use a shortcut and hope that the first found is the nearest..
-            // but exclude elements we already visited..
-            let exclude_selector = '[' + attribute_name + '="visited"]';
-            nearest_child = element.querySelector(selector);
         }
         return nearest_child;
     }
 
-
-    function check(element, selector) {
-
+    function checkParent(target, element, selector) {
+        let result = null;
+        if (element) {
+            let parentEl = element.parentElement;
+            // check if we have a valid parent
+            // (if not we have reached the root of the tree)
+            if (parentEl) {
+                console.group('ping: recusive');
+                console.log('new values: \n',
+                '  target', target, '\n',
+                '  new element', parentEl
+                // '  element', element, '\n',
+                // '  parentEl', parentEl
+            );
+            // TODO
+            result = findNearestRecusive(target, parentEl, selector);
+            console.groupEnd();
+            }
+        }
+        return result;
     }
 
     function cleanup() {
@@ -178,18 +216,25 @@ function findNearest(start_element, selector) {
     // ******************************************
     // main function
     let result = null;
-    let element_list = document.querySelectorAll(selector);
-    if (element_list.length > 0) {
-        if (element_list.length == 1) {
-            // easy - there is only one match.
-            // so we can use it directly..
-            result = element_list[0];
+    if (start_element) {
+        let element_list = document.querySelectorAll(selector);
+        console.log('element_list', element_list);
+        if (element_list.length > 0) {
+            if (element_list.length == 1) {
+                // easy - there is only one match.
+                // so we can use it directly..
+                result = element_list[0];
+            } else {
+                console.log('start_element', start_element);
+                result = findNearestRecusive(
+                    start_element, start_element, selector);
+                // cleanup();
+            }
         } else {
-            result = findNearestRecusive(start_element, selector);
-            cleanup();
+            // nothing found.
         }
     } else {
-        // nothing found.
+        throw 'now start_element given';
     }
     return result;
 }
@@ -278,11 +323,14 @@ function getParentsToRoot(element) {
 
 function getSelectorFromRoot(element) {
     // returns a string that can be used as unique CSS Selector
-    let levels = [element.nodeName];
-    let current = element;
-    while ((current !== null) && (current.nodeName !== 'HTML')) {
-        current = current.parentElement;
-        levels.unshift(current.nodeName);
+    let levels = [];
+    if (element) {
+        levels.unshift(element.nodeName);
+        let current = element;
+        while ((current !== null) && (current.nodeName !== 'HTML')) {
+            current = current.parentElement;
+            levels.unshift(current.nodeName);
+        }
     }
     return levels.join(' > ');
 }

@@ -1,30 +1,8 @@
-# POV
+# test Table Calc
 <!--lint disable list-item-indent-->
 <!--lint disable list-item-bullet-indent-->
 <!--lint disable code-block-style-->
 
-the idea is that the compass needle can rotate slow in both directions to *set* / *point* a direction of choice.
-
-but also can spin up to about 1800rpm (= 30rps) and have LEDs to create a classic POV display.
-
-on every half of the needle are 12..20 LEDs (APA102-2020 or Nichia NSSM124D with TLC5971 or something similar)
-so we have a 12..20-Pixel high circle-screen.
-
-![pov concept overview](pov_concept_overview.svg)
-
-some first simple tests are documented at [POV_simpletest](../../POV_simpletest)
-
----
-# Contents
-{:.no_toc}
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
----
-
-## basic calculations
-
-### 130mm Needle, 3mm Pixel Pitch
 
 | t0 name                                       | value           | formula                                                     | value |
 | :----------------------------------------- | --------------: | ----------------------------------------------------------: | ----: |
@@ -49,6 +27,7 @@ some first simple tests are documented at [POV_simpletest](../../POV_simpletest)
 
 <button type="button" name="bt_update" id="bt_update">update</button>
 
+<script src="{{ '/assets/js/table_calc_example.js?v=' | append: site.github.build_revision | relative_url }}" charset="utf-8"></script>
 <script type="text/javascript">
 
 
@@ -71,39 +50,3 @@ reminder / helper
 1ns = 1GHz
 1ps = 1THz
 ```
-
-
-## links
-- [Baupläne rotierendes Display (inductive transfer for power and data )](https://www.mikrocontroller.net/topic/80808#675198)
-- [POV Poi with Teensy (APA102)](https://forum.pjrc.com/threads/30020-Teensy-APA102-POV-Poi-Pixel-Poi-Build-Tutorial/page11)
-
-## LEDs
-- [APA102-2020]()
-
-- [APA-102-2020-P5 STRIP](http://neon-world.com/en/product_detail.php?cid=94&id=230)
-- [MicroNova LED Strip, 198 LEDs/meter (60564)](https://solarbotics.com/product/60564/)
-
-## LED-Driver
-- APA102 (build into led)
-- [TLC5971]()
-
-| t6 part                                         | data rate | pwm rate | channels | resolution | ch current | comment |
-| :------------------------------------------- | :-------- | :------- | :------- | :--------- | :--------- | :------ |
-| [APA102](https://cpldcpu.wordpress.com/2014/08/27/apa102/) | ~10 - 20MHz | 20kHz | 3 | 8Bit |  18mA      | simple to use - but no real datasheet values |
-| [TLC5971](http://www.ti.com/product/TLC5971) | 20MHz     |  ?       | 12       | 16Bit      |  60mA      | internal oscillator, available libs |
-| [TLC5947](http://www.ti.com/product/TLC5947) | 15MHz     |  4MHz    | 24       | 12Bit      |  30mA      | internal oscillator |
-| [TLC5930](http://www.ti.com/product/TLC5930) | 20MHz     | 10MHz/20MHz | 12       | 10Bit      |  30mA      | internal oscillator |
-| [TLC5943](http://www.ti.com/product/TLC5943) | 30MHz     | 33MHz    | 16       | 16Bit      |  50mA      | schnick-schnack-systems is using these. needs external GS clock |
-
-
-## infrared data transmission
-[look at pov_datatransmission.md](pov_datatransmission.md)
-
-## power transmission
-[look at pov_powertransmission.md](pov_powertransmission.md)
-
-## motor
-[look at pov_motor.md](pov_motor.md)
-
-## 3D
-- [more research & brainstorming at POV_3D/](POV_3D/readme.md)

@@ -34,11 +34,19 @@ function init() {
     // );
     // console.groupEnd();
 
-    // test for siblings
-    console.group('findNearest(*#own-children*, \'table\')');
+    // test for children
+    console.group('findNearest(*#test-children*, \'table\')');
     console.log(
         '!! result:',
-        findNearest(document.querySelector('#own-children'), 'table')
+        findNearest(document.querySelector('#test-children'), 'table')
+    );
+    console.groupEnd();
+
+    // test for parent
+    console.group('findNearest(*#test-parent*, \'table\')');
+    console.log(
+        '!! result:',
+        findNearest(document.querySelector('#test-parent'), 'table')
     );
     console.groupEnd();
 
