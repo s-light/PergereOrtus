@@ -1,6 +1,7 @@
 # POV
 <!--lint disable list-item-indent-->
 <!--lint disable list-item-bullet-indent-->
+<!--lint disable code-block-style-->
 
 the idea is that the compass needle can rotate slow in both directions to *set* / *point* a direction of choice.
 
@@ -25,7 +26,7 @@ some first simple tests are documented at [POV_simpletest](../../POV_simpletest)
 
 ### 130mm Needle, 3mm Pixel Pitch
 
-| name                                       | value           | formula                                                     | value |
+| t0 name                                       | value           | formula                                                     | value |
 | :----------------------------------------- | --------------: | ----------------------------------------------------------: | ----: |
 | updates_per_second = revolution_per_second | 30              |                                                             | <input type="number" class="unit rpm" id="updates_per_second" value="30" step="1" min="0" max="120"/> |
 | revolution per minute (RPM)                | 1800            | revolution_per_second * 60                                  | <span id="rpm"></span> |
@@ -48,20 +49,121 @@ some first simple tests are documented at [POV_simpletest](../../POV_simpletest)
 
 <button type="button" name="bt_update" id="bt_update">update</button>
 
-<section>
-| test | blub |
-| :--- | :--- |
-| sun  | sun  |
-</section>
+-
 
+| relative near  | Header Two     |
+| :------------- | :------------- |
+| same level     | Item Two       |
+
+-
+
+<!-- test case for siblings -->
+### world
+
+ein text...
+
+| relative near  | Header Two     |
+| :------------- | :------------- |
+| same level     | Item Two       |
+
+-
+
+
+
+
+
+<!-- test case for parent traversal -->
 <section>
-    <section>
-        <h5>subsub...</h5>
-        | test | blub |
-        | :--- | :--- |
-        | sun  | sun  |
+    <section id="own-children" >
+        <h6>own-children</h6>
+        <section>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="text-align: left">more longer way</th>
+                        <th style="text-align: left">Header Two</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: left">one sub level more</td>
+                        <td style="text-align: left">Item Two</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <p> - </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align: left">more longer way</th>
+                    <th style="text-align: left">Header Two</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: left">one sub level more</td>
+                    <td style="text-align: left">Item Two</td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 </section>
+
+
+
+
+-
+
+<section>
+    <table>
+        <thead>
+            <tr>
+                <th style="text-align: left">long way</th>
+                <th style="text-align: left">Header Two</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: left">one sub level more</td>
+                <td style="text-align: left">Item Two</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+-
+
+<!-- test case for parent traversal -->
+<section>
+    <section>
+        <h5>parenttest</h5>
+    </section>
+</section>
+
+-
+
+<section>
+    <table>
+        <thead>
+            <tr>
+                <th style="text-align: left">more longer way</th>
+                <th style="text-align: left">Header Two</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: left">one sub level more</td>
+                <td style="text-align: left">Item Two</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+
 
 <script type="text/javascript">
 
@@ -101,13 +203,13 @@ reminder / helper
 - APA102 (build into led)
 - [TLC5971]()
 
-| part                                         | data rate | pwm rate | channels | resolution | ch current | comment |
+| t6 part                                         | data rate | pwm rate | channels | resolution | ch current | comment |
 | :------------------------------------------- | :-------- | :------- | :------- | :--------- | :--------- | :------ |
 | [APA102](https://cpldcpu.wordpress.com/2014/08/27/apa102/) | ~10 - 20MHz | 20kHz | 3 | 8Bit |  18mA      | simple to use - but no real datasheet values |
 | [TLC5971](http://www.ti.com/product/TLC5971) | 20MHz     |  ?       | 12       | 16Bit      |  60mA      | internal oscillator, available libs |
-| [TLC5947](http://www.ti.com/product/TLC5947) | 15MHz     |  4MHz    | 24       | 12Bit      |  30mA      | internal oscillator|
-| [TLC5930](http://www.ti.com/product/TLC5930) | 20MHz     | 10MHz/20MHz | 12       | 10Bit      |  30mA      | internal oscillator|
-| [TLC5943](http://www.ti.com/product/TLC5943) | 30MHz     | 33MHz    | 16       | 16Bit      |  50mA      | schnick-schnack-systems is useing these. needs external GS clock |
+| [TLC5947](http://www.ti.com/product/TLC5947) | 15MHz     |  4MHz    | 24       | 12Bit      |  30mA      | internal oscillator |
+| [TLC5930](http://www.ti.com/product/TLC5930) | 20MHz     | 10MHz/20MHz | 12       | 10Bit      |  30mA      | internal oscillator |
+| [TLC5943](http://www.ti.com/product/TLC5943) | 30MHz     | 33MHz    | 16       | 16Bit      |  50mA      | schnick-schnack-systems is using these. needs external GS clock |
 
 
 ## infrared data transmission

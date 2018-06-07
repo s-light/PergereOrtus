@@ -18,8 +18,34 @@ function init() {
 
     let bt_update = document.querySelector('#bt_update');
     // find nearest table
-    let table_element = findNearest(bt_update, 'table');
-    // findNearest(document.querySelector('#bt_update'), 'table');
+    let table_element = null;
+    // let table_element = findNearest(bt_update, 'table');
+    // console.log('table_element', table_element);
+    // console.group('findNearest(*bt_update*, \'table\')');
+    // console.log('!! result:', findNearest(bt_update, 'table'));
+    // console.groupEnd();
+    // console.log('\n---------');
+
+    // test for siblings
+    // console.group('findNearest(*#world*, \'table\')');
+    // console.log(
+    //     '!! result:',
+    //     findNearest(document.querySelector('#world'), 'table')
+    // );
+    // console.groupEnd();
+
+    // test for siblings
+    console.group('findNearest(*#own-children*, \'table\')');
+    console.log(
+        '!! result:',
+        findNearest(document.querySelector('#own-children'), 'table')
+    );
+    console.groupEnd();
+
+
+    // findNearest(document.querySelector('#leds'), 'table');
+
+
 
     let column_meaning = [
         'name',
