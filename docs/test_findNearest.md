@@ -4,7 +4,7 @@
 <!--lint disable code-block-style-->
 
 find nearest
-<script src="{{ '/assets/js/table_calc_example.js?v=' | append: site.github.build_revision | relative_url }}" charset="utf-8"></script>
+<script src="{{ '/assets/js/test_findNearest.js?v=' | append: site.github.build_revision | relative_url }}" charset="utf-8"></script>
 
 <!-- test case for siblings -->
 ### world
