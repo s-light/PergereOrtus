@@ -95,7 +95,7 @@ body > section > aside {
 #main-content {
 	float: none;
 	width: auto;
-    max-width: 60em;
+    max-width: 70em;
 	margin-right: 2em;
 }
 
@@ -125,6 +125,13 @@ nav li.current {
 
 li.sub ul {
 	margin-bottom: 0;
+}
+
+
+
+// text
+#main-content p {
+    max-width: 60em;
 }
 
 
