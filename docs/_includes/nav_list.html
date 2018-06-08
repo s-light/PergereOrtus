@@ -279,7 +279,7 @@
             <li
                 {% if page.url == page_entry.url %}class="current"{% endif %}
             >
-                <a href="{{ page_entry.url }}">{{ page_entry.title }}</a>
+                <a href="{{ page_entry.url | absolute_url }}">{{ page_entry.title }}</a>
             </li>
         {% elsif
             this_level > start_level
@@ -288,7 +288,7 @@
         %}
             {% assign old_urlpart = this_level_urlpart %}
             <li class="sub">
-                <a href="{{ page_entry.url }}">{{ page_entry.title }}</a><br>
+                <a href="{{ page_entry.url | absolute_url }}">{{ page_entry.title }}</a><br>
                 {% assign next_sub_level = this_level %}
 
                 <!-- next_sub_level: {{ next_sub_level | inspect }}<br> -->

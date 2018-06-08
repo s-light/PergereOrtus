@@ -8,7 +8,7 @@
             <li
                 {% if page.url == page_entry.url %}class="current"{% endif %}
             >
-                <a href="{{ page_entry.url }}">{{ page_entry.title }}</a>
+                <a href="{{ page_entry.url | absolute_url }}">{{ page_entry.title }}</a>
             </li>
         {% endif %}
     {% endfor %}
