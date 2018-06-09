@@ -6,15 +6,15 @@
 
 | name                                       | value           | formula                                                     | value |
 | :----------------------------------------- | --------------: | ----------------------------------------------------------: | ----: |
-| updates_per_second = revolution_per_second | 30              |                                                             | <input type="number" class="unit rpm"  value="30" step="1" min="0" max="120"/> |
-| rpm (revolution per minute)                | 1800            | revolution_per_second * 60                                  | <span class="value"></span> |
-| pixel_pitch                                | 3mm             |                                                             | <input type="number" class="unit millimeter"  value="3" step="0.1" min="0" max="20" /> |
-| needle_diameter                            | 130mm           |                                                             | <input type="number" class="unit millimeter"  value="130" step="1" min="0" max="500" /> |
-| needle_active_radius                       | 60mm            | (needle_diameter - 10mm) / 2                                | <span class="unit millimeter"></span> |
+| updates_per_second = revolution_per_second | 30              |                                                             | <label class="unit rpm"><input type="number" value="30" step="1" min="0" max="120"/></label> |
+| rpm (revolution per minute)                | 1800            | revolution_per_second * 60                                  | <span class="">1800</span> |
+| pixel_pitch                                | 3mm             |                                                             | <label class="unit millimeter"><input type="number" value="3" step="0.1" min="0" max="20" /></label> |
+| needle_diameter                            | 130mm           |                                                             | <label class="unit millimeter"><input type="number" value="130" step="1" min="0" max="500" /></label> |
+| needle_active_radius                       | 60mm            | (needle_diameter - 10mm) / 2                                | <span class="unit millimeter">60</span> |
 | pixel_count_one_side                       | 20              | needle_active_radius / pixel_pitch                          | <span class=""></span> |
-| pixel_count_total                          | 40              | pixel_count_one_side * 2                                    | <input type="number" class=""  value="40" step="1" min="0" max="1000" /> |
+| pixel_count_total                          | 40              | pixel_count_one_side * 2                                    | <label class=""><input type="number"   value="40" step="1" min="0" max="1000" /></label> |
 | pixel_circumference                        | 408mm           | π * needle_diameter                                         | <span class="unit millimeter"></span> |
-| pixel_circumference_virtual_count          | 136             | pixel_circumference / pixel_pitch                           | <input type="number" class=""  value="136" step="1" min="0" max="1440" /> |
+| pixel_circumference_virtual_count          | 136             | pixel_circumference / pixel_pitch                           | <label class=""><input type="number"   value="136" step="1" min="0" max="1440" /></label> |
 | pixel_updates_per_second                   | 4080            | revolution_per_second * pixel_updates_per_revolution        | <span class=""></span> |
 | pixel_updates_per_revolution               | 136             | = pixel_circumference_virtual_count                         | <span class=""></span> |
 | pixel_updates_per_minute                   | 244800          | revolution_per_minute * pixel_updates_per_revolution        | <span class=""></span> |

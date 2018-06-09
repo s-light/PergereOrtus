@@ -140,60 +140,74 @@ td, th {
 	padding: 0.1em 0.5em;
 }
 
-// input type="number" with units
+// input type="number"
 
 input[type="number"] {
 	width: 5em;
 }
 
+// units
+label.unit::after {
+    content: " ";
+    margin-left: -50px;
+}
+
+span.unit::after {
+    content: "&nbsp;";
+    margin-left: 0.1em;
+}
+
 // currency
 .unit.euro::after {
     content: "€";
-    margin-left: -40px;
 }
 
 // seconds
 .unit.seconds::after {
     content: "s";
-    margin-left: -40px;
 }
 .unit.milliseconds::after {
     content: "ms";
-    margin-left: -40px;
 }
 .unit.microseconds::after {
     content: "us";
-    margin-left: -40px;
 }
 .unit.nanoseconds::after {
     content: "ns";
-    margin-left: -40px;
 }
 .unit.picoseconds::after {
     content: "ps";
-    margin-left: -40px;
 }
 
 // meter
 .unit.meter::after {
     content: "m";
-    margin-left: -40px;
 }
 .unit.millimeter::after {
     content: "mm";
-    margin-left: -40px;
 }
 .unit.micrometer::after {
     content: "um";
-    margin-left: -40px;
 }
 .unit.nanometer::after {
     content: "nm";
-    margin-left: -40px;
 }
 .unit.picometer::after {
     content: "pm";
-    margin-left: -40px;
+}
+
+// hertz
+.unit.hertz::after {
+    content: "Hz";
+}
+.unit.kilohertz::after {
+    content: "kHz";
+}
+.unit.megahertz::after {
+    content: "MHz";
+}
+.unit.gigahertz::after {
+    content: "GHz";
 }
 
 
