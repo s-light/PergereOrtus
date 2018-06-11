@@ -41,7 +41,7 @@ class FormulaTable {
 
     getElementByFunction(row, name) {
         let el_index = this.column_meaning.indexOf(name);
-        let element = row.children[value_index];
+        let element = row.children[el_index];
         return element;
     }
 
@@ -93,10 +93,14 @@ class FormulaTable {
 
     getValueFromElement(element) {
         let value = undefined;
+        console.log('element', element);
         // check if element is input
-        if (element.nodeName === 'INPUT') {
+        if (element.firstElementChild.nodeName === 'LABEL') {
+            element = element.firstElementChild;
+        }
+        if (element.firstElementChild.nodeName === 'INPUT') {
             // get value
-            value = element.value;
+            value = element.firstElementChild.value;
         } else {
             // get content
             value = this.getTextValueFromElement(element);
@@ -124,7 +128,7 @@ class FormulaTable {
     getFormulaFromVariable(variable_name) {
         let value = undefined;
         let row = this.findRowFromVariable(variable_name);
-        let element = getElementByFunction(row, 'formula');
+        let element = this.getElementByFunction(row, 'formula');
         value = this.getTextFromFirstTextNodeFromElement(element);
         return value;
     }
@@ -132,7 +136,7 @@ class FormulaTable {
     getValueFromVariable(variable_name) {
         let value = undefined;
         let row = this.findRowFromVariable(variable_name);
-        let value_element = getElementByFunction(row, 'value');
+        let value_element = this.getElementByFunction(row, 'value');
         value = this.getValueFromElement(value_element);
         return value;
     }
