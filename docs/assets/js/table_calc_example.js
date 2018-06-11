@@ -55,16 +55,11 @@ function init() {
 
     // myFormulaTable = new FormulaTable(table_element, column_meaning, order);
     myFormulaTable = new FormulaTable(table_element, column_meaning);
-    // map instance internal getValue to global getValue
-    getValue = myFormulaTable.getValue;
-
-    bt_update.addEventListener('click', myFormulaTable.update_table);
 
     myFormulaTable.addEventListenerForAllInputs('change');
-    // let input_updates_per_second =
-    //     document.querySelector('#updates_per_second');
-    // input_updates_per_second.addEventListener(
-    //     'change', myFormulaTable.update_table_below);
+    bt_update.addEventListener('click', event => {
+        myFormulaTable.update_table(event);
+    });
 
     console.groupEnd();
 }

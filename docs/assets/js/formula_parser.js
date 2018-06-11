@@ -108,7 +108,7 @@ case 10:this.$ = $$[$0-1];
 break;
 case 11:this.$ = Number(yytext);
 break;
-case 12: typeof getValue !== 'undefined' ? this.$ = getValue(yytext) : this.$ = NaN;
+case 12: typeof yy.getValue !== 'undefined' ? this.$ = yy.getValue(yytext) : this.$ = NaN;
 break;
 case 13:this.$ = Math.E;
 break;
@@ -340,18 +340,20 @@ case 10:return 14
 break;
 case 11:return 18
 break;
-case 12:return 17
+case 12:return 18
 break;
-case 13:return 16
+case 13:return 17
 break;
-case 14:return 5
+case 14:return 16
 break;
-case 15:return 'INVALID'
+case 15:return 5
+break;
+case 16:return 'INVALID'
 break;
 }
 },
-rules: [/^(?:\s+)/,/^(?:[0-9]+(\.[0-9]+)?\b)/,/^(?:\*)/,/^(?:\/)/,/^(?:-)/,/^(?:\+)/,/^(?:\^)/,/^(?:!)/,/^(?:%)/,/^(?:\()/,/^(?:\))/,/^(?:PI\b)/,/^(?:E\b)/,/^(?:^[a-zA-z]+([a-zA-z_0-9]+)?\b)/,/^(?:$)/,/^(?:.)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],"inclusive":true}}
+rules: [/^(?:\s+)/,/^(?:[0-9]+(\.[0-9]+)?\b)/,/^(?:\*)/,/^(?:\/)/,/^(?:-)/,/^(?:\+)/,/^(?:\^)/,/^(?:!)/,/^(?:%)/,/^(?:\()/,/^(?:\))/,/^(?:PI\b)/,/^(?:π)/,/^(?:E\b)/,/^(?:^[a-zA-z]+([a-zA-z_0-9]+)?\b)/,/^(?:$)/,/^(?:.)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],"inclusive":true}}
 };
 return lexer;
 })();

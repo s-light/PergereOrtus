@@ -25,6 +25,7 @@
 "("                   return '('
 ")"                   return ')'
 "PI"                  return 'PI'
+"π"                   return 'PI'
 "E"                   return 'E'
 ^[a-zA-z]+([a-zA-z_0-9]+)?\b  return 'ELEMENTVALUE'
 <<EOF>>               return 'EOF'
@@ -75,7 +76,7 @@ e
     | NUMBER
         {$$ = Number(yytext);}
     | ELEMENTVALUE
-        { typeof getValue !== 'undefined' ? $$ = getValue(yytext) : $$ = NaN;}
+    { typeof yy.getValue !== 'undefined' ? $$ = yy.getValue(yytext) : $$ = NaN;}
     | E
         {$$ = Math.E;}
     | PI
