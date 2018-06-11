@@ -144,17 +144,19 @@ td, th {
 
 input[type="number"] {
 	width: 5em;
+    position: relative;
 }
 
 // units
 label.unit::after {
     content: " ";
     margin-left: -50px;
+    position: absolute;
 }
 
 span.unit::after {
     content: "&nbsp;";
-    margin-left: 0.1em;
+    margin-left: 0.2em;
 }
 
 // currency
