@@ -172,7 +172,7 @@ class FormulaTable {
                 // try to get child with
                 let child = element.children[child_index];
                 if (child) {
-                    console.log('child:', child);
+                    // console.log('child:', child);
                     this.setTextFromFirstTextNodeFromElement(child, value);
                 }
             }
@@ -260,14 +260,13 @@ class FormulaTable {
     // updates
 
     updateRowWithVariable(variable_name) {
-        console.log('updateRowWithVariable:', variable_name);
-        // TODO
+        // console.log('updateRowWithVariable:', variable_name);
         let formula = this.getFormulaFromVariable(variable_name);
-        console.log('formula: \'' + formula + '\'');
+        // console.log('formula: \'' + formula + '\'');
         if (formula.length > 1) {
-            console.log('try to parse...');
+            // console.log('try to parse...');
             let result = this.parser.parse(formula);
-            console.log('result', result);
+            // console.log('result', result);
             this.setValueFromVariable(variable_name, result);
         }
     }
