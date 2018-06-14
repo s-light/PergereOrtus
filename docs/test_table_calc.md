@@ -32,10 +32,6 @@
 <button type="button" name="bt_update" id="bt_update">update</button>
 
 <script src="{{ '/assets/js/table_calc_example.js?v=' | append: site.github.build_revision | relative_url }}" charset="utf-8"></script>
-<script type="text/javascript">
-
-
-</script>
 
 
 

@@ -36,21 +36,7 @@ function init() {
     //     'updates_per_second',                   // input
     //     'rpm',
     //     'pixel_pitch',                          // input
-    //     'needle_diameter',                      // input
-    //     'needle_active_radius',
-    //     'pixel_count_one_side',
-    //     'pixel_count_total',                    // input
-    //     'pixel_circumference',
-    //     'pixel_circumference_virtual_count',    // input
-    //     'pixel_updates_per_revolution',
-    //     'pixel_updates_per_second',
-    //     'pixel_updates_per_minute',
-    //     'duration_per_revolution',
-    //     'duration_per_pixel',
-    //     'pixel_pwm_rate_for_8bit',
-    //     'pixel_pwm_rate_for_10bit',
-    //     'pixel_pwm_rate_for_12bit',
-    //     'pixel_pwm_rate_for_16bit',
+    // ........
     // ];
 
     // myFormulaTable = new FormulaTable(table_element, column_meaning, order);

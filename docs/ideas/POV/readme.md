@@ -26,33 +26,34 @@ some first simple tests are documented at [POV_simpletest](../../POV_simpletest)
 
 ### 130mm Needle, 3mm Pixel Pitch
 
-| t0 name                                       | value           | formula                                                     | value |
-| :----------------------------------------- | --------------: | ----------------------------------------------------------: | ----: |
-| updates_per_second = revolution_per_second | 30              |                                                             | <input type="number" class="unit rpm" id="updates_per_second" value="30" step="1" min="0" max="120"/> |
-| revolution per minute (RPM)                | 1800            | revolution_per_second * 60                                  | <span id="rpm"></span> |
-| pixel_pitch                                | 3mm             |                                                             | <input type="number" class="unit millimeter" id="pixel_pitch" value="3" step="0.1" min="0" max="20" /> |
-| needle_diameter                            | 130mm           |                                                             | <input type="number" class="unit millimeter" id="needle_diameter" value="130" step="1" min="0" max="500" /> |
-| needle_active_radius                       | 60mm            | (needle_diameter - 10mm) / 2                                | <span id="needle_active_radius"></span> |
-| pixel_count_one_side                       | 20              | needle_active_radius / pixel_pitch                          | <span id="pixel_count_one_side"></span> |
-| pixel_count_total                          | 40              | pixel_count_one_side * 2                                    | <input type="number" class="" id="pixel_count_total" value="40" step="1" min="0" max="1000" /> |
-| pixel_circumference                        | 408mm           | π * needle_diameter                                         | <span id="pixel_circumference"></span> |
-| pixel_circumference_virtual_count          | 136             | pixel_circumference / pixel_pitch                           | <input type="number" class="" id="pixel_circumference_virtual_count" value="136" step="1" min="0" max="1440" /> |
-| pixel_updates_per_revolution               | 136             | = pixel_circumference_virtual_count                         | <span id="pixel_updates_per_revolution"></span> |
-| pixel_updates_per_second                   | 4080            | revolution_per_second * pixel_updates_per_revolution        | <span id="pixel_updates_per_second"></span> |
-| pixel_updates_per_minute                   | 244800          | revolution_per_minute * pixel_updates_per_revolution        | <span id="pixel_updates_per_minute"></span> |
-| duration_per_revolution                    | 33ms            | 1000ms / updates_per_second                                 | <span id="duration_per_revolution"></span> |
-| duration_per_pixel                         | 242us           | duration_per_revolution / pixel_circumference_virtual_count | <span id="duration_per_pixel"></span> |
-| pixel_pwm_rate_for_8bit       256          | 945ns   1,06MHz | duration_per_pixel /   256                                  | <span id="pixel_pwm_rate_for_8bit"></span> |
-| pixel_pwm_rate_for_10bit     1024          | 236ns   4,24MHz | duration_per_pixel /  1024                                  | <span id="pixel_pwm_rate_for_10bit"></span> |
-| pixel_pwm_rate_for_12bit     4096          |  59ns  16,95MHz | duration_per_pixel /  4096                                  | <span id="pixel_pwm_rate_for_12bit"></span> |
-| pixel_pwm_rate_for_16bit    65535          | 3,7ns 270,27MHz | duration_per_pixel / 65535                                  | <span id="pixel_pwm_rate_for_16bit"></span> |
+| name                                       | value     | formula                                              | value |
+| :----------------------------------------- | --------: | ---------------------------------------------------: | ----: |
+| updates_per_second = revolution_per_second | 30        |                                                      | <label class="unit rpm"><input type="number" value="30" step="1" min="0" max="120"/></label> |
+| rpm (revolution per minute)                | 1800      | updates_per_second * 60                              | <span class="">1800</span> |
+| pixel_pitch                                | 3mm       |                                                      | <label class="unit millimeter"><input type="number" value="3" step="0.1" min="0" max="20" /></label> |
+| needle_diameter                            | 130mm     |                                                      | <label class="unit millimeter"><input type="number" value="130" step="1" min="0" max="500" /></label> |
+| needle_active_radius                       | 60mm      | (needle_diameter - 10) / 2                           | <span class="unit millimeter">60</span> |
+| pixel_count_one_side                       | 20        | toFixed(needle_active_radius / pixel_pitch; 0)       | <span class=""></span> |
+| pixel_count_total                          | 40        | pixel_count_one_side * 2                             | <label class=""><input type="number"   value="40" step="1" min="0" max="1000" /></label> |
+| pixel_circumference                        | 408mm     | toFixed(π * needle_diameter; 1)                      | <span class="unit millimeter"></span> |
+| pixel_circ_vcount                          | 136       | toFixed(pixel_circumference / pixel_pitch)           | <label class=""><input type="number"   value="136" step="1" min="0" max="1440" /></label> |
+| pixel_updates_per_revolution               | 136       | pixel_circ_vcount                                    | <span class=""></span> |
+| pixel_updates_per_second                   | 4080      | updates_per_second * pixel_updates_per_revolution    | <span class=""></span> |
+| pixel_updates_per_minute                   | 244800    | rpm * pixel_updates_per_revolution                   | <span class=""></span> |
+| duration_per_revolution                    | 33ms      | toFixed(1000 / updates_per_second; 1)                | <span class="unit milliseconds"></span> |
+| duration_per_pixel                         | 242us     | toFixed((duration_per_revolution / pixel_circ_vcount) * 1000; 0) | <span class="unit microseconds"></span> |
+| pixel_pwm_duration_for_8bit                | 945ns     | toFixed((duration_per_pixel * 1000) /   256; 0)      | <span class="unit nanoseconds"></span> |
+| pixel_pwm_rate_for_8bit                    | 1,06MHz   | toFixed(1000 / pixel_pwm_duration_for_8bit ; 2)      | <span class="unit megahertz"></span> |
+| pixel_pwm_duration_for_10bit               | 236ns     | toFixed((duration_per_pixel * 1000) /  1024; 0)      | <span class="unit nanoseconds"></span> |
+| pixel_pwm_rate_for_10bit                   | 4,24MHz   | toFixed(1000 / pixel_pwm_duration_for_10bit; 2)      | <span class="unit megahertz"></span> |
+| pixel_pwm_duration_for_12bit               |  59ns     | toFixed((duration_per_pixel * 1000) /  4096; 0)      | <span class="unit nanoseconds"></span> |
+| pixel_pwm_rate_for_12bit                   | 16,95MHz  | toFixed(1000 / pixel_pwm_duration_for_12bit; 2)      | <span class="unit megahertz"></span> |
+| pixel_pwm_duration_for_16bit               | 3,7ns     | toFixed((duration_per_pixel * 1000) / 65535; 2)      | <span class="unit nanoseconds"></span> |
+| pixel_pwm_rate_for_16bit                   | 270,27MHz | toFixed(1000 / pixel_pwm_duration_for_16bit; 2)      | <span class="unit megahertz"></span> |
 
 <button type="button" name="bt_update" id="bt_update">update</button>
 
-<script type="text/javascript">
-
-
-</script>
+<script src="{{ '/assets/js/table_calc_example.js?v=' | append: site.github.build_revision | relative_url }}" charset="utf-8"></script>
 
 
 
