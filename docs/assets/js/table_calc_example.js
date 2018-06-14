@@ -28,8 +28,8 @@ function init() {
     let column_meaning = [
         'name',
         'test',
-        'formula',
         'value',
+        'formula',
     ];
 
     // let order = [
@@ -46,6 +46,8 @@ function init() {
     bt_update.addEventListener('click', event => {
         myFormulaTable.update_table(event);
     });
+
+    myFormulaTable.update_table();
 
     console.groupEnd();
 }
