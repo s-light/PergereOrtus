@@ -26,11 +26,11 @@ some first simple tests are documented at [POV_simpletest](../../POV_simpletest)
 
 ### 130mm Needle, 3mm Pixel Pitch
 
-| name                                       | value     | value                                            | formula                                               |
+| name                                       | test      | value                                            | formula                                               |
 | :----------------------------------------- | --------: | -----------------------------------------------: | ----------------------------------------------------: |
 | updates_per_second = revolution_per_second | 30        | <label class="unit rpm"><input type="number" value="30" step="1" min="0" max="120"/></label> |           |
 | rpm (revolution per minute)                | 1800      | <span class="">1800</span>                       | updates_per_second * 60                               |
-| pixel_pitch                                | 3mm       | <label class="unit millimeter"><input type="number" value="3" step="0.1" min="0" max="20" /></label> |   |
+| pixel_pitch                                | 3mm       | <label class="unit millimeter"><input type="number" value="1.5" step="0.1" min="0" max="20" /></label> |   |
 | needle_diameter                            | 130mm     | <label class="unit millimeter"><input type="number" value="130" step="1" min="0" max="500" /></label> |  |
 | needle_active_radius                       | 60mm      | <span class="unit millimeter">60</span>          | (needle_diameter - 10) / 2                            |
 | pixel_count_one_side                       | 20        | <span class=""></span>                           | toFixed(needle_active_radius / pixel_pitch; 0)        |
@@ -87,13 +87,15 @@ reminder / helper
 - APA102 (build into led)
 - [TLC5971]()
 
-| t6 part                                         | data rate | pwm rate | channels | resolution | ch current | comment |
-| :------------------------------------------- | :-------- | :------- | :------- | :--------- | :--------- | :------ |
-| [APA102](https://cpldcpu.wordpress.com/2014/08/27/apa102/) | ~10 - 20MHz | 20kHz | 3 | 8Bit |  18mA      | simple to use - but no real datasheet values |
-| [TLC5971](http://www.ti.com/product/TLC5971) | 20MHz     |  ?       | 12       | 16Bit      |  60mA      | internal oscillator, available libs |
-| [TLC5947](http://www.ti.com/product/TLC5947) | 15MHz     |  4MHz    | 24       | 12Bit      |  30mA      | internal oscillator |
-| [TLC5930](http://www.ti.com/product/TLC5930) | 20MHz     | 10MHz/20MHz | 12       | 10Bit      |  30mA      | internal oscillator |
-| [TLC5943](http://www.ti.com/product/TLC5943) | 30MHz     | 33MHz    | 16       | 16Bit      |  50mA      | schnick-schnack-systems is using these. needs external GS clock |
+- [TI forum question](https://e2e.ti.com/support/power_management/led_driver/f/192/t/699773)
+
+| part                                         | data rate | pwm rate       | channels | resolution | ch current | comment |
+| :------------------------------------------- | :-------- | :------------- | :------- | :--------- | :--------- | :------ |
+| [APA102](https://cpldcpu.wordpress.com/2014/08/27/apa102/) | ~10 - 20MHz | 20kHz | 3 | 8Bit       |  18mA      | simple to use - but no real datasheet values |
+| [TLC5971](http://www.ti.com/product/TLC5971) | 20MHz     | 10MHz/20MHz    | 12       | 16Bit      |  60mA      | internal oscillator, available libs |
+| [TLC5947](http://www.ti.com/product/TLC5947) | 15MHz     |  4MHz          | 24       | 12Bit      |  30mA      | internal oscillator |
+| [TLC5930](http://www.ti.com/product/TLC5930) | 20MHz     | 10MHz/20MHz    | 12       | 10Bit      |  30mA      | internal oscillator |
+| [TLC5943](http://www.ti.com/product/TLC5943) | 30MHz     | 33MHz          | 16       | 16Bit      |  50mA      | schnick-schnack-systems is using these. needs external GS clock |
 
 
 ## infrared data transmission
