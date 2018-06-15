@@ -96,11 +96,12 @@ body > section > aside {
 	float: none;
 	width: auto;
     max-width: 70em;
-	margin-right: 2em;
+	margin-right: 0;
 }
 
 aside#sidebar {
     width: auto;
+    margin-left: 2em;
 }
 
 
