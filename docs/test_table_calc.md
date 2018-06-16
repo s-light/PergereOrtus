@@ -49,3 +49,12 @@ reminder / helper
 1ns = 1GHz
 1ps = 1THz
 ```
+
+
+# Browser info
+
+<script src="{{ '/assets/js/browser_info.js?v=' | append: site.github.build_revision | relative_url }}" charset="utf-8"></script>
+
+<pre id="browser_info">
+browser info
+</pre>
