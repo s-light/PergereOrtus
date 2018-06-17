@@ -55,6 +55,6 @@ reminder / helper
 
 <script src="{{ '/assets/js/browser_info.js?v=' | append: site.github.build_revision | relative_url }}" charset="utf-8"></script>
 
-<pre id="browser_info" style="font-size:8px;">
+<pre id="browser_info" style="font-size:8px; z-index:20; background-color:lime; position:fixed; bottom:0px">
 browser info
 </pre>
