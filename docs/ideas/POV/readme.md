@@ -91,14 +91,19 @@ reminder / helper
 
 - [TI forum question](https://e2e.ti.com/support/power_management/led_driver/f/192/t/699773)
 
-| part                                         | data rate | pwm rate       | channels | resolution | ch current | comment |
-| :------------------------------------------- | :-------- | :------------- | :------- | :--------- | :--------- | :------ |
-| [APA102](https://cpldcpu.wordpress.com/2014/08/27/apa102/) | ~10 - 20MHz | 20kHz | 3 | 8Bit       |  18mA      | simple to use - but no real datasheet values |
-| [TLC5971](http://www.ti.com/product/TLC5971) | 20MHz     | 10MHz/20MHz    | 12       | 16Bit      |  60mA      | internal oscillator, available libs |
-| [TLC5947](http://www.ti.com/product/TLC5947) | 15MHz     |  4MHz          | 24       | 12Bit      |  30mA      | internal oscillator |
-| [TLC5930](http://www.ti.com/product/TLC5930) | 20MHz     | 10MHz/20MHz    | 12       | 10Bit      |  30mA      | internal oscillator |
-| [TLC5943](http://www.ti.com/product/TLC5943) | 30MHz     | 33MHz          | 16       | 16Bit      |  50mA      | schnick-schnack-systems is using these. needs external GS clock |
+| part                                         | data rate | pwm rate       | channels | resolution | ch current | oscillator    | comment                  | mouser                                                |
+| :------------------------------------------- | :-------- | :------------- | :------- | :--------- | :--------- | :-----------: | :----------------------- | :---------------------------------------------------- |
+| [APA102](https://cpldcpu.wordpress.com/2014/08/27/apa102/) | ~10 - 20MHz | 20kHz | 3 | 8Bit       |  18mA      | internal      | no real datasheet values | [0,25€](https://www.mouser.de/_/?Keyword=APA102+2020) |
+| [TLC5971](http://www.ti.com/product/TLC5971) | 20MHz     | 10MHz/20MHz    | 12       | 16Bit      |  60mA      | int. / ext.   | available libs           | [2,70€](https://www.mouser.de/_/?Keyword=TLC5971)     |
+| [TLC5947](http://www.ti.com/product/TLC5947) | 15MHz     |  4MHz          | 24       | 12Bit      |  30mA      | internal      |                          | [2,87€](https://www.mouser.de/_/?Keyword=TLC5947)     |
+| [TLC5930](http://www.ti.com/product/TLC5930) | 20MHz     | 10MHz/20MHz    | 12       | 10Bit      |  30mA      | int. / ext.   |                          | [5,26€](https://www.mouser.de/_/?Keyword=TLC5930)     |
+| [TLC5943](http://www.ti.com/product/TLC5943) | 30MHz     | 33MHz          | 16       | 16Bit      |  50mA      | ext. GS clock | schnick-schnack-systems  | [2,30€](https://www.mouser.de/_/?Keyword=TLC5943)     |
+| [TLC5949](http://www.ti.com/product/TLC5949) | 33MHz     | 33MHz          | 16       | 12Bit      |  45mA      | ext. GS clock |                          | [2,23€](https://www.mouser.de/_/?Keyword=TLC5949)     |
+| [TLC5951](http://www.ti.com/product/TLC5951) | 33MHz     | 33MHz          | 24       | 8/10/12Bit |  40mA      | ext. GS clock |                          | [3,56€](https://www.mouser.de/_/?Keyword=TLC5951)     |
 
+Not Interesting:
+- TLC5911 - to complex / old
+-
 
 ## infrared data transmission
 [look at pov_datatransmission.md](pov_datatransmission.md)
