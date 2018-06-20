@@ -102,6 +102,8 @@
 // use <file.h> for files in library directory
 // #include <file.h>
 
+#include <limits.h>
+
 #include <SPI.h>
 
 #include <LiquidCrystal.h>
@@ -122,6 +124,7 @@
 // #include <DMXSerial.h>
 
 #include <FreqMeasure.h>
+
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Info
@@ -181,7 +184,7 @@ unsigned long debugOut_LiveSign_TimeStamp_LastAction = 0;
 const uint16_t debugOut_LiveSign_UpdateInterval = 1000; //ms
 
 boolean debugOut_LiveSign_Serial_Enabled = 0;
-boolean debugOut_LiveSign_LED_Enabled = 1;
+boolean debugOut_LiveSign_LED_Enabled = 0;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Menu
@@ -297,6 +300,7 @@ enum motorstate_t {  // c
     // STATE_error,
     STATE_coast,
     STATE_run,
+    STATE_startup,
     STATE_fadeup,
     STATE_fadedown,
 };
@@ -430,61 +434,39 @@ void handleMenu_Main(slight_DebugMenu *pInstance) {
             // out.print((byte)(wTest>>8));
             // out.println();
 
-            // char buffer[] = "--------.---\0";
-            // snprintf(
-            //     buffer, sizeof(buffer),
-            //     "%*.*f",
-            //     10,
-            //     2,
-            //     12345.789);
-            // out.print(F("sprintf: "));
-            // out.print(buffer);
-            // out.println();
-            //
-            // memset(buffer, '\0', sizeof(buffer));
-            // dtostrf(12345.789, 0, 2, buffer);
-            // out.print(F("dtostrf: '"));
-            // out.print(buffer);
-            // out.print(F("'"));
-            // out.println();
-            //
-            // memset(buffer, '\0', sizeof(buffer));
-            // dtostrf(12345.789, 1, 3, buffer);
-            // out.print(F("dtostrf: '"));
-            // out.print(buffer);
-            // out.print(F("'"));
-            // out.println();
-            //
-            // memset(buffer, '\0', sizeof(buffer));
-            // dtostrf(12.789, 8, 2, buffer);
-            // out.print(F("dtostrf: '"));
-            // out.print(buffer);
-            // out.print(F("'"));
-            // out.println();
-            //
-            // memset(buffer, '\0', sizeof(buffer));
-            // dtostrf(12.789, -8, 2, buffer);
-            // out.print(F("dtostrf: '"));
-            // out.print(buffer);
-            // out.print(F("'"));
-            // out.println();
-            //
-            // char buffer2[] = "--.--\0";
-            // memset(buffer2, '\0', sizeof(buffer2));
-            // dtostrf(123.78, 5, 2, buffer2);
-            // out.print(F("dtostrf: '"));
-            // out.print(buffer2);
-            // out.print(F("'"));
-            // out.println();
-
-            out.print(F("FLT_MAX: '"));
-            out.print(FLT_MAX);
+            out.print(F("print_float_align_right: '"));
+            slight_DebugMenu::print_float_align_right(
+                out, 123.78, 6, 2);
             out.print(F("'"));
             out.println();
 
             out.print(F("print_float_align_right: '"));
             slight_DebugMenu::print_float_align_right(
-                out, 123.78, 6, 2, true);
+                out, 123.78, 8, 2);
+            out.print(F("'"));
+            out.println();
+
+            out.print(F("print_float_align_right: '"));
+            slight_DebugMenu::print_float_align_right(
+                out, 123.78, -8, 2);
+            out.print(F("'"));
+            out.println();
+
+            out.print(F("print_float_align_right: '"));
+            slight_DebugMenu::print_float_align_right(
+                out, 12.78, 3, 2);
+                out.print(F("'"));
+                out.println();
+
+            out.print(F("print_float_align_right: '"));
+            slight_DebugMenu::print_float_align_right(
+                out, 12.78, 3, 2, 1);
+            out.print(F("'"));
+            out.println();
+
+            out.print(F("print_float_align_right: '"));
+            slight_DebugMenu::print_float_align_right(
+                out, 12.78, 3, 2, -1);
             out.print(F("'"));
             out.println();
 
@@ -611,6 +593,9 @@ void print_Status(LiquidCrystal &lcd) {
         case STATE_run: {
             lcd.print("running ");
         } break;
+        case STATE_startup: {
+            lcd.print("startup ");
+        } break;
         case STATE_fadeup: {
             lcd.print("fadeup  ");
         } break;
@@ -633,38 +618,9 @@ void print_CurrentValue(LiquidCrystal &lcd) {
 void print_CurrentRPS(LiquidCrystal &lcd) {
     lcd.setCursor(0, 1);
     // 123.12
-    // slight_DebugMenu::print_float_align_right(
-    //     lcd, tacho_frequency, 6, 2, true);
-
-    char buffer1[] = "---.--___;";
-    char buffer2[] = "---.--___;";
-    // sprintf(buffer1, "%6.2f", tacho_frequency);
-    // Serial.println(buffer1);
-
-    // Serial.println();
-    // Serial.print("buffer1: ");
-    // Serial.println(buffer1);
-    // Serial.print("buffer2: ");
-    // Serial.println(buffer2);
-
-    // based on https://stackoverflow.com/a/27652012/574981
-    dtostrf(tacho_frequency, 1, 2, buffer1);
-
-    // Serial.print("buffer1: ");
-    // Serial.println(buffer1);
-    // Serial.print("buffer2: ");
-    // Serial.println(buffer2);
-
-    sprintf(buffer2,"%6srps", buffer1);
-    // sprintf(buffer2,"%2s", "World");
-
-    // Serial.print("buffer1: ");
-    // Serial.println(buffer1);
-    // Serial.print("buffer2: ");
-    // Serial.println(buffer2);
-
-    lcd.print(buffer2);
-    // lcd.print("rps");
+    slight_DebugMenu::print_float_align_right(
+        lcd, tacho_frequency, 6, 2, -1);
+    lcd.print("rps");
     // lcd.print(tacho_raw);
 }
 
@@ -672,7 +628,7 @@ void print_CurrentRPM(LiquidCrystal &lcd) {
     lcd.setCursor(0, 1);
     // 1234.1
     slight_DebugMenu::print_float_align_right(
-        lcd, tacho_frequency, 6, 1, true);
+        lcd, tacho_frequency*60, 6, 1, -1);
     lcd.print("rpm");
 }
 
@@ -799,6 +755,12 @@ void myFaderSpeed_onEvent(slight_FaderLin *pInstance, byte event) {
                 } break;
                 case STATE_run: {
                     // nothing to do.s
+                } break;
+                case STATE_startup: {
+                    motor_state = STATE_fadeup;
+                    myFaderSpeed_fadeTo(
+                        motor_fade_duration,
+                        motor_target_value);
                 } break;
                 case STATE_fadeup: {
                     motor_state = STATE_run;
@@ -931,6 +893,9 @@ void button_onEvent(slight_ButtonInput *pInstance, byte bEvent) {
                     case STATE_notvalid: {
                         // nothing to do.
                     } break;
+                    case STATE_startup: {
+                        // nothing to do.
+                    } break;
                     case STATE_fadedown:
                     case STATE_coast: {
                         // nothing to do.
@@ -950,12 +915,17 @@ void button_onEvent(slight_ButtonInput *pInstance, byte bEvent) {
                     case STATE_notvalid: {
                         // nothing to do.
                     } break;
-                    case STATE_fadedown:
-                    case STATE_coast: {
+                    case STATE_startup: {
+                        // nothing to do.
+                    } break;
+                    case STATE_fadedown: {
                         motor_state = STATE_fadeup;
                         myFaderSpeed_fadeTo(
                             motor_fade_duration,
                             motor_target_value);
+                    } break;
+                    case STATE_coast: {
+                        motor_startup();
                     } break;
                     case STATE_fadeup:
                     case STATE_run: {
@@ -1024,6 +994,15 @@ void motor_set_output(uint8_t value) {
         motor_current_value = value;
     }
     analogWrite(motor_pin, motor_current_value);
+}
+
+void motor_startup() {
+    if (motor_state == STATE_coast) {
+        motor_state = STATE_startup;
+        myFaderSpeed_fadeTo(
+            0,
+            motor_max_value);
+    }
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
