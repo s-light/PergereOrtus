@@ -53,6 +53,9 @@
         ~ DMXSerial
 			Copyright (c) 2005-2012 by Matthias Hertel,
 			http://www.mathertel.de
+        ~ FreqMeasure
+			Copyright (c) 2011 PJRC.COM, LLC - Paul Stoffregen <paul@pjrc.com>
+			https://www.pjrc.com/teensy/td_libs_FreqMeasure.html
         ~ Servo
             Arduino Built in Servo Library
 
@@ -118,6 +121,8 @@
 
 // #include <DMXSerial.h>
 
+#include <FreqMeasure.h>
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Info
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -170,7 +175,7 @@ void sketchinfo_print(Print &out) {
 // Debug Output
 
 boolean infoled_state = 0;
-const byte infoled_pin = 13;
+const byte infoled_pin = 9;
 
 unsigned long debugOut_LiveSign_TimeStamp_LastAction = 0;
 const uint16_t debugOut_LiveSign_UpdateInterval = 1000; //ms
@@ -310,6 +315,22 @@ uint8_t motor_current_value = 0;
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Tacho
+
+uint8_t tacho_pin = 13;
+
+float tacho_frequency = 0;
+// float tacho_duration = 0;
+uint32_t tacho_raw = 0;
+
+// double tacho_sum = 0;
+// int16_t tacho_count = 0;
+// const uint8_t tacho_average_count = 30;
+
+uint32_t tacho_lastread_timestamp = 0;
+const uint16_t tacho_timeout = 2000; //ms
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // other things..
 
 
@@ -396,18 +417,77 @@ void handleMenu_Main(slight_DebugMenu *pInstance) {
             out.println(F("nothing to do."));
 
             // uint16_t wTest = 65535;
-            uint16_t wTest = atoi(&command[1]);
-            out.print(F("wTest: "));
-            out.print(wTest);
+            // uint16_t wTest = atoi(&command[1]);
+            // out.print(F("wTest: "));
+            // out.print(wTest);
+            // out.println();
+            //
+            // out.print(F("1: "));
+            // out.print((byte)wTest);
+            // out.println();
+            //
+            // out.print(F("2: "));
+            // out.print((byte)(wTest>>8));
+            // out.println();
+
+            // char buffer[] = "--------.---\0";
+            // snprintf(
+            //     buffer, sizeof(buffer),
+            //     "%*.*f",
+            //     10,
+            //     2,
+            //     12345.789);
+            // out.print(F("sprintf: "));
+            // out.print(buffer);
+            // out.println();
+            //
+            // memset(buffer, '\0', sizeof(buffer));
+            // dtostrf(12345.789, 0, 2, buffer);
+            // out.print(F("dtostrf: '"));
+            // out.print(buffer);
+            // out.print(F("'"));
+            // out.println();
+            //
+            // memset(buffer, '\0', sizeof(buffer));
+            // dtostrf(12345.789, 1, 3, buffer);
+            // out.print(F("dtostrf: '"));
+            // out.print(buffer);
+            // out.print(F("'"));
+            // out.println();
+            //
+            // memset(buffer, '\0', sizeof(buffer));
+            // dtostrf(12.789, 8, 2, buffer);
+            // out.print(F("dtostrf: '"));
+            // out.print(buffer);
+            // out.print(F("'"));
+            // out.println();
+            //
+            // memset(buffer, '\0', sizeof(buffer));
+            // dtostrf(12.789, -8, 2, buffer);
+            // out.print(F("dtostrf: '"));
+            // out.print(buffer);
+            // out.print(F("'"));
+            // out.println();
+            //
+            // char buffer2[] = "--.--\0";
+            // memset(buffer2, '\0', sizeof(buffer2));
+            // dtostrf(123.78, 5, 2, buffer2);
+            // out.print(F("dtostrf: '"));
+            // out.print(buffer2);
+            // out.print(F("'"));
+            // out.println();
+
+            out.print(F("FLT_MAX: '"));
+            out.print(FLT_MAX);
+            out.print(F("'"));
             out.println();
 
-            out.print(F("1: "));
-            out.print((byte)wTest);
+            out.print(F("print_float_align_right: '"));
+            slight_DebugMenu::print_float_align_right(
+                out, 123.78, 6, 2, true);
+            out.print(F("'"));
             out.println();
 
-            out.print(F("2: "));
-            out.print((byte)(wTest>>8));
-            out.println();
 
             out.println();
 
@@ -511,12 +591,16 @@ void setup_LCD(Print &out) {
 // Display Layout:
 //     0000000000111111
 //     0123456789012345
+//  0  running    t:255
+//  1  1800.00rps c:255
+//  -- old --
 //  0  status: running
+//  0  running  1800.00
 //  1  t: 255    c: 255
 
 void print_Status(LiquidCrystal &lcd) {
     lcd.setCursor(0, 0);
-    lcd.print("status: ");
+    // lcd.print("status: ");
     switch (motor_state) {
         case STATE_notvalid: {
             lcd.print("--------");
@@ -537,7 +621,7 @@ void print_Status(LiquidCrystal &lcd) {
 }
 
 void print_TargetValue(LiquidCrystal &lcd) {
-    lcd.setCursor(3, 1);
+    lcd.setCursor(13, 0);
     slight_DebugMenu::print_uint8_align_right(lcd, motor_target_value);
 }
 
@@ -546,10 +630,59 @@ void print_CurrentValue(LiquidCrystal &lcd) {
     slight_DebugMenu::print_uint8_align_right(lcd, motor_current_value);
 }
 
+void print_CurrentRPS(LiquidCrystal &lcd) {
+    lcd.setCursor(0, 1);
+    // 123.12
+    // slight_DebugMenu::print_float_align_right(
+    //     lcd, tacho_frequency, 6, 2, true);
+
+    char buffer1[] = "---.--___;";
+    char buffer2[] = "---.--___;";
+    // sprintf(buffer1, "%6.2f", tacho_frequency);
+    // Serial.println(buffer1);
+
+    // Serial.println();
+    // Serial.print("buffer1: ");
+    // Serial.println(buffer1);
+    // Serial.print("buffer2: ");
+    // Serial.println(buffer2);
+
+    // based on https://stackoverflow.com/a/27652012/574981
+    dtostrf(tacho_frequency, 1, 2, buffer1);
+
+    // Serial.print("buffer1: ");
+    // Serial.println(buffer1);
+    // Serial.print("buffer2: ");
+    // Serial.println(buffer2);
+
+    sprintf(buffer2,"%6srps", buffer1);
+    // sprintf(buffer2,"%2s", "World");
+
+    // Serial.print("buffer1: ");
+    // Serial.println(buffer1);
+    // Serial.print("buffer2: ");
+    // Serial.println(buffer2);
+
+    lcd.print(buffer2);
+    // lcd.print("rps");
+    // lcd.print(tacho_raw);
+}
+
+void print_CurrentRPM(LiquidCrystal &lcd) {
+    lcd.setCursor(0, 1);
+    // 1234.1
+    slight_DebugMenu::print_float_align_right(
+        lcd, tacho_frequency, 6, 1, true);
+    lcd.print("rpm");
+}
+
 void update_LCD(LiquidCrystal &lcd) {
     lcd.clear();
     print_Status(lcd);
-    lcd.setCursor(0, 1);
+
+    print_CurrentRPS(lcd);
+
+    lcd.setCursor(10, 0);
     lcd.print("t:");
     print_TargetValue(lcd);
 
@@ -896,13 +1029,41 @@ void motor_set_output(uint8_t value) {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Tacho
 
-// void setup_Tacho(Print &out) {
-//     out.println(F("setup Tacho:"));
-//
-//     pinMode(tacho_pin, INPUT);
-//
-//     out.println(F("\t finished."));
-// }
+void setup_Tacho(Print &out) {
+    out.println(F("setup Tacho:"));
+
+    pinMode(tacho_pin, INPUT);
+
+    FreqMeasure.begin();
+
+    out.println(F("\t finished."));
+}
+
+void tacho_update() {
+    if (FreqMeasure.available()) {
+        tacho_lastread_timestamp = millis();
+        // Serial.println("tacho available");
+        // average several reading together
+        tacho_raw =  FreqMeasure.read();
+        // Serial.println(tacho_raw);
+        tacho_frequency = FreqMeasure.countToFrequency(tacho_raw);
+        // Serial.println(tacho_frequency);
+        // tacho_duration =  FreqMeasure.countToNanoseconds(tacho_raw);
+        // tacho_sum = tacho_sum + FreqMeasure.read();
+        // tacho_count = tacho_count + 1;
+        // if (tacho_count > tacho_average_count) {
+        //     tacho_frequency = FreqMeasure.countToFrequency(tacho_sum / tacho_count);
+        //     tacho_sum = 0;
+        //     tacho_count = 0;
+        // }
+    } else {
+        if ((millis() - tacho_lastread_timestamp) > tacho_timeout) {
+            tacho_lastread_timestamp = millis();
+            tacho_frequency = 0;
+            // Serial.println("reset tacho");
+        }
+    }
+}
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // other things..
@@ -956,26 +1117,18 @@ void setup() {
         sketchinfo_print(out);
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // setup LCD
+    // setup things
 
     setup_LCD(out);
-
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // setup button
 
     out.print(F("# Free RAM = "));
     out.println(freeRam());
 
     buttons_init(out);
 
+    setup_Motor(out);
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // setup DMX
-
-        setup_Motor(out);
-
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // setup Fader
+    setup_Tacho(out);
 
     out.print(F("# Free RAM = "));
     out.println(freeRam());
@@ -1027,6 +1180,7 @@ void loop() {
         myFaderSpeed.update();
         // button.update();
         buttons_update();
+        tacho_update();
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // timed things
@@ -1046,6 +1200,7 @@ void loop() {
         ) {
             lcd_update_timestamp_last =  millis();
             print_CurrentValue(lcd);
+            print_CurrentRPS(lcd);
             // update_LCD(lcd);
         }
 
