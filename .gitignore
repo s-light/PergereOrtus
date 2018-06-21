@@ -1,31 +1,7 @@
+
+# ------------------------------------------
 # project specific
-temp_no_git_sync
-
-# Blender Backup
-*.blend1
-*.blend2
-*.blend3
-
-# KiCAD ignore list:
-_autosave-*
-*.kicad_pcb-bak
-*.bak
-_saved_*
-*-rescue.lib
-
-FreeCAD backup files
-*.FCStd1
-*.fcstd1
-*.FCStd2
-*.fcstd2
-
-# open office / libre office lock files
-*.~lock.*
-
-# OwnCloud conflicts:
-*_conflict-*
-
-# project specific ignores:
+:
 # for pcb-pool production files
 /pcb-pool*
 # for datasheets or other documents that are not allowed to be synced..
@@ -35,9 +11,40 @@ FreeCAD backup files
 /old*
 # for zip backups:
 /backup*
+temp_no_git_sync
+
+# ------------------------------------------
+# Blender Backup
+*.blend1
+*.blend2
+*.blend3
+
+# ------------------------------------------
+# KiCAD ignore list:
+_autosave-*
+*.kicad_pcb-bak
+*.bak
+_saved_*
+*-rescue.lib
+
+# ------------------------------------------
+# FreeCAD backup files
+*.FCStd1
+*.fcstd1
+*.FCStd2
+*.fcstd2
+
+# ------------------------------------------
+# open office / libre office lock files
+*.~lock.*
+
+# ------------------------------------------
+# OwnCloud conflicts:
+*_conflict-*
 
 
-
+# ------------------------------------------
+# Python
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -140,3 +147,40 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+
+# ------------------------------------------
+# C++
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
