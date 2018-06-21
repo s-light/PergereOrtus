@@ -111,6 +111,9 @@ Not Interesting:
 ## power transmission
 [look at pov_powertransmission.md](pov_powertransmission.md)
 
+## mechanics
+[look at pov_mechanics.md](pov_mechanics.md)
+
 ## motor
 [look at pov_motor.md](pov_motor.md)
 
