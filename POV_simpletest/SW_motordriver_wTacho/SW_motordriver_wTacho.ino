@@ -312,9 +312,9 @@ const uint16_t motor_fade_duration = 2000;
 // uint8_t motor_speed = 0;
 
 const uint8_t motor_min_value = 15;
-const uint8_t motor_max_value = 75;
+const uint8_t motor_max_value = 80;
 
-uint8_t motor_target_value = 40;
+uint8_t motor_target_value = 66;
 uint8_t motor_current_value = 0;
 
 
