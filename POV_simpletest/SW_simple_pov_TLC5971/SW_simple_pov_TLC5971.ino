@@ -80,6 +80,9 @@
 
 #include <Tlc59711.h>
 
+#include "./pattern_struckt.h"
+#include "./patterns.h"
+
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Info
@@ -201,7 +204,7 @@ const uint8_t channel_position_map[row_count*2][column_count] = {
     {26, 27, 30, 31},
 };
 
-const uint8_t pixel_line_count = 8;
+// const uint8_t pixel_line_count = 8;
 const uint8_t pixel_line_list[pixel_line_count] = {
      8,
     24,
@@ -213,57 +216,9 @@ const uint8_t pixel_line_list[pixel_line_count] = {
     29,
 };
 
-const uint8_t pattern_count = 20;
-const uint8_t pattern_map[pixel_line_count][pattern_count] = {
-    // 0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1
-    // 0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9
-    //
-    // +
-    // {  0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    // {  0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    // {  0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    // {  1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0},
-    // {  1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0},
-    // {  0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    // {  0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    // {  0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    // ZickZack
-    // {  0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1},
-    // {  0,0,1,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,0,1},
-    // {  0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,1,0,1},
-    // {  1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,1},
-    // {  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    // {  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    // {  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    // {  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    // :-)
-    {  0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0},
-    {  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    {  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    {  0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
-    {  0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
-    {  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    {  1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0},
-    {  1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0},
-    // pattern
-    // {  1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0},
-    // {  1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,1,0,0},
-    // {  1,1,0,0,0,0,0,1,1,1,0,0,0,0,0,1,0,1,0,0},
-    // {  1,0,1,0,0,0,1,0,1,0,1,0,0,0,1,0,0,1,0,0},
-    // {  1,0,0,1,0,1,0,0,1,0,0,1,0,1,0,0,0,1,0,0},
-    // {  1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0},
-    // {  1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0},
-    // {  1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0},
-    // hort test
-    // { 0,0,0,1,1,0,0,0},
-    // { 0,0,1,0,0,1,0,0},
-    // { 0,1,0,0,0,0,1,0},
-    // { 1,0,0,0,0,0,0,1},
-    // { 1,0,0,0,0,0,0,1},
-    // { 0,1,0,0,0,0,1,0},
-    // { 0,0,1,0,0,1,0,0},
-    // { 0,0,0,1,1,0,0,0},
-};
+// const uint8_t pattern_map[pixel_line_count][pattern_count] = {
+// };
+// this is now in patterns.h
 
 // tlc info
 const uint8_t tlc_channels = colors_per_led * leds_per_chip;
@@ -274,6 +229,15 @@ const uint8_t tlc_channels_total = (uint8_t)(tlc_chips * tlc_channels);
 Tlc59711 tlc(tlc_chips);
 
 bool output_enabled = true;
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// mode
+
+enum class mode_t : uint8_t {      // c++ typesafe; arduino > 1.6.
+    STANDBY,
+    standby,
+};
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -629,7 +593,14 @@ void set_line(uint8_t board_index, uint16_t r, uint16_t g, uint16_t b) {
     tlc.write();
 }
 
-void set_line_pattern(uint8_t board_index, uint8_t pattern_id, uint16_t r, uint16_t g, uint16_t b) {
+void set_line_pattern(
+    uint8_t board_index,
+    const tPattern *pattern,
+    uint8_t pattern_column,
+    uint16_t r,
+    uint16_t g,
+    uint16_t b
+) {
     // set pattern
     // for board_index 0: 0,2,4,6
     // for board_index 1: 1,3,5,7
@@ -638,7 +609,7 @@ void set_line_pattern(uint8_t board_index, uint8_t pattern_id, uint16_t r, uint1
         line_index < pixel_line_count;
         line_index = line_index + 2
     ) {
-        // switch (pattern_map[line_index][pattern_id]) {
+        // switch (pattern_map[line_index][pattern_column]) {
         //     case 1 : {
         //         tlc.setRGB(pixel_line_list[line_index], r, g, b);
         //     } break;
@@ -646,7 +617,7 @@ void set_line_pattern(uint8_t board_index, uint8_t pattern_id, uint16_t r, uint1
         //         tlc.setRGB(pixel_line_list[line_index], 0, 0, 0);
         //     };
         // } //end switch
-        if (pattern_map[line_index][pattern_id] == 1) {
+        if (pattern->data[line_index][pattern_column] == 1) {
             tlc.setRGB(pixel_line_list[line_index], r, g, b);
         } else {
             tlc.setRGB(pixel_line_list[line_index], 0, 0, 0);
@@ -669,8 +640,16 @@ void update_Boards() {
         // set_line(0, 0, 10000);
         // set_line(0, 65535, 0);
         // set_line(65535, 65535, 0);
-        for (size_t pattern_index = 0; pattern_index < pattern_count; pattern_index++) {
-            set_line_pattern(BOARD0, pattern_index, 30000, 0, 65535);
+        for (
+            size_t pattern_index = 0;
+            pattern_index < pattern_memory[(uint8_t)pattern_name].count;
+            pattern_index++
+        ) {
+            set_line_pattern(
+                BOARD0,
+                &pattern_memory[(uint8_t)pattern_name],
+                pattern_index,
+                30000, 0, 65535);
         }
         set_line(BOARD0,  0, 0, 0);
     }
@@ -678,8 +657,16 @@ void update_Boards() {
         analogRead(pos2_pin) > 210
     ) {
         // board_timestamp_last =  millis();
-        for (size_t pattern_index = 0; pattern_index < pattern_count; pattern_index++) {
-            set_line_pattern(BOARD1, pattern_index, 30000, 0, 65535);
+        for (
+            size_t pattern_index = 0;
+            pattern_index < pattern_memory[(uint8_t)pattern_name].count;
+            pattern_index++
+        ) {
+            set_line_pattern(
+                BOARD1,
+                &pattern_memory[(uint8_t)pattern_name],
+                pattern_index,
+                30000, 0, 65535);
         }
         set_line(BOARD1,  0, 0, 0);
     }
@@ -783,12 +770,69 @@ void speedtest_TLC5971(Print &out) {
     out.print(F("us per call."));
     out.println();
 
+    out.println(F(" * * * * * "));
+    out.println(F("Speedtest for set_line_pattern"));
+    loop_count = 1;
+    start = micros();
+        set_line_pattern(
+            BOARD0,
+            &pattern_memory[(uint8_t)pattern_name],
+            0,
+            30000, 0, 65535);
+    end = micros();
+    duration = end - start;
+    out.println(F("\tresults: "));
+    out.print(F("\t"));
+    out.print(duration);
+    out.print(F("us per call."));
+    out.println();
+
+    out.println(F("Speedtest for full 1board pattern write"));
+    loop_count = 1;
+    start = micros();
+        for (
+            size_t pattern_index = 0;
+            pattern_index < pattern_memory[(uint8_t)pattern_name].count;
+            pattern_index++
+        ) {
+            set_line_pattern(
+                BOARD0,
+                &pattern_memory[(uint8_t)pattern_name],
+                pattern_index,
+                30000, 0, 65535);
+        }
+    end = micros();
+    duration = end - start;
+    out.println(F("\tresults: "));
+    out.print(F("\t"));
+    out.print(duration);
+    out.print(F("us per call."));
+    out.println();
+
 
 
 
     out.println(F("---- finished."));
     // reset to blue
     set_line(BOARD0, 0, 0, 65535);
+}
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// mode
+
+void update_Handler() {
+    if (sequencer_mode != sequencer_OFF) {
+        if(
+            (millis() - sequencer_timestamp_last) > sequencer_interval
+        ) {
+            sequencer_timestamp_last =  millis();
+            calculate_step();
+        }
+    }
+    switch (/* expression */) {
+        case /* value */:
+    }
 }
 
 
@@ -1136,7 +1180,8 @@ void loop() {
         myFaderRGB.update();
         button.update();
 
-        update_Boards();
+        // update_Boards();
+        update_Handler();
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // timed things
