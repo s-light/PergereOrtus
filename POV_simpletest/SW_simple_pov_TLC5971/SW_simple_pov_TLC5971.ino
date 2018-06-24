@@ -649,7 +649,7 @@ void update_Boards() {
                 BOARD0,
                 &pattern_memory[(uint8_t)pattern_name],
                 pattern_index,
-                30000, 0, 65535);
+                1, 0, 65535);
         }
         set_line(BOARD0,  0, 0, 0);
     }
@@ -666,7 +666,7 @@ void update_Boards() {
                 BOARD1,
                 &pattern_memory[(uint8_t)pattern_name],
                 pattern_index,
-                30000, 0, 65535);
+                0, 0, 65535);
         }
         set_line(BOARD1,  0, 0, 0);
     }
@@ -822,17 +822,18 @@ void speedtest_TLC5971(Print &out) {
 // mode
 
 void update_Handler() {
-    if (sequencer_mode != sequencer_OFF) {
-        if(
-            (millis() - sequencer_timestamp_last) > sequencer_interval
-        ) {
-            sequencer_timestamp_last =  millis();
-            calculate_step();
-        }
-    }
-    switch (/* expression */) {
-        case /* value */:
-    }
+    update_Boards();
+    // if (sequencer_mode != sequencer_OFF) {
+    //     if(
+    //         (millis() - sequencer_timestamp_last) > sequencer_interval
+    //     ) {
+    //         sequencer_timestamp_last =  millis();
+    //         calculate_step();
+    //     }
+    // }
+    // switch (/* expression */) {
+    //     case /* value */:
+    // }
 }
 
 
