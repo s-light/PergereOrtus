@@ -1,4 +1,4 @@
-
+'use strict';
 
 class FormulaTable {
     // constructor(table_element, column_meaning, update_order) {

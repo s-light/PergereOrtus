@@ -1,3 +1,4 @@
+'use strict';
 
 // how to use the table_calc addon:
 //
@@ -25,6 +26,8 @@ function init() {
         () => test_siblings_result.classList.add('highlight'));
     test_siblings.addEventListener('mouseleave',
         () => test_siblings_result.classList.remove('highlight'));
+    test_siblings.addEventListener('click',
+        () => test_siblings_result.classList.toggle('highlight'));
     console.groupEnd();
 
     // test for children
@@ -36,6 +39,8 @@ function init() {
         () => test_children_result.classList.add('highlight'));
     test_children.addEventListener('mouseleave',
         () => test_children_result.classList.remove('highlight'));
+    test_children.addEventListener('click',
+        () => test_children_result.classList.toggle('highlight'));
     console.groupEnd();
 
     // test for parents
@@ -47,6 +52,8 @@ function init() {
         () => test_parents_result.classList.add('highlight'));
     test_parents.addEventListener('mouseleave',
         () => test_parents_result.classList.remove('highlight'));
+    test_parents.addEventListener('click',
+        () => test_parents_result.classList.toggle('highlight'));
     console.groupEnd();
 
 

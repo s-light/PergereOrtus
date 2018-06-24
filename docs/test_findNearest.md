@@ -4,7 +4,6 @@
 <!--lint disable code-block-style-->
 
 <script src="{{ '/assets/js/test_findNearest.js?v=' | append: site.github.build_revision | relative_url }}" charset="utf-8"></script>
-
 <style media="screen">
     .find-me {
         border-radius: 0.5em;

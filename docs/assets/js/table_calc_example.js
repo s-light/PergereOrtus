@@ -1,3 +1,4 @@
+'use strict';
 
 // how to use the table_calc addon:
 //
