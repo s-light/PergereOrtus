@@ -106,7 +106,7 @@ reminder / helper
     - [Real-time SPI support with DMA, has it been done, is it feasible?](https://e2e.ti.com/support/embedded/linux/f/354/t/259974)
 
 - [pov with avr TLC5940](https://sites.google.com/site/artcfox/demystifying-the-tlc5940)
-- [arduino tlc5940](https://github.com/artcfox/tlc5940)
+- [arduino TLC5940 lib](https://github.com/artcfox/tlc5940)
 - [arduino TLC5951 lib](https://github.com/def1/tlc5951)
 - [arduino TLC5955 lib](https://github.com/zfphil/TLC5955)
 - [arduino TLC5958 lib](https://e2e.ti.com/support/power_management/led_driver/f/192/t/543912)
