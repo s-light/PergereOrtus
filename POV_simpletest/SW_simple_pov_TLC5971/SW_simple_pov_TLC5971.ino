@@ -84,6 +84,9 @@
 #include "./patterns.h"
 
 
+// #include "./test.h"
+
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Info
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -702,6 +705,46 @@ void speedtest_TLC5971(Print &out) {
     uint32_t end = micros();
     uint32_t duration = end - start;
 
+    out.println(F("Speedtest for tlc.setRGB(idx, r, g, b)"));
+    loop_count = 16;
+    start = micros();
+        tlc.setRGB(0, 0, 65535, 0);
+        tlc.setRGB(1, 0, 500, 0);
+        tlc.setRGB(2, 0, 65535, 0);
+        tlc.setRGB(3, 0, 500, 0);
+
+        tlc.setRGB(4, 0, 65535, 0);
+        tlc.setRGB(5, 0, 500, 0);
+        tlc.setRGB(6, 0, 65535, 0);
+        tlc.setRGB(7, 0, 500, 0);
+
+        tlc.setRGB(8, 0, 65535, 0);
+        tlc.setRGB(9, 0, 500, 0);
+        tlc.setRGB(10, 0, 65535, 0);
+        tlc.setRGB(11, 0, 500, 0);
+
+        tlc.setRGB(12, 0, 65535, 0);
+        tlc.setRGB(13, 0, 500, 0);
+        tlc.setRGB(14, 0, 65535, 0);
+        tlc.setRGB(15, 0, 500, 0);
+    end = micros();
+    duration = end - start;
+    out.println(F("\tresults: "));
+    out.print(F("\t"));
+    out.print(duration);
+    out.print(F("us for "));
+    out.print(loop_count);
+    out.print(F("calls."));
+    out.println();
+    out.print(F("\t--> "));
+    out.print(float(duration)/(loop_count));
+    out.print(F("us per calls."));
+    out.println();
+    out.print(F("\t--> "));
+    out.print((float(duration)/(loop_count))/1000);
+    out.print(F("ms per calls."));
+    out.println();
+
     out.println(F("Speedtest for set_Line"));
     loop_count = 10;
     start = micros();
@@ -1055,7 +1098,6 @@ void button_onEvent(slight_ButtonInput *pInstance, byte bEvent) {
 
 
 
-
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // setup
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1152,6 +1194,15 @@ void setup() {
         //     out.println(F("\t sub action"));
         // }
         // out.println(F("\t finished."));
+
+    // testit();
+    // for (int i = 0; i < 32; i ++) {
+    //     Serial.print("idx_lookup_table[");
+    //     Serial.print(i);
+    //     Serial.print("]: ");
+    //     Serial.print(idx_lookup_table[i]);
+    //     Serial.println();
+    // }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // show serial commands
