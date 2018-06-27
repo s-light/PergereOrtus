@@ -1,4 +1,4 @@
-# POV infrared data transmission
+# POV LEDs and LED-Driver
 <!--lint disable list-item-indent-->
 <!--lint disable list-item-bullet-indent-->
 
