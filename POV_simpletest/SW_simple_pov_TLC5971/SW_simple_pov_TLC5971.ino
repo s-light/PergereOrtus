@@ -84,7 +84,7 @@
 #include "./patterns.h"
 
 
-#include "./test.h"
+// #include "./test.h"
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1195,7 +1195,7 @@ void setup() {
         // }
         // out.println(F("\t finished."));
 
-    testit();
+    // testit();
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // show serial commands
