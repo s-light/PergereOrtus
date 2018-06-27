@@ -41,6 +41,10 @@ but i think i will find a good compromise..
     - [wireless module](https://www.banggood.com/12V-Wireless-Charger-Module-5V-Power-Supply-Charging-Coil-Transmitter-Receiver-For-Phone-p-1122411.html?rmmds=myorder)
 - [Rotary Transformer (for Persistence of Vision displays)](https://www.youtube.com/watch?v=7rGtyMUr_Vc)
 
+- HF-Litze (High Frequency Litze)
+    - [Elektrisola - Grundlagen](https://www.elektrisola.com/de/hf-litze/produkte/begriffe-grundlagen/technische-grundlagen-und-berechnung.html#c4641)
+    - ? find shop!
+
 GreatScott! (video)
 - [How Does Wireless Charging Work? || Crude Wireless Energy Transfer Circuit (video)](https://www.youtube.com/watch?v=ExU32UyGX6w)
 - [DIY Wireless Energy Transfer System (good starting point)](https://www.youtube.com/watch?v=3E5PUnYlaTM)
