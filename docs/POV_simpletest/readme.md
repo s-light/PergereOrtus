@@ -39,12 +39,23 @@ based on [Leonardo_wLCD_protobase](https://github.com/s-light/Leonardo_wLCD_prot
 
 added IRLZ34N N-Channel Logic Level Power Mosfet and fast Diode for driving the Motor.
 
-will add some sort of Feedback to measure actual speed.
+shows the current RPS (revolutions per second) on the lcd.
 
 ### SW_simple_pov_TLC5971
 based on [LEDBoard_4x4_16bit_HWTest](https://github.com/s-light/LEDBoard_4x4_16bit_HWTest).
 implements basics to generate some very simple test-patterns for POV.
+uses the [ulrichstern/Tlc59711](https://github.com/ulrichstern/Tlc59711) library.  
+with my changes in [idx lookup branch](https://github.com/s-light/ulrichstern_Tlc59711/tree/lookup_idx)
+the setting of the Color information per LED `tlc.setRGB(idx, r, g, b);` call is way faster:
+- orig ~49us
+- lookup_idx ~9us
+
+but currently this branch relies on c++14 features that require the arduino beta version..
+
+for now you can use `arduino-PR-beta1.9-BUILD-71` and  
+enable c++14 support in `/home/$USER/.arduino15/packages/arduino/hardware/avr/1.6.20/platform.txt`:  
+change `-std=gnu++11`
+to `-std=gnu++14` in the line starting with `compiler.cpp.flags=`
 
 ## TODO
-- add RPM counter to Motor Controller
 - try some more test patterns
