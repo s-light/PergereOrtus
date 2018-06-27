@@ -5,47 +5,56 @@
 
 
 
-// constexpr uint16_t * Tlc59711::create_idx_lookup(const uint16_t numTlc) {
-//   uint16_t result[numTlc*12];
-//   for (size_t idx = 0; idx < (numTlc*12); idx++) {
-//       result[idx] = (14 * (idx / 12) + idx % 12);
-//   }
-//   return result;
-// }
-
-
-
 // ----------------------------------------------------------------------------
-// Is it possible to create and initialize an array of values using template metaprogramming?
-// https://stackoverflow.com/a/2228298/574981
-// https://stackoverflow.com/a/37447199/574981
+// based on
+// Generating lookup table at compile time using features from C++14
+// https://www.avrfreaks.net/comment/2292631#comment-2292631
 
-template <uint16_t idx>
-struct test_generator {
-    test_generator<idx - 1> rest;
-    static const uint16_t x = (14 * (idx / 12) + idx % 12);
-    // static const uint16_t x = idx * idx;
-    constexpr uint16_t operator[](uint16_t const &i) const {
-        return (i == idx ?  x : rest[i]);
-    }
-    constexpr uint16_t size() const {
-        return idx;
+
+// We need to return an array, which is not possible in C/C++
+// So we return a structure that contains the array.
+template <uint16_t N>
+struct array {
+    uint16_t _[N];
+
+    // this allows reading from flash memory using array notation
+    uint16_t operator[] (uint16_t index) const {
+        // bound check
+        if (index < N) {
+            return pgm_read_word(&_[0] + index);
+        } else {
+            return 0;
+        }
     }
 };
 
-template <>
-struct test_generator<0> {
-    static const uint16_t x = 0;
-    constexpr uint16_t operator[](uint16_t const &i) const { return x; }
-    constexpr uint16_t size() const { return 1; }
-};
+// This function returns an array structure filled with a calculated period of a sine wave (8 bit resolution).
+// Since it is defined as constexpr, the compiler knows that the result of the function can be determined at compile time.
+// No actual AVR code is generated, just data.
+template <uint16_t N>
+constexpr array<N> my_table_generator() {
+    array<N> tmp {};
+    for (uint16_t idx = 0; idx < N; idx++) {
+        tmp._[idx] = (14 * (idx / 12) + idx % 12);
+    }
+    return tmp;
+}
 
 
-const test_generator<20> mytable;
+// Fill flash memory with the sine wave table
+const uint16_t mytable_count = 300;
+const PROGMEM array<mytable_count> mytable = my_table_generator<mytable_count>();
 
 // Just use the table so it's not optimized away
 void testit() {
-    for (int i = 0; i < 20; i ++) {
+    for (size_t i = 0; i < 26; i ++) {
+        Serial.print("mytable[");
+        Serial.print(i);
+        Serial.print("]: ");
+        Serial.print(mytable[i]);
+        Serial.println();
+    }
+    for (size_t i = 250; i < 270; i ++) {
         Serial.print("mytable[");
         Serial.print(i);
         Serial.print("]: ");
@@ -58,46 +67,39 @@ void testit() {
 
 
 // ----------------------------------------------------------------------------
-// Generating lookup table at compile time using features from C++14
-// https://www.avrfreaks.net/comment/2292631#comment-2292631
-//
-// #include <stdint.h>
-// #include <avr/io.h>
-// #include <avr/pgmspace.h>
-//
-// #define _USE_MATH_DEFINES
-// #include <math.h>
-//
-// // We need to return an array, which is not possible in C/C++
-// // So we return a structure that contains the array.
-// struct array {
-//     uint8_t _[256];
-//
-//     // this allows reading from flash memory using array notation
-//     uint8_t operator[] (int index) const {
-//         return pgm_read_byte(&_[0] + index);
+// Is it possible to create and initialize an array of values using template metaprogramming?
+// https://stackoverflow.com/a/2228298/574981
+// https://stackoverflow.com/a/37447199/574981
+
+// for the arduino ide this works up to 900 elements.
+// --> thats the recursion depth limit!!!
+
+// template <uint16_t idx>
+// struct test_generator {
+//     test_generator<idx - 1> rest;
+//     static const uint16_t x = (14 * (idx / 12) + idx % 12);
+//     // static const uint16_t x = idx * idx;
+//     constexpr uint16_t operator[](uint16_t const &i) const {
+//         return (i == idx ?  x : rest[i]);
+//     }
+//     constexpr uint16_t size() const {
+//         return idx;
 //     }
 // };
 //
-// // This function returns an array structure filled with a calculated period of a sine wave (8 bit resolution).
-// // Since it is defined as constexpr, the compiler knows that the result of the function can be determined at compile time.
-// // No actual AVR code is generated, just data.
-// constexpr array table_generator() {
-//     array tmp;
-//     // array tmp {};
-//     for (int i = 0; i < 256; i++) {
-//         tmp._[i] = (14 * (i / 12) + i % 12);
-//     }
-//     return tmp;
-// }
+// template <>
+// struct test_generator<0> {
+//     static const uint16_t x = 0;
+//     constexpr uint16_t operator[](uint16_t const &i) const { return x; }
+//     constexpr uint16_t size() const { return 1; }
+// };
 //
 //
-// // Fill flash memory with the sine wave table
-// const PROGMEM array mytable = table_generator();
+// const test_generator<20> mytable;
 //
 // // Just use the table so it's not optimized away
 // void testit() {
-//     for (int i = 0; i < 256; i ++) {
+//     for (int i = 0; i < 20; i ++) {
 //         Serial.print("mytable[");
 //         Serial.print(i);
 //         Serial.print("]: ");
@@ -105,6 +107,10 @@ void testit() {
 //         Serial.println();
 //     }
 // }
+
+
+
+
 
 
 

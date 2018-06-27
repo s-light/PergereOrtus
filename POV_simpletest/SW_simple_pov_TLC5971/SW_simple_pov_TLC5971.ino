@@ -84,7 +84,7 @@
 #include "./patterns.h"
 
 
-// #include "./test.h"
+#include "./test.h"
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1195,14 +1195,7 @@ void setup() {
         // }
         // out.println(F("\t finished."));
 
-    // testit();
-    // for (int i = 0; i < 32; i ++) {
-    //     Serial.print("idx_lookup_table[");
-    //     Serial.print(i);
-    //     Serial.print("]: ");
-    //     Serial.print(idx_lookup_table[i]);
-    //     Serial.println();
-    // }
+    testit();
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // show serial commands
