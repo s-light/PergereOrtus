@@ -25,6 +25,19 @@ challenge here is the bit time - we need some very very fast photo detectors...
 
 ## bitrate / update-rate calculations
 
+
+| name                                      | test      | value                                             | formula                                               |
+| :---------------------------------------- | --------: | ------------------------------------------------: | ----------------------------------------------------: |
+| target_bitrate                            | 33MHz     | <label class="unit megahertz"><input type="number" value="33" step="0.5" min="0" max="60"/></label> |     |
+| pulse_duration                            | 30ns      | <span class="unit nanoseconds"></span>            | toFixed(1000 / target_bitrate; 0)                     |
+| pulse_duration_min for low or high state* | 10ns      | <span class="unit nanoseconds">10</span>          |                                                       |
+
+<button type="button" name="bt_update" id="bt_update">update</button>
+<script src="{{ '/assets/js/table_calc_example.js?v=' | append: site.github.build_revision | relative_url }}" charset="utf-8"></script>
+
+\* duration= higher or lower than 50% of transition between GND / VCC
+
+
 ## information collection (research)
 - Vishay
     - [Photo Detectors - Phototransistor Output](https://www.vishay.com/photo-detectors/phototrans-out/)
@@ -84,12 +97,13 @@ led driver for fiber optics
 
 ## Parts
 
-| part                                                         | type       | wavelength | housing    | capacitance  | rise/fall time  |
-| :----------------------------------------------------------- | :--------: | :--------- | :--------- | -----------: | --------------: |
-| [VEMT2020X01](http://www.vishay.com/docs/81595/vemt2000.pdf) | photodiode | 860nm      | SMD GW     |  25pF        | 2ns             |
-| [VSMF4720](http://www.vishay.com/docs/81923/vsmf4720.pdf)    | led        | 870nm      | SMD PLCC-2 | 125pF        | 15ns            |
-| [VSMY1850X01](http://www.vishay.com/docs/83317/vsmy1850.pdf) | led        | 850nm      | SMD 0805   | 125pF        | 10ns            |
-| [TEMT7100X01](http://www.vishay.com/docs/81770/temt7100.pdf) | photodiode | 870nm      | SMD 0805   |  25pF        | 2ns             |
+| part                                                         | type         | angle    φ | wavelength | housing    | capacitance  | rise/fall time  |
+| :----------------------------------------------------------- | :----------: | :--------- | :--------- | :--------- | -----------: | --------------: |
+| [VEMT2020X01](http://www.vishay.com/docs/81595/vemt2000.pdf) | photodiode   |            | 860nm      | SMD GW     |  25pF        |  2ns            |
+| [VSMF4720](http://www.vishay.com/docs/81923/vsmf4720.pdf)    | led          |            | 870nm      | SMD PLCC-2 | 125pF        | 15ns            |
+| [VSMY14940](http://www.vishay.com/docs/84209/vsmy14940.pdf)  | led sideview | ± 9°       | 940nm      | SMD SV     |  30pF        |  6ns            |
+| [VSMY1850X01](http://www.vishay.com/docs/83317/vsmy1850.pdf) | led          |            | 850nm      | SMD 0805   | 125pF        | 10ns            |
+| [TEMT7100X01](http://www.vishay.com/docs/81770/temt7100.pdf) | photodiode   |            | 870nm      | SMD 0805   |  25pF        |  2ns            |
 | [BSL214N](https://www.infineon.com/dgdl/Infineon-BSL214N-DS-v02_03-en.pdf) | NPN | DUAL 2.5V | SMD TSOP-6 | 4.1ns + 7.6ns | 6.8ns + 1.4ns |
 | [IRLML0060TRPbF](https://www.infineon.com/dgdl/Infineon-IRLML0060-DS-v01_01-EN.pdf) | NPN | | SMD SOT-23 | 5.4ns + 6.3ns | 6.8ns + 4.2ns |
 
@@ -98,7 +112,7 @@ led driver for fiber optics
 | [BSL306N](https://www.infineon.com/dgdl/Infineon-BSL306N-DS-v02_04-en.pdf) | NPN |        | SMD TSOP-6   |  -        | 8.3ns + 1.4ns |
  -->
 
-[Vishay source for rise/fall times for photodiodes](https://www.vishay.com/docs/49071/_sg2166.pdf)
+[Vishay source for rise/fall times for photodiodes](https://www.vishay.com/docs/49071/_sg2166.pdf#page=7&zoom=140,-214,793)
 
 - [Infineon Small Signal and Small Power MOSFETs Selection guide](https://www.infineon.com/dgdl/Infineon-ProductSelectionGuide_SmallSignal_SmallPower_MOSFETs-SG-v02_00-EN.pdf)
     - <a href="https://www.infineon.com/cms/en/product/power/mosfet/small-signal-mosfet/20v-800v-n-channel-small-signal-mosfet/?filterValues=~(265~(~%27SMD)~529~(~%27N)~productStatusInfo~(~%27active*20and*20preferred))&visibleColumnIds=name,522,473_max,559_90_max,559_107_max,451_max,297_max,478_min,478_max,547_nom" target="_blank">Infineon 20V-800V N-Channel Small Signal MOSFET _Overview_</a>
