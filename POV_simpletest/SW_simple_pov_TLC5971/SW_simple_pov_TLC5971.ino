@@ -394,85 +394,25 @@ void handleMenu_Main(slight_DebugMenu *pInstance) {
             out.print(F("\t\t pixel_line_count:"));
             out.print(pixel_line_count);
             out.println();
-            // out.print(F("\t\t data:"));
-            // out.println();
-            // for (
-            //     size_t line_index = 0;
-            //     line_index < pixel_line_count;
-            //     line_index++
-            // ) {
-            //     out.print("{ ");
-            //     for (
-            //         size_t pattern_column = 0;
-            //         pattern_column < pattern.count;
-            //         pattern_column++
-            //     ) {
-            //         out.print(pattern(line_index, pattern_column));
-            //         out.print(", ");
-            //     }
-            //     out.println(" }");
-            // }
-            // out.println();
-            // out.print(F("\t\t data2:"));
-            // out.println();
-            // for (
-            //     size_t line_index = 0;
-            //     line_index < pixel_line_count;
-            //     line_index++
-            // ) {
-            //     out.print("{ ");
-            //     for (
-            //         size_t pattern_column = 0;
-            //         pattern_column < pattern.count;
-            //         pattern_column++
-            //     ) {
-            //         out.print(pattern(pattern_column, line_index));
-            //         out.print(", ");
-            //     }
-            //     out.println(" }");
-            // }
-            // out.println();
-            out.print(F("\t\t data manuell:"));
+            out.print(F("\t\t data:"));
             out.println();
-            out.print("&pattern.data[0]: ");
-            out.print((uint32_t)&pattern.data[0]);
-            out.println();
-            for (size_t y = 0; y < 8; y++) {
-                out.print("p offset: ");
-                uint32_t poffset = (y * 15);
-                out.print(poffset);
-                out.print(" p: ");
-                uint32_t p_data_line = uint32_t(&pattern.data[0]) + poffset;
-                out.print(p_data_line);
-                out.print(" { ");
-                for (size_t x = 0; x < pattern.count; x++) {
-                    out.print(pgm_read_byte_near(p_data_line + x));
+            for (
+                size_t line_index = 0;
+                line_index < pixel_line_count;
+                line_index++
+            ) {
+                out.print("{ ");
+                for (
+                    size_t pattern_column = 0;
+                    pattern_column < pattern.count;
+                    pattern_column++
+                ) {
+                    out.print(pattern(line_index, pattern_column));
                     out.print(", ");
                 }
                 out.println(" }");
             }
             out.println();
-
-            out.println();
-            out.print(F("\t\t data manuell2:"));
-            out.println();
-            out.print("&pattern.data[0]: ");
-            out.print((uint32_t)&pattern.data[0]);
-            out.println();
-            for (size_t y = 0; y < (8*15); y++) {
-                out.print("p offset: ");
-                uint32_t poffset = y;
-                out.print(poffset);
-                out.print(" p: ");
-                uint32_t p_data_line = uint32_t(&pattern.data[0]) + poffset;
-                out.print(p_data_line);
-                out.print("  ");
-                out.print(pgm_read_byte_near(p_data_line));
-                out.println();
-            }
-            out.println();
-
-
         } break;
         // case 'a': {
         //     out.println(F("\t toggle sequencer:"));

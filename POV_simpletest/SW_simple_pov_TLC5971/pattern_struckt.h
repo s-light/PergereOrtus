@@ -4,7 +4,7 @@
 #include <Arduino.h>
 
 const uint8_t pixel_line_count = 8;
-const uint8_t pixel_column_count = 15;
+const uint8_t pixel_column_count = 80;
 
 struct tPattern {
     const uint8_t count;
@@ -15,8 +15,10 @@ struct tPattern {
         //     &data[0] + (pixel_line * pixel_column_count) + pixel_column);
         // // bound check
         if (pixel_line < pixel_line_count && pixel_column < pixel_column_count) {
-            return pgm_read_byte(
-                &data[0] + (pixel_line * pixel_column_count) + pixel_column);
+            return pgm_read_byte_far(
+                uint32_t(&data[0]) +
+                (pixel_line * pixel_column_count) +
+                pixel_column);
         } else {
             return 0;
         }
