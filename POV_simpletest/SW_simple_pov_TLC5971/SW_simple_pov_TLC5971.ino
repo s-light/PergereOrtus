@@ -689,7 +689,8 @@ void update_Boards() {
                 0, 65535, 65535);
         }
         set_line(BOARD0,  0, 0, 0);
-    } else
+        pos1_flag = false;
+    }
     if(pos2_flag) {
         pos2_flag = false;
         // board_timestamp_last =  millis();
@@ -705,6 +706,7 @@ void update_Boards() {
                 0, 65535, 65535);
         }
         set_line(BOARD1,  0, 0, 0);
+        pos2_flag = false;
     }
 }
 
