@@ -157,14 +157,17 @@ slight_DebugMenu myDebugMenu(Serial, Serial, 15);
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Position detector
 
-const uint8_t pos1_pin = A4;
-const uint8_t pos2_pin = A5;
+const uint8_t pos1_pin = 0;
+const uint8_t pos2_pin = 1;
+
+volatile bool pos1_flag = false;
+volatile bool pos2_flag = false;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // LEDBoard
 
-const uint16_t board_interval = 50;
-uint32_t board_timestamp_last = 0;
+// const uint16_t board_interval = 50;
+// uint32_t board_timestamp_last = 0;
 
 
 const uint8_t boards_count = 2;
@@ -275,6 +278,12 @@ slight_ButtonInput button(
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // other things..
 
+
+
+
+
+
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // functions
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -318,8 +327,8 @@ void handleMenu_Main(slight_DebugMenu *pInstance) {
             out.println(F("\t 'Y': toggle DebugOut livesign LED"));
             out.println(F("\t 'x': tests"));
             out.println();
-            // out.println(F("\t 'A': Show 'HelloWorld' "));
-            // out.println(F("\t 'a': toggle sequencer"));
+            out.println(F("\t 'a': print pattern "));
+            // out.println(F("\t 'A': toggle sequencer"));
             // out.println(F("\t 'a': toggle SPIRAL"));
             // out.println(F("\t 'b': toggle SPIRAL2"));
             // out.println(F("\t 'B': toggle SPIRALSUN"));
@@ -376,9 +385,95 @@ void handleMenu_Main(slight_DebugMenu *pInstance) {
             out.println(F("__________"));
         } break;
         //---------------------------------------------------------------------
-        // case 'A': {
-        //     out.println(F("\t Hello World! :-)"));
-        // } break;
+        case 'a': {
+            out.println(F("\t print pattern"));
+            const tPattern &pattern = pattern_memory[(uint8_t)pattern_name];
+            out.print(F("\t\t count:"));
+            out.print(pattern.count);
+            out.println();
+            out.print(F("\t\t pixel_line_count:"));
+            out.print(pixel_line_count);
+            out.println();
+            // out.print(F("\t\t data:"));
+            // out.println();
+            // for (
+            //     size_t line_index = 0;
+            //     line_index < pixel_line_count;
+            //     line_index++
+            // ) {
+            //     out.print("{ ");
+            //     for (
+            //         size_t pattern_column = 0;
+            //         pattern_column < pattern.count;
+            //         pattern_column++
+            //     ) {
+            //         out.print(pattern(line_index, pattern_column));
+            //         out.print(", ");
+            //     }
+            //     out.println(" }");
+            // }
+            // out.println();
+            // out.print(F("\t\t data2:"));
+            // out.println();
+            // for (
+            //     size_t line_index = 0;
+            //     line_index < pixel_line_count;
+            //     line_index++
+            // ) {
+            //     out.print("{ ");
+            //     for (
+            //         size_t pattern_column = 0;
+            //         pattern_column < pattern.count;
+            //         pattern_column++
+            //     ) {
+            //         out.print(pattern(pattern_column, line_index));
+            //         out.print(", ");
+            //     }
+            //     out.println(" }");
+            // }
+            // out.println();
+            out.print(F("\t\t data manuell:"));
+            out.println();
+            out.print("&pattern.data[0]: ");
+            out.print((uint32_t)&pattern.data[0]);
+            out.println();
+            for (size_t y = 0; y < 8; y++) {
+                out.print("p offset: ");
+                uint32_t poffset = (y * 15);
+                out.print(poffset);
+                out.print(" p: ");
+                uint32_t p_data_line = uint32_t(&pattern.data[0]) + poffset;
+                out.print(p_data_line);
+                out.print(" { ");
+                for (size_t x = 0; x < pattern.count; x++) {
+                    out.print(pgm_read_byte_near(p_data_line + x));
+                    out.print(", ");
+                }
+                out.println(" }");
+            }
+            out.println();
+
+            out.println();
+            out.print(F("\t\t data manuell2:"));
+            out.println();
+            out.print("&pattern.data[0]: ");
+            out.print((uint32_t)&pattern.data[0]);
+            out.println();
+            for (size_t y = 0; y < (8*15); y++) {
+                out.print("p offset: ");
+                uint32_t poffset = y;
+                out.print(poffset);
+                out.print(" p: ");
+                uint32_t p_data_line = uint32_t(&pattern.data[0]) + poffset;
+                out.print(p_data_line);
+                out.print("  ");
+                out.print(pgm_read_byte_near(p_data_line));
+                out.println();
+            }
+            out.println();
+
+
+        } break;
         // case 'a': {
         //     out.println(F("\t toggle sequencer:"));
         //     if (sequencer_mode == sequencer_OFF) {
@@ -598,7 +693,7 @@ void set_line(uint8_t board_index, uint16_t r, uint16_t g, uint16_t b) {
 
 void set_line_pattern(
     uint8_t board_index,
-    const tPattern *pattern,
+    const tPattern &pattern,
     uint8_t pattern_column,
     uint16_t r,
     uint16_t g,
@@ -620,7 +715,7 @@ void set_line_pattern(
         //         tlc.setRGB(pixel_line_list[line_index], 0, 0, 0);
         //     };
         // } //end switch
-        if (pattern->data[line_index][pattern_column] == 1) {
+        if (pattern(line_index, pattern_column) == 1) {
             tlc.setRGB(pixel_line_list[line_index], r, g, b);
         } else {
             tlc.setRGB(pixel_line_list[line_index], 0, 0, 0);
@@ -631,10 +726,9 @@ void set_line_pattern(
 
 
 void update_Boards() {
-    if(
-        analogRead(pos1_pin) > 210
-    ) {
-        board_timestamp_last =  millis();
+    if(pos1_flag) {
+        pos1_flag = false;
+        // board_timestamp_last =  millis();
         // set_line(0, 65535, 0);
         // set_line(0, 0, 10000);
         // set_line(0, 65535, 0);
@@ -650,15 +744,14 @@ void update_Boards() {
         ) {
             set_line_pattern(
                 BOARD0,
-                &pattern_memory[(uint8_t)pattern_name],
+                pattern_memory[(uint8_t)pattern_name],
                 pattern_index,
-                1, 0, 65535);
+                0, 65535, 65535);
         }
         set_line(BOARD0,  0, 0, 0);
-    }
-    if(
-        analogRead(pos2_pin) > 210
-    ) {
+    } else
+    if(pos2_flag) {
+        pos2_flag = false;
         // board_timestamp_last =  millis();
         for (
             size_t pattern_index = 0;
@@ -667,9 +760,9 @@ void update_Boards() {
         ) {
             set_line_pattern(
                 BOARD1,
-                &pattern_memory[(uint8_t)pattern_name],
+                pattern_memory[(uint8_t)pattern_name],
                 pattern_index,
-                0, 0, 65535);
+                0, 65535, 65535);
         }
         set_line(BOARD1,  0, 0, 0);
     }
@@ -819,7 +912,7 @@ void speedtest_TLC5971(Print &out) {
     start = micros();
         set_line_pattern(
             BOARD0,
-            &pattern_memory[(uint8_t)pattern_name],
+            pattern_memory[(uint8_t)pattern_name],
             0,
             30000, 0, 65535);
     end = micros();
@@ -840,7 +933,7 @@ void speedtest_TLC5971(Print &out) {
         ) {
             set_line_pattern(
                 BOARD0,
-                &pattern_memory[(uint8_t)pattern_name],
+                pattern_memory[(uint8_t)pattern_name],
                 pattern_index,
                 30000, 0, 65535);
         }
@@ -872,11 +965,40 @@ void update_Handler() {
     //     ) {
     //         sequencer_timestamp_last =  millis();
     //         calculate_step();
+    //         update_Boards();
     //     }
     // }
     // switch (/* expression */) {
     //     case /* value */:
     // }
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// position sensors
+
+
+void setup_Position(Print &out) {
+    out.println(F("setup Position sensors:"));
+
+    out.println(F("\t set pos1_pin"));
+    pinMode(pos1_pin, INPUT);
+    out.println(F("\t set pos2_pin"));
+    pinMode(pos2_pin, INPUT);
+
+    out.println(F("\t attach Interrupt pos1"));
+    attachInterrupt(digitalPinToInterrupt(pos1_pin), isr_pos1, FALLING);
+    out.println(F("\t attach Interrupt pos1"));
+    attachInterrupt(digitalPinToInterrupt(pos2_pin), isr_pos2, FALLING);
+
+    out.println(F("\t finished."));
+}
+
+void isr_pos1() {
+  pos1_flag = true;
+}
+
+void isr_pos2() {
+  pos2_flag = true;
 }
 
 
@@ -1175,13 +1297,7 @@ void setup() {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // setup position sensors
 
-    out.println(F("setup position sensor:")); {
-        out.println(F("\t set pos1_pin"));
-        pinMode(pos1_pin, INPUT);
-        out.println(F("\t set pos2_pin"));
-        pinMode(pos2_pin, INPUT);
-    }
-    out.println(F("\t finished."));
+    setup_Position(out);
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // setup XXX1
@@ -1257,22 +1373,40 @@ void loop() {
                 Serial.print(F("  free RAM = "));
                 Serial.print(freeRam());
                 // Serial.println();
-                Serial.print(F("; pos1 voltage: "));
+                // Serial.print(F("; pos1 voltage: "));
                 // 1024 = 5V
                 // analogRead = x
                 // x = 5.0*analogRead/1024
-                uint16_t raw1 = analogRead(pos1_pin);
-                Serial.print(5.0 *  raw1 / 1024);
-                Serial.print(F("V (="));
-                Serial.print(raw1);
-                Serial.print(F(")"));
+                // uint16_t raw1 = analogRead(pos1_pin);
+                // Serial.print(5.0 *  raw1 / 1024);
+                // Serial.print(F("V (="));
+                // Serial.print(raw1);
+                // Serial.print(F(")"));
+                // // Serial.println();
+                // Serial.print(F("; pos2 voltage: "));
+                // uint16_t raw2 = analogRead(pos2_pin);
+                // Serial.print(5.0 *  raw2 / 1024);
+                // Serial.print(F("V (="));
+                // Serial.print(raw2);
+                // Serial.print(F(")"));
                 // Serial.println();
-                Serial.print(F("; pos2 voltage: "));
-                uint16_t raw2 = analogRead(pos2_pin);
-                Serial.print(5.0 *  raw2 / 1024);
-                Serial.print(F("V (="));
-                Serial.print(raw2);
-                Serial.print(F(")"));
+
+                Serial.print(F("; pos1 flag: "));
+                Serial.print(pos1_flag);
+                Serial.print(F(""));
+                // Serial.println();
+                Serial.print(F("; pos2 flag: "));
+                Serial.print(pos2_flag);
+                Serial.print(F(""));
+                // Serial.println();
+
+                Serial.print(F("; pos1 pin: "));
+                Serial.print(digitalRead(pos1_pin));
+                Serial.print(F(""));
+                // Serial.println();
+                Serial.print(F("; pos2 pin: "));
+                Serial.print(digitalRead(pos2_pin));
+                Serial.print(F(""));
                 Serial.println();
             }
 
