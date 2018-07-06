@@ -1,17 +1,11 @@
-<!--lint disable list-item-indent-->
-
 # ortogere
+<!--lint disable list-item-indent-->
 `ortogere` - the fantasy name / word means something like *verfolge den Ursprung* -> *chases the origin*
 
 for a pretty website rendering you can view this project at [s-light.github.io/ortogere](https://s-light.github.io/ortogere/)
 
 
-## Current State
-currently this project is in the early creation phase.
-you can have a look in the [docs/ideas sub directory](docs/ideas/readme.md).
-
-
-
+for more information have a look in the [docs/ sub directory](docs/readme.md).
 
 ---
 # License
