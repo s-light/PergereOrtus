@@ -47,3 +47,6 @@ this could give a pressure reading.
 
 - [where are the devices listed?](https://e2e.ti.com/support/sensor/inductive-sensing/f/938/t/702434)
 - [TI forum - sensor FAQ](https://e2e.ti.com/support/sensor/inductive-sensing/f/938/t/295036)
+
+## mechanical
+[bearing with rubber](https://www.bocabearings.com/products/ss3-10rmzz-2682)
