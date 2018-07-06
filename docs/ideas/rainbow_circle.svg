@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="200mm"
+   height="200mm"
+   viewBox="0 0 200 200"
+   version="1.1"
+   id="svg954"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   sodipodi:docname="rainbow_circle.svg">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.74741923"
+     inkscape:cx="468.91639"
+     inkscape:cy="428.24045"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     width="200mm"
+     inkscape:window-width="1920"
+     inkscape:window-height="1015"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:showpageshadow="false"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:object-paths="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:snap-text-baseline="true"
+     inkscape:snap-page="true" />
+  <defs
+     id="defs948">
+    <meshgradient
+       y="197"
+       x="200"
+       gradientUnits="userSpaceOnUse"
+       id="meshgradient1523"
+       inkscape:collect="always"
+       type="coons">
+      <meshrow
+         id="meshrow35970">
+        <meshpatch
+           id="meshpatch35972">
+          <stop
+             path="c 0,35.7266  -19.0599,68.7393  -50,86.6025"
+             style="stop-color:#00fffc;stop-opacity:1"
+             id="stop35974" />
+          <stop
+             path="l -44.4444,-76.98"
+             style="stop-color:#00ff00;stop-opacity:1"
+             id="stop35976" />
+          <stop
+             path="l 5.55551,-9.6225"
+             style="stop-color:#00ff00;stop-opacity:1"
+             id="stop35978" />
+          <stop
+             path="l 88.8889,0"
+             style="stop-color:#00fffc;stop-opacity:1"
+             id="stop35980" />
+        </meshpatch>
+        <meshpatch
+           id="meshpatch35982">
+          <stop
+             path="c -30.9401,17.8633  -69.0599,17.8633  -100,5.68434e-14"
+             id="stop35984" />
+          <stop
+             path="l 44.4444,-76.98"
+             style="stop-color:#fffc00;stop-opacity:1"
+             id="stop35986" />
+          <stop
+             path="l 11.1112,-5.68434e-14"
+             style="stop-color:#fffc00;stop-opacity:1"
+             id="stop35988" />
+        </meshpatch>
+        <meshpatch
+           id="meshpatch35990">
+          <stop
+             path="c -30.9401,-17.8633  -50,-50.876  -50,-86.6025"
+             id="stop35992" />
+          <stop
+             path="l 88.8889,-5.68434e-14"
+             style="stop-color:#ff0000;stop-opacity:1"
+             id="stop35994" />
+          <stop
+             path="l 5.5555,9.6225"
+             style="stop-color:#ff0000;stop-opacity:1"
+             id="stop35996" />
+        </meshpatch>
+        <meshpatch
+           id="meshpatch35998">
+          <stop
+             path="c -4.37524e-15,-35.7266  19.0599,-68.7393  50,-86.6025"
+             id="stop36000" />
+          <stop
+             path="l 44.4444,76.98"
+             style="stop-color:#fc00ff;stop-opacity:1"
+             id="stop36002" />
+          <stop
+             path="l -5.55554,9.6225"
+             style="stop-color:#fc00ff;stop-opacity:1"
+             id="stop36004" />
+        </meshpatch>
+        <meshpatch
+           id="meshpatch36006">
+          <stop
+             path="c 30.9401,-17.8633  69.0599,-17.8633  100,-7.10543e-14"
+             id="stop36008" />
+          <stop
+             path="l -44.4444,76.98"
+             style="stop-color:#0000ff;stop-opacity:1"
+             id="stop36010" />
+          <stop
+             path="l -11.1111,-2.84217e-14"
+             style="stop-color:#0000ff;stop-opacity:1"
+             id="stop36012" />
+        </meshpatch>
+        <meshpatch
+           id="meshpatch36014">
+          <stop
+             path="c 30.9401,17.8633  50,50.876  50,86.6025"
+             id="stop36016" />
+          <stop
+             path="l -88.8889,0"
+             style="stop-color:#00fffc;stop-opacity:1"
+             id="stop36018" />
+          <stop
+             path="l -5.55554,-9.6225"
+             style="stop-color:#00fffc;stop-opacity:1"
+             id="stop36020" />
+        </meshpatch>
+      </meshrow>
+    </meshgradient>
+  </defs>
+  <metadata
+     id="metadata951">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/4.0/" />
+        <dc:date>06.07.2018</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Stefan Krüger</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Stefan Krüger</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:language>EN / DE</dc:language>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(0,-97)"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="rainbow_circle">
+    <circle
+       r="100"
+       cy="197"
+       cx="100"
+       id="path1520"
+       style="opacity:1;fill:url(#meshgradient1523);fill-opacity:1;stroke:none;stroke-width:0.26499999;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+  </g>
+  <g
+     inkscape:label="helper"
+     id="layer2"
+     inkscape:groupmode="layer"
+     sodipodi:insensitive="true"
+     style="display:none">
+    <g
+       id="g27175"
+       inkscape:label="Grid_Polar:R3:A12"
+       transform="matrix(2.519685,0,0,2.519685,100,100)">
+      <circle
+         id="circle27131"
+         inkscape:label="MajorDivCircle1:R13.2291666664"
+         style="fill:none;stroke:#000000;stroke-width:0.52916664"
+         r="13.229167"
+         cy="0"
+         cx="0" />
+      <circle
+         id="circle27133"
+         inkscape:label="MinorDivCircle1:R13.2291666664"
+         style="fill:none;stroke:#000000;stroke-width:0.26458332"
+         r="8.8194447"
+         cy="0"
+         cx="0" />
+      <circle
+         id="circle27135"
+         inkscape:label="MinorDivCircle1:R13.2291666664"
+         style="fill:none;stroke:#000000;stroke-width:0.26458332"
+         r="4.4097223"
+         cy="0"
+         cx="0" />
+      <circle
+         id="circle27137"
+         inkscape:label="MajorDivCircle2:R26.4583333328"
+         style="fill:none;stroke:#000000;stroke-width:0.52916664"
+         r="26.458334"
+         cy="0"
+         cx="0" />
+      <circle
+         id="circle27139"
+         inkscape:label="MinorDivCircle2:R26.4583333328"
+         style="fill:none;stroke:#000000;stroke-width:0.26458332"
+         r="22.048611"
+         cy="0"
+         cx="0" />
+      <circle
+         id="circle27141"
+         inkscape:label="MinorDivCircle2:R26.4583333328"
+         style="fill:none;stroke:#000000;stroke-width:0.26458332"
+         r="17.638889"
+         cy="0"
+         cx="0" />
+      <circle
+         id="circle27143"
+         inkscape:label="MajorDivCircle3:R39.6874999992"
+         style="fill:none;stroke:#000000;stroke-width:0.52916664"
+         r="39.6875"
+         cy="0"
+         cx="0" />
+      <circle
+         id="circle27145"
+         inkscape:label="MinorDivCircle3:R39.6874999992"
+         style="fill:none;stroke:#000000;stroke-width:0.26458332"
+         r="35.277779"
+         cy="0"
+         cx="0" />
+      <circle
+         id="circle27147"
+         inkscape:label="MinorDivCircle3:R39.6874999992"
+         style="fill:none;stroke:#000000;stroke-width:0.26458332"
+         r="30.868055"
+         cy="0"
+         cx="0" />
+      <path
+         id="path27149"
+         inkscape:label="RadialGridline0"
+         style="fill:none;stroke:#000000;stroke-width:0.52916664"
+         d="M 0,0 V 39.6875"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path27151"
+         inkscape:label="RadialGridline1"
+         style="fill:none;stroke:#000000;stroke-width:0.52916664"
+         d="M 0,0 19.84375,34.370383"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path27153"
+         inkscape:label="RadialGridline2"
+         style="fill:none;stroke:#000000;stroke-width:0.52916664"
+         d="M 0,0 34.370383,19.84375"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path27155"
+         inkscape:label="RadialGridline3"
+         style="fill:none;stroke:#000000;stroke-width:0.52916664"
+         d="M 0,0 H 39.6875"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path27157"
+         inkscape:label="RadialGridline4"
+         style="fill:none;stroke:#000000;stroke-width:0.52916664"
+         d="M 0,0 34.370383,-19.84375"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path27159"
+         inkscape:label="RadialGridline5"
+         style="fill:none;stroke:#000000;stroke-width:0.52916664"
+         d="M 0,0 19.84375,-34.370383"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path27161"
+         inkscape:label="RadialGridline6"
+         style="fill:none;stroke:#000000;stroke-width:0.52916664"
+         d="M 0,0 V -39.6875"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path27163"
+         inkscape:label="RadialGridline7"
+         style="fill:none;stroke:#000000;stroke-width:0.52916664"
+         d="M 0,0 -19.84375,-34.370383"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path27165"
+         inkscape:label="RadialGridline8"
+         style="fill:none;stroke:#000000;stroke-width:0.52916664"
+         d="M 0,0 -34.370383,-19.84375"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path27167"
+         inkscape:label="RadialGridline9"
+         style="fill:none;stroke:#000000;stroke-width:0.52916664"
+         d="M 0,0 H -39.6875"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path27169"
+         inkscape:label="RadialGridline10"
+         style="fill:none;stroke:#000000;stroke-width:0.52916664"
+         d="M 0,0 -34.370383,19.84375"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path27171"
+         inkscape:label="RadialGridline11"
+         style="fill:none;stroke:#000000;stroke-width:0.52916664"
+         d="M 0,0 -19.84375,34.370383"
+         inkscape:connector-curvature="0" />
+      <circle
+         id="circle27173"
+         inkscape:label="CentreDot"
+         style="fill:#000000;stroke:#000000;stroke-width:0"
+         r="0.66145831"
+         cy="0"
+         cx="0" />
+    </g>
+  </g>
+</svg>

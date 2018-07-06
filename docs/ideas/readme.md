@@ -29,13 +29,7 @@ it is split in 4 parts and managed with an [FDC1004](https://github.com/s-light/
 this allows for 'hand waving gestures' and approach detection (hopefully ;-) )
 
 ## top input rim
-### self build encoder
-on underside of rim is a black/white pattern printed.  
-(check that printing is really black for IR!!)
-then read with two reflective ir sensor.
-classical encoder gray-code pattern thing...
-- [Overview: Optical Sensors - Reflective](https://www.vishay.com/optical-sensors/reflective-outputisnot-16/)
-- [VCNT2020 2,5x2mm SMD package](https://www.vishay.com/optical-sensors/list/product-84285/)
+[input_rim.md](input_rim.md)
 
 
 ## compass needle (POV display)
