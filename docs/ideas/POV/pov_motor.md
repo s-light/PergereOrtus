@@ -12,6 +12,13 @@ eventually this could work?! [26:1 Sub-Micro Planetengetriebemotor 6Dx16L mm @ 6
 - [21BF nuvoDisc 21BF 3C K .02 (D21 x L11)](http://www.portescap.de/Produkte/B%C3%BCrstenlose%20DC-Motoren-DC-Motor/21BFnuvoDisc)
 - [EC 45 flat Ø42.8 mm, brushless, 12 Watt, with Hall sensors (~70€)](https://www.maxonmotor.com/maxon/view/product/motor/ecmotor/ecflat/ecflat45/200188)
 - extract motor from Harddisk
+- [24V 4000RPM 0.0625Nm 26W 1.8A 42x42x40mm Brushless DC Motor](https://www.omc-stepperonline.com/24v-4000rpm-00625nm-26w-18a-42x42x40mm-brushless-dc-motor-42bls40-24-01.html?search=4000rpm)
+- [B4240-12 HighSpeed 4000rpm](https://www.transmotec.com/product/b4240-12/)
+
+### with hollow shaft
+- [ST4118M1804-L —  Stepper Motor with Hollow Shaft - NEMA 17 (42mm)](https://en.nanotec.com/products/1271-st4118m1804-l/)
+- [NEMA 17 42mm High Speed Brushless DC Motor](http://gemsmotor.com/nema-17-square-brushless-dc-motor)
+- [import Kundenspezifische Hohlwellen Motoren](http://www.lionpower.ch/import-motoren/hohlwellen-motor/index.html)
 
 ## links
 - [Closed Loop Speed Control of Miniature Brushless DC Motors (PDF)](http://www.joace.org/uploadfile/2014/1008/20141008114946575.pdf)
