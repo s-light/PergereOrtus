@@ -98,6 +98,7 @@ be used to route the user to a fixed absolute position (this is in sync with the
     - Beidou / Galileo ready
     - Pin to pin compatible with A2200-A
     - Low tracking power consumption
+- [Maestro Wireless A5135-H GNSS Receiver with Antenna](http://www.maestro-wireless.com/a5135-h-technical-specifications/)  [mouser 22,10€](https://www.mouser.de/_/?Keyword=GNSS%20A5135-H)
 - [pololu UM7-LT Orientation Sensor](https://www.pololu.com/product/2763) [exp-tech 129,95€](https://www.exp-tech.de/sensoren/imu/5999/um7-lt-orientierungssensor)
 - [BNO055](https://www.bosch-sensortec.com/bst/products/all_products/bno055)
     - [Adafruit 9-DOF Absolute Orientation IMU Fusion Breakout - BNO055](https://www.adafruit.com/product/2472) [exp-tech 35,35€](https://www.exp-tech.de/sensoren/beschleunigung/6446/adafruit-9-dof-absolute-orientation-imu-fusion-breakout-bno055?c=1090)
