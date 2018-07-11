@@ -1,12 +1,7 @@
 # POV power transmission
 <!--lint disable list-item-indent-->
 <!--lint disable list-item-bullet-indent-->
-power transmission should be possible with slip-rings.
-as Jürgen pointed out in chat - if you get the diameter of the slide-ring smaller you get lower surface speed -
-so less wear...
-
-this is in contrast to the data ir transmission - as i need to get these wires or fibers through the shaft..
-but i think i will find a good compromise..
+find a good way to transfer the power needed for the leds to the rotating part :-)
 
 ---
 # Contents
@@ -16,7 +11,21 @@ but i think i will find a good compromise..
 {:toc}
 ---
 
+## Target Power Level
+the Target Power Level is about 20-30W
+on the rotating site we need stable 4-5V DC for the LEDs
+(specific Voltage must be checked with LED-Driver-Drop-Out voltages...)
+
+
+
 ## use slip-rings
+power transmission should be possible with slip-rings.
+as Jürgen pointed out in chat - if you get the diameter of the slide-ring smaller you get lower surface speed -
+so less wear...
+
+this is in contrast to the data ir transmission - as i need to get these wires or fibers through the shaft..
+but i think i will find a good compromise..
+
 - [slip-rings with ball-bearings](http://web.archive.org/web/20101005013331/http://maybevideodoes.de/howto/slipring.html)
     - [images](http://web.archive.org/web/20101010045648/http://www.maybevideodoes.de:80/howto/newSlipring/index.html)
 - [slip-ring car alternator (to big)](https://www.lima-shop.de/en/product_info.php/info/p297_Slip-ring-univ--d-14-90mm-for-Valeo-Alternator.html)
