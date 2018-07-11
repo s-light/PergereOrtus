@@ -50,3 +50,24 @@ this could give a pressure reading.
 
 ## mechanical
 [bearing with rubber](https://www.bocabearings.com/products/ss3-10rmzz-2682)
+
+## text
+
+### 5-Elements
+| element  | direction |
+| :------- | :-------- |
+| wood     | east      |
+| fire     | south     |
+| earth    | center    |
+| metal    | west      |
+| water    | north     |
+
+### 4-Elements
+[source](https://de.wikipedia.org/wiki/Vier-Elemente-Lehre)
+
+| element  | direction |
+| :------- | :-------- |
+| fire     | south     |
+| earth    | north     |
+| air      | east      |
+| water    | west      |
