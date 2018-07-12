@@ -156,7 +156,7 @@ label.unit::after {
 }
 
 span.unit::after {
-    content: "&nbsp;";
+    content: " ";
     margin-left: 0.2em;
 }
 
@@ -212,6 +212,62 @@ span.unit::after {
 .unit.gigahertz::after {
     content: "GHz";
 }
+
+
+// electronic
+
+// voltage
+.unit.volt::after {
+    content: "V";
+}
+.unit.millivolt::after {
+    content: "mV";
+}
+.unit.kilovolt::after {
+    content: "kV";
+}
+
+// current
+.unit.ampere::after {
+    content: "A";
+}
+.unit.milliampere::after {
+    content: "mA";
+}
+
+// power
+.unit.watt::after {
+    content: "W";
+}
+.unit.milliwatt::after {
+    content: "mW";
+}
+.unit.kilowatt::after {
+    content: "kW";
+}
+
+// inductance L
+.unit.henry::after {
+    content: "H";
+}
+.unit.millihenry::after {
+    content: "mH";
+}
+.unit.nanohenry::after {
+    content: "nH";
+}
+
+// capacitance
+.unit.henry::after {
+    content: "H";
+}
+.unit.millihenry::after {
+    content: "mH";
+}
+.unit.nanohenry::after {
+    content: "nH";
+}
+
 
 
 // special images
