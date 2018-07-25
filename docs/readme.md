@@ -16,4 +16,4 @@ you can find the first concept drawings and tests in the
 [ideas sub directory](ideas/).
 
 i have build a first simple persistence of vision test setup.
-this can be found in [POV_simpletest/](POV_simpletest/)
+this can be found in [POV_simpletest](https://s-light.github.io/POV_simpletest/docs/)

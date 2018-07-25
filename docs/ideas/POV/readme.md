@@ -12,7 +12,7 @@ so we have a 12..20-Pixel high circle-screen.
 
 ![pov concept overview](pov_concept_overview.svg)
 
-some first simple tests are documented at [POV_simpletest](../../POV_simpletest)
+some first simple tests are documented at [POV_simpletest](https://s-light.github.io/POV_simpletest/docs/)
 
 ---
 # Contents
