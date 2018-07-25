@@ -5,8 +5,8 @@
 
 
 <div class="hoverswitch">
-    <img class="pic" alt="ortogere first sketch 3d model" src="sketch_size_papertest_3d_model.png">
-    <img class="pic new" alt="ortogere first sketch 3d model" src="sketch_size_papertest_3d_model_transparent.png">
+    <img class="pic" alt="ortogere first sketch 3d model" src="size_papertest/sketch_size_papertest_3d_model.png">
+    <img class="pic new" alt="ortogere first sketch 3d model" src="size_papertest/sketch_size_papertest_3d_model_transparent.png">
 </div>
 
 <div class="hoverswitch">
@@ -43,7 +43,7 @@ this allows for 'hand waving gestures' and approach detection (hopefully ;-) )
 
 
 ## top input rim
-[input_rim.md](input_rim.md)
+[input_rim/](input_rim/)
 
 
 ## compass needle (POV display)
