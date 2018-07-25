@@ -67,13 +67,8 @@ some illumination for this part should be also planned for..
 motor for here could be this [700:1 Sub-Micro Planetengetriebemotor 6Dx21L mm](https://www.exp-tech.de/motoren/dc-getriebemotoren/7038/700-1-sub-micro-planetengetriebemotor-6dx21l-mm) one.
 its 90RPM@6V
 
-## Lid
-i think a lid that (eventually) can open and close to 'protect' the glass is a good idea.
-on the top of the lid i think a [Flower of Live](https://en.wikipedia.org/wiki/Overlapping_circles_grid) [(Blume des Lebens)](https://de.wikipedia.org/wiki/Blume_des_Lebens) or [something similar](https://openclipart.org/detail/17495/decorative-flower) is a good art-work.
-for example:
-![Flower of Live](https://upload.wikimedia.org/wikipedia/commons/0/08/Flower-of-Life-small.svg)
-or
-![Flower](https://openclipart.org/download/17495/lemmling-Decorative-flower.svg)
+## Lid / Cover
+[cover/](cover/)
 
 ## communication
 the unit should have a W-LAN and / or 433MHz wireless communication link -
