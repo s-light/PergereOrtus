@@ -63,7 +63,7 @@ eventually this could work?! [26:1 Sub-Micro Planetengetriebemotor 6Dx16L mm @ 6
             - [Minimum speed](https://vesc-project.com/node/212)
             - [my question](https://vesc-project.com/node/321)
 - [odrive](https://discourse.odriverobotics.com/)
-
+- [ESC for BLDC motors](https://www.tindie.com/products/onehorse/esc-for-bldc-motors/#)
 
 
 
