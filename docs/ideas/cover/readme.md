@@ -38,7 +38,7 @@ ideas
 - one or multiple (two or four) small rotating discs/locks
 - spring-loaded mechanism for 'attach'
     - must be visually nice if not in use..
-    ![cover lock mechanism](../cover_lock_ideas.svg)
+![cover lock mechanism](../cover_lock_ideas.svg)
 
 
 ### top crystal cone
