@@ -38,8 +38,20 @@ ideas
 - one or multiple (two or four) small rotating discs/locks
 - spring-loaded mechanism for 'attach'
     - must be visually nice if not in use..
+
 ![cover lock mechanism](../cover_lock_ideas.svg)
 
+Bevel gears:
+- [Bevel gear made of polyacetal resin die-cast](http://maedler.de/product/1643/1619/273/kegelraeder-aus-polyacetal-uebersetzung-11-51)
+    - [module 0.5 16 teeth i=1:1 bore 3mm](http://maedler.de/Article/35520700) (needed depth: 16mm)
+    - [module 1 16 teeth i=1:1 bore 5mm](http://maedler.de/Article/35550700) (needed depth: 28mm)
+- [Bevel gear made of die-cast zinc ZnAl4Cu1](http://maedler.de/Article/35850700)
+    - [module 1.0 16 teeth bore 6mm](http://maedler.de/Article/35850700)
+- [Bevel Gears Made of Brass Ms58, milled, Ratio 1:1 - 4:1](http://maedler.de/product/1643/1619/273/kegelraeder-aus-messing-uebersetzung-11-bis-41)
+    - [module 0.5 15 teeth i=1:1](http://maedler.de/Article/35020600) (needed depth: 14mm)
+    - [module 0.5 20 teeth i=1:1](http://maedler.de/Article/35021100) (needed depth: 16mm)
+    - [module 0.5 20 teeth i=2:1](http://maedler.de/Article/35026000) (needed depth: 21mm)
+    - [module 0.5 40 teeth i=2:1](http://maedler.de/Article/35026100) (needed depth: 22mm)
 
 ### top crystal cone
 transparent acrylic glass
