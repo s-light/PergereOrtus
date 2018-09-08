@@ -80,27 +80,38 @@ so the thing can report the current absolute location and orientation over the c
 be used to route the user to a fixed absolute position (this is in sync with the naming part *Ortus* for *origin*.. )
 
 ### sensors
-- MTK3339
-    - [Ultimate GPS Module - 66 channel w/10 Hz updates - MTK3339 chipset ($29.95)](https://www.adafruit.com/product/790)
-    - [Adafruit Ultimate GPS Breakout - 66 channel w/10 Hz updates - Version 3 ($39.95)](https://www.adafruit.com/product/746)
-    - [Adafruit Ultimate GPS FeatherWing ($39.95)](https://www.adafruit.com/product/3133)
-    - [pololu - 66-Channel LS20031 GPS Receiver Module (MT3339 Chipset) $49.95](https://www.pololu.com/product/2138)
-    - [sparkfun - GPS Receiver - LS20031 5Hz (66 Channel) $59.95](https://www.sparkfun.com/products/8975)
-- [sparkfun GPS](https://www.sparkfun.com/search/results?term=gps)
-- [sparkfun GPS buying guide](https://www.sparkfun.com/pages/GPS_Guide)
-- [Maestro Wireless A5100 GNSS Receiver](http://www.maestro-wireless.com/portfolio-items/a5100-a/) [mouser 17,05€](https://www.mouser.de/_/?Keyword=GNSS%20A5100-A)
-    - GPS/GLONASS concurrent GNSS modules
-    - Beidou / Galileo ready
-    - Pin to pin compatible with A2200-A
-    - Low tracking power consumption
-- [Maestro Wireless A5135-H GNSS Receiver with Antenna](http://www.maestro-wireless.com/a5135-h-technical-specifications/)  [mouser 22,10€](https://www.mouser.de/_/?Keyword=GNSS%20A5135-H)
-- [pololu UM7-LT Orientation Sensor](https://www.pololu.com/product/2763) [exp-tech 129,95€](https://www.exp-tech.de/sensoren/imu/5999/um7-lt-orientierungssensor)
-- [BNO055](https://www.bosch-sensortec.com/bst/products/all_products/bno055)
-    - [Adafruit 9-DOF Absolute Orientation IMU Fusion Breakout - BNO055](https://www.adafruit.com/product/2472) [exp-tech 35,35€](https://www.exp-tech.de/sensoren/beschleunigung/6446/adafruit-9-dof-absolute-orientation-imu-fusion-breakout-bno055?c=1090)
-    - [BNO055 Absolute Orientation Sensor with Raspberry Pi & BeagleBone Black](https://learn.adafruit.com/bno055-absolute-orientation-sensor-with-raspberry-pi-and-beaglebone-black)
-- [BNO080](https://www.bosch-sensortec.com/bst/products/all_products/bno080)
-    - [Qwiic VR IMU (BNO080) Hookup Guide](https://learn.sparkfun.com/tutorials/qwiic-vr-imu-bno080-hookup-guide?_ga=2.203024980.490365886.1525245502-1455689428.1519465931) [exp-tech 33,68€](https://www.exp-tech.de/sensoren/beschleunigung/8757/sparkfun-vr-imu-breakout-bno080-qwiic?c=1090)
-- [this project](https://hackaday.io/project/39158-odroid-xu4-based-control-computer) mentions that the BNO080 is more stable / less noisy
+- GNSS / GPS
+    - MTK3339
+        - [Ultimate GPS Module - 66 channel w/10 Hz updates - MTK3339 chipset ($29.95)](https://www.adafruit.com/product/790)
+        - [Adafruit Ultimate GPS Breakout - 66 channel w/10 Hz updates - Version 3 ($39.95)](https://www.adafruit.com/product/746)
+        - [Adafruit Ultimate GPS FeatherWing ($39.95)](https://www.adafruit.com/product/3133)
+        - [pololu - 66-Channel LS20031 GPS Receiver Module (MT3339 Chipset) $49.95](https://www.pololu.com/product/2138)
+        - [sparkfun - GPS Receiver - LS20031 5Hz (66 Channel) $59.95](https://www.sparkfun.com/products/8975)
+    - [sparkfun GPS](https://www.sparkfun.com/search/results?term=gps)
+    - [sparkfun GPS buying guide](https://www.sparkfun.com/pages/GPS_Guide)
+    - Maestro Wireless
+        - [Maestro Wireless A5100 GNSS Receiver](http://www.maestro-wireless.com/portfolio-items/a5100-a/) [mouser 17,05€](https://www.mouser.de/_/?Keyword=GNSS%20A5100-A)
+            - GPS/GLONASS concurrent GNSS modules
+            - Beidou / Galileo ready
+            - Pin to pin compatible with A2200-A
+            - Low tracking power consumption
+        - [Maestro Wireless A5135-H GNSS Receiver with Antenna](http://www.maestro-wireless.com/a5135-h-technical-specifications/)  [mouser 22,10€](https://www.mouser.de/_/?Keyword=GNSS%20A5135-H)
+    - [u-blox CAM-M8Q](https://www.u-blox.com/en/product/cam-m8-series)
+        - Concurrent reception of up to 3 GNSS (GPS, Galileo, GLONASS, BeiDou)
+        - Miniature size and weight with low power consumption
+        - Embedded, omnidirectional and wideband antenna
+        - Industry leading –167 dBm navigation sensitivity
+        - Optional external antenna
+        - Product variants to meet performance and cost requirements
+        - [CAM-M8Q-Breakout Multi GNSS Module (GPS, QZSS, GLONASS, BeiDou, Galileo)](https://www.watterott.com/de/CAM-M8Q-Breakout)
+- IMU
+    - [pololu UM7-LT Orientation Sensor](https://www.pololu.com/product/2763) [exp-tech 129,95€](https://www.exp-tech.de/sensoren/imu/5999/um7-lt-orientierungssensor)
+    - [BNO055](https://www.bosch-sensortec.com/bst/products/all_products/bno055)
+        - [Adafruit 9-DOF Absolute Orientation IMU Fusion Breakout - BNO055](https://www.adafruit.com/product/2472) [exp-tech 35,35€](https://www.exp-tech.de/sensoren/beschleunigung/6446/adafruit-9-dof-absolute-orientation-imu-fusion-breakout-bno055?c=1090)
+        - [BNO055 Absolute Orientation Sensor with Raspberry Pi & BeagleBone Black](https://learn.adafruit.com/bno055-absolute-orientation-sensor-with-raspberry-pi-and-beaglebone-black)
+    - [BNO080](https://www.bosch-sensortec.com/bst/products/all_products/bno080)
+        - [Qwiic VR IMU (BNO080) Hookup Guide](https://learn.sparkfun.com/tutorials/qwiic-vr-imu-bno080-hookup-guide?_ga=2.203024980.490365886.1525245502-1455689428.1519465931) [exp-tech 33,68€](https://www.exp-tech.de/sensoren/beschleunigung/8757/sparkfun-vr-imu-breakout-bno080-qwiic?c=1090)
+    - [this project](https://hackaday.io/project/39158-odroid-xu4-based-control-computer) mentions that the BNO080 is more stable / less noisy
 
 
 ## power
