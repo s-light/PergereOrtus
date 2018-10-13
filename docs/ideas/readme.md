@@ -96,14 +96,43 @@ be used to route the user to a fixed absolute position (this is in sync with the
             - Pin to pin compatible with A2200-A
             - Low tracking power consumption
         - [Maestro Wireless A5135-H GNSS Receiver with Antenna](http://www.maestro-wireless.com/a5135-h-technical-specifications/)  [mouser 22,10€](https://www.mouser.de/_/?Keyword=GNSS%20A5135-H)
-    - [u-blox CAM-M8Q](https://www.u-blox.com/en/product/cam-m8-series)
-        - Concurrent reception of up to 3 GNSS (GPS, Galileo, GLONASS, BeiDou)
-        - Miniature size and weight with low power consumption
-        - Embedded, omnidirectional and wideband antenna
-        - Industry leading –167 dBm navigation sensitivity
-        - Optional external antenna
-        - Product variants to meet performance and cost requirements
-        - [CAM-M8Q-Breakout Multi GNSS Module (GPS, QZSS, GLONASS, BeiDou, Galileo)](https://www.watterott.com/de/CAM-M8Q-Breakout)
+    - [u-blox](https://www.u-blox.de)
+        - [CAM-M8Q](https://www.u-blox.com/en/product/cam-m8-series)
+            - Concurrent reception of up to 3 GNSS (GPS, Galileo, GLONASS, BeiDou)
+            - Miniature size and weight with low power consumption
+            - Embedded, omnidirectional and wideband antenna
+            - Industry leading –167 dBm navigation sensitivity
+            - Optional external antenna
+            - Product variants to meet performance and cost requirements
+            - [CAM-M8Q-Breakout Multi GNSS Module (GPS, QZSS, GLONASS, BeiDou, Galileo)](https://www.watterott.com/de/CAM-M8Q-Breakout)
+        - [NEO-M8P-2](https://www.u-blox.com/en/product/neo-m8p-series)
+            - Integrated Real Time Kinematics (RTK) for fast time‑to‑market
+            - Smallest, lightest, and energy‑efficient RTK module
+            - Complete and versatile solution due to base and rover variants
+            - World‑leading GNSS positioning technology
+            -  NEO-M8P-2: u-blox M8 high precision module with rover and **base station** functionality
+            - GNSS: BeiDou, GLONASS, GPS / QZSS
+            - Number of concurrent GNSS: 2
+            - List Price:
+                - 179 EUR (quantity 1)
+                - 106 EUR (quantity >250)
+            - [sparkfun GPS-15005 (200$)](https://www.sparkfun.com/products/15005)
+        - [ZED-F9P](https://www.u-blox.com/en/product/zed-f9p-module)
+            - [u-blox F9: Taking GNSS precision to the next level](https://www.u-blox.com/en/publication/beyond-stories/u-blox-f9-taking-gnss-precision-next-level)
+            - Concurrent reception of GPS, GLONASS, Galileo and BeiDou
+            - Multi‑band RTK with fast convergence times and reliable performance
+            - High update rate for highly dynamic applications
+            - Centimeter accuracy in a small and energy efficient module
+            - Easy integration of RTK for fast time‑to‑market
+            - GNSS: BeiDou, **Galileo**, GLONASS, GPS / QZSS
+            - Number of concurrent GNSS: 4
+            - available end of November 2018 ? (currently only engineering samples)
+            - List Price:
+                - ? guess 200 EUR (quantity 1)
+                - ? EUR (quantity >250)
+            - [simpleRTK2B](https://www.ardusimple.com/simplertk2b/)
+            - [simpleRTK2B - Basic Kit (213€)](https://www.kickstarter.com/projects/simplertk2b/simplertk2b-the-first-multiband-rtk-shield-based-o)
+
 - IMU
     - [pololu UM7-LT Orientation Sensor](https://www.pololu.com/product/2763) [exp-tech 129,95€](https://www.exp-tech.de/sensoren/imu/5999/um7-lt-orientierungssensor)
     - [BNO055](https://www.bosch-sensortec.com/bst/products/all_products/bno055)
