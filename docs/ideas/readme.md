@@ -35,13 +35,13 @@ alternative: [BeagleCore](http://beaglecore.com/) Conrad: ~110€
 
 
 ## concept
-till now i had the idea of a direct 1 to 1 connection from the generating high power cpu to the led-drivers.
+till now i had the idea of a direct 1 to 1 connection from the generating high power CPU to the led-drivers.
 but it seems that this is very tricky..
 i would need high speed connections from the stationary to the rotational part.
 
 so the new concept is to have a 'display driver / frame-buffer'
 on option for this could be an [ESP32-WROVER-B](https://docs.espressif.com/projects/esp-idf/en/latest/hw-reference/modules-and-boards.html) [mouser 5€](https://eu.mouser.com/_/?Keyword=ESP32-WROVER-B%20(16MB))
-this is an 18x32x4mm module that contains a dual core 240MHz cpu and WiFi and bluethoot
+this is an 18x32x4mm module that contains a dual core 240MHz CPU and WiFi and Bluetooth
 - [Video animation with ESP32 - example](https://esp32.com/viewtopic.php?f=17&t=6612)
 - [PSRAM Write Performance](https://esp32.com/viewtopic.php?p=30649#p30649)
 - [example for streaming low-res video: ESP32-OV7670-WebSocket-Camera](https://github.com/mudassar-tamboli/ESP32-OV7670-WebSocket-Camera)
