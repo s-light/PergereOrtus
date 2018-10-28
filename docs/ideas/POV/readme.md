@@ -46,10 +46,20 @@ some first simple tests are documented at [POV_simpletest](https://s-light.githu
 | duration_per_pixel_ns                      | 242000ns  | <span class="unit nanoseconds"></span>           | toFixed(duration_per_pixel * 1000000; 0)              |
 | pixel_pwm_duration_for_8bit                | 945ns     | <span class="unit nanoseconds"></span>           | toFixed(duration_per_pixel_ns /   256; 0)             |
 | pixel_pwm_rate_for_8bit                    | 1,06MHz   | <span class="unit megahertz"></span>             | toFixed(1000 / pixel_pwm_duration_for_8bit ; 2)       |
+| pixel_pwm_duration_for_9bit                | 478ns     | <span class="unit nanoseconds"></span>           | toFixed(duration_per_pixel_ns /   512; 0)             |
+| pixel_pwm_rate_for_9bit                    | 2,09MHz   | <span class="unit megahertz"></span>             | toFixed(1000 / pixel_pwm_duration_for_9bit ; 2)       |
 | pixel_pwm_duration_for_10bit               | 236ns     | <span class="unit nanoseconds"></span>           | toFixed(duration_per_pixel_ns /  1024; 0)             |
 | pixel_pwm_rate_for_10bit                   | 4,24MHz   | <span class="unit megahertz"></span>             | toFixed(1000 / pixel_pwm_duration_for_10bit; 2)       |
+| pixel_pwm_duration_for_11bit               | 120ns     | <span class="unit nanoseconds"></span>           | toFixed(duration_per_pixel_ns /  2048; 0)             |
+| pixel_pwm_rate_for_11bit                   | 8,33MHz   | <span class="unit megahertz"></span>             | toFixed(1000 / pixel_pwm_duration_for_11bit; 2)       |
 | pixel_pwm_duration_for_12bit               |  59ns     | <span class="unit nanoseconds"></span>           | toFixed(duration_per_pixel_ns /  4096; 0)             |
 | pixel_pwm_rate_for_12bit                   | 16,95MHz  | <span class="unit megahertz"></span>             | toFixed(1000 / pixel_pwm_duration_for_12bit; 2)       |
+| pixel_pwm_duration_for_13bit               |  30ns     | <span class="unit nanoseconds"></span>           | toFixed(duration_per_pixel_ns /  8192; 0)             |
+| pixel_pwm_rate_for_13bit                   | 33,33MHz  | <span class="unit megahertz"></span>             | toFixed(1000 / pixel_pwm_duration_for_13bit; 2)       |
+| pixel_pwm_duration_for_14bit               |  15ns     | <span class="unit nanoseconds"></span>           | toFixed(duration_per_pixel_ns / 16384; 0)             |
+| pixel_pwm_rate_for_14bit                   | 66,67MHz  | <span class="unit megahertz"></span>             | toFixed(1000 / pixel_pwm_duration_for_14bit; 2)       |
+| pixel_pwm_duration_for_15bit               |   7ns     | <span class="unit nanoseconds"></span>           | toFixed(duration_per_pixel_ns / 32768; 0)             |
+| pixel_pwm_rate_for_15bit                   | 142,86MHz | <span class="unit megahertz"></span>             | toFixed(1000 / pixel_pwm_duration_for_15bit; 2)       |
 | pixel_pwm_duration_for_16bit               | 3,7ns     | <span class="unit nanoseconds"></span>           | toFixed(duration_per_pixel_ns / 65535; 2)             |
 | pixel_pwm_rate_for_16bit                   | 270,27MHz | <span class="unit megahertz"></span>             | toFixed(1000 / pixel_pwm_duration_for_16bit; 2)       |
 
@@ -82,7 +92,7 @@ reminder / helper
 ## LEDs & LED-Driver
 [look at pov_leddriver.md](pov_leddriver.md)
 
-## infrared data transmission
+## data transmission
 [look at pov_datatransmission.md](pov_datatransmission.md)
 
 ## power transmission
