@@ -1,0 +1,142 @@
+---
+---
+
+
+// table
+td, th {
+	padding: 0.1em 0.5em;
+}
+
+
+td:last-of-type {
+	opacity: 0.7;
+}
+
+
+
+// input type="number"
+
+input[type="number"] {
+	width: 5em;
+    position: relative;
+}
+
+// units
+label.unit::after {
+    content: " ";
+    margin-left: -50px;
+    position: absolute;
+}
+
+span.unit::after {
+    content: " ";
+    margin-left: 0.2em;
+}
+
+// currency
+.unit.euro::after {
+    content: "€";
+}
+
+// seconds
+.unit.seconds::after {
+    content: "s";
+}
+.unit.milliseconds::after {
+    content: "ms";
+}
+.unit.microseconds::after {
+    content: "us";
+}
+.unit.nanoseconds::after {
+    content: "ns";
+}
+.unit.picoseconds::after {
+    content: "ps";
+}
+
+// meter
+.unit.meter::after {
+    content: "m";
+}
+.unit.millimeter::after {
+    content: "mm";
+}
+.unit.micrometer::after {
+    content: "um";
+}
+.unit.nanometer::after {
+    content: "nm";
+}
+.unit.picometer::after {
+    content: "pm";
+}
+
+// hertz
+.unit.hertz::after {
+    content: "Hz";
+}
+.unit.kilohertz::after {
+    content: "kHz";
+}
+.unit.megahertz::after {
+    content: "MHz";
+}
+.unit.gigahertz::after {
+    content: "GHz";
+}
+
+
+// electronic
+
+// voltage
+.unit.volt::after {
+    content: "V";
+}
+.unit.millivolt::after {
+    content: "mV";
+}
+.unit.kilovolt::after {
+    content: "kV";
+}
+
+// current
+.unit.ampere::after {
+    content: "A";
+}
+.unit.milliampere::after {
+    content: "mA";
+}
+
+// power
+.unit.watt::after {
+    content: "W";
+}
+.unit.milliwatt::after {
+    content: "mW";
+}
+.unit.kilowatt::after {
+    content: "kW";
+}
+
+// inductance L
+.unit.henry::after {
+    content: "H";
+}
+.unit.millihenry::after {
+    content: "mH";
+}
+.unit.nanohenry::after {
+    content: "nH";
+}
+
+// capacitance
+.unit.henry::after {
+    content: "H";
+}
+.unit.millihenry::after {
+    content: "mH";
+}
+.unit.nanohenry::after {
+    content: "nH";
+}
