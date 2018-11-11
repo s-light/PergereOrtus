@@ -38,6 +38,14 @@ challenge here is the bit time - we need some very very fast photo detectors...
 \* duration= higher or lower than 50% of transition between GND / VCC
 
 
+## other contact-less connections
+- Ethernet over inductive coupling
+    - [Ethernet Without Magnetics?](https://electronics.stackexchange.com/questions/51754/ethernet-without-magnetics)
+    - [AppNote: Capacitive Coupling Ethernet Transceivers without Using Transformers](http://ww1.microchip.com/downloads/en/AppNotes/Capacitive%20Coupling%20Ethernet%20Transceivers%20without%20Using%20Transformers.pdf)
+    - [1 channel ethernet rotary joint 100BASE-TX real-time](https://products.spinner-group.com/1-channel-ethernet-rotary-joint-100base-tx-real-time-bn637421C0100)
+- Ethernet over fiber
+    - []()
+
 ## information collection (research)
 - Vishay
     - [Photo Detectors - Phototransistor Output](https://www.vishay.com/photo-detectors/phototrans-out/)
