@@ -46,6 +46,7 @@ _saved_*
 # Jekyll
 _site
 Gemfile.lock
+vendor/
 
 # ------------------------------------------
 # Python
