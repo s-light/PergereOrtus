@@ -76,6 +76,54 @@ challenge here is the bit time - we need some very very fast photo detectors...
 | Mbit_per_second    | 5,41                  | 9,14                |                       |
 | bit_time_max       | 184ns (= 0,184us)     | 109 ns (= 0,109us)  | `1s / (5,41*10^6) ==` |
 
+
+-
+
+### timing calculation
+
+| name                                       | test      | value                                            | formula                                               |
+| :----------------------------------------- | --------: | -----------------------------------------------: | ----------------------------------------------------: |
+| updates_per_second = revolution_per_second | 30        | <label class="unit rpm"><input type="number" value="55" step="1" min="0" max="120"/></label> |           |
+| rpm (revolution per minute)                | 1800      | <span class="">1800</span>                       | updates_per_second * 60                               |
+| pixel_pitch                                | 3mm       | <label class="unit millimeter"><input type="number" value="1.5" step="0.1" min="0" max="20" /></label> | |
+| needle_diameter                            | 130mm     | <label class="unit millimeter"><input type="number" value="130" step="1" min="0" max="500" /></label> |  |
+| needle_active_radius                       | 60mm      | <span class="unit millimeter">60</span>          | (needle_diameter - 10) / 2                            |
+| pixel_per_line_count                       | 20        | <span class=""></span>                           | toFixed(needle_active_radius / pixel_pitch; 0)        |
+| pixel_per_line_count_total                 | 40        | <label class=""><input type="number" value="40" step="1" min="0" max="1000" /></label> | pixel_per_line_count * 2 |
+| line_circumference                         | 408mm     | <span class="unit millimeter"></span>            | toFixed(π * needle_diameter; 1)                       |
+| line_count                                 | 136       | <label class=""><input type="number" value="136" step="1" min="0" max="1440" /></label> | toFixed(line_circumference / pixel_pitch) |
+| line_updates_per_revolution                | 136       | <span class=""></span>                           | line_count                                            |
+| line_updates_per_second                    | 4080      | <span class=""></span>                           | updates_per_second * line_updates_per_revolution      |
+| line_updates_per_minute                    | 244800    | <span class=""></span>                           | rpm * line_updates_per_revolution                     |
+| duration_per_revolution                    | 33ms      | <span class="unit milliseconds"></span>          | toFixed(1000 / updates_per_second; 1)                 |
+| duration_per_line                          | 0.242ms   | <span class="unit milliseconds"></span>          | toFixed((duration_per_revolution / line_count); 7)    |
+| duration_per_line_us                       | 242us     | <span class="unit microseconds"></span>          | toFixed(duration_per_line * 1000; 0)                  |
+| duration_per_line_ns                       | 242000ns  | <span class="unit nanoseconds"></span>           | toFixed(duration_per_line_us * 1000; 0)               |
+|                                            |           |                                                  |                                                       |
+| color_per_pixel                            | 3         | <label class=""><input type="number" value="3" step="1" min="1" max="10" /></label>  |                   |
+| bit_per_color                              | 8b        | <label class="unit bit"><input type="number" value="8" step="1" min="1" max="16" /></label> |           |
+| levels_per_color                           | 265       | <span class="unit"></span>                       | (2^bit_per_color)                                     |
+| bit_per_pixel                              | 24b       | <span class="unit bit"></span>                   | color_per_pixel * bit_per_color                       |
+|                                            |           |                                                  |                                                       |
+| line_pwm_duration_for_nbit                 | 945ns     | <span class="unit nanoseconds"></span>           | toFixed(duration_per_line_ns /   levels_per_color; 0) |
+| line_pwm_rate_for_nbit                     | 1,06MHz   | <span class="unit megahertz"></span>             | toFixed(1000 / line_pwm_duration_for_nbit ; 2)        |
+|                                            |           |                                                  |                                                       |
+| bit_per_line                               | 960b      | <span class="unit bit"></span>                   | pixel_per_line_count_total * bit_per_pixel            |
+| data_rate                                  | 30MHz     | <label class="unit megahertz"><input type="number" value="30" step="1" min="1" max="40" /></label> |     |
+| data_rate_bit_time                         | 33ns      | <span class="unit nanoseconds"></span>           | toFixed(1000 / data_rate ; 0)                         |
+|                                            |           |                                                  |                                                       |
+| duration_per_bit_max                       | 252ns     | <span class="unit nanoseconds"></span>           | toFixed(duration_per_line_ns / bit_per_line; 0)       |
+| bit_timing_ok___must_be_bigger_0           | 219ns     | <span class="unit nanoseconds"></span>           | duration_per_bit_max - data_rate_bit_time             |
+|                                            |           |                                                  |                                                       |
+| duration_for_needed_bits_per_line_us       | 31us      | <span class="unit microseconds"></span>          | toFixed(duration_for_needed_bits_per_line_ns / 1000; 0) |
+| duration_for_needed_bits_per_line_ns       | 31680ns   | <span class="unit nanoseconds"></span>           | toFixed(bit_per_line * data_rate_bit_time; 0)         |
+| line_bit_duration_ok___must_be_bigger_0    | 210us     | <span class="unit microseconds"></span>          | duration_per_line_us - duration_for_needed_bits_per_line_us |
+
+
+<button type="button" name="bt_update" id="bt_update">update</button>
+<script src="{{ '/assets/js/table_calc_example.js?v=' | append: site.github.build_revision | relative_url }}" charset="utf-8"></script>
+
+
 ```
 1 second == 1.000 ms == 1.000.000 us == 1.000.000.000 ns
 
